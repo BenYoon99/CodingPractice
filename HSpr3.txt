@@ -1,0 +1,21 @@
+//마이컴파일러이용 챗지피티 자체제작 문제풀이 2번문제 
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+      /*문제 2: 상수를 활용한 호텔(배열) 건축과 손님 맞이
+내용: 1. final을 사용하여 상수 HOTEL_SIZE를 선언하고 값 5를 대입하세요. 2. HOTEL_SIZE 상수를 사용하여 크기가 5인 정수형 배열 arr을 만드세요.
+3. 2번 인덱스 방에는 100, 4번 인덱스 방에는 500이라는 손님을 입주시키세요. 4. for문을 사용하여 0번 방부터 마지막 방까지 어떤 손님이 있는지 모두 출력하세요.
+
+체크포인트: arr[i]를 출력할 때 0, 0, 100, 0, 500 순서로 나오면 정답입니다!*/
+       final int HOTEL_SIZE = 5;
+       int [] arr = new int[HOTEL_SIZE]; 
+       arr[2] = 100;
+        arr[4] = 500; // arr이라는 호텔의 4번방에는 500이라는 손님 입주  , 여기서 궁금한건 정보삽입안한곳에는 자동으로 0이라는 손님이 들어가? 체크포인트보니..
+
+        int i=0;
+        for(i=0;i<HOTEL_SIZE;i++){
+            System.out.println(arr[i]);
+        }
+        
+    }
+}
