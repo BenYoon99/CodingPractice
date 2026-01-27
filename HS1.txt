@@ -1,0 +1,17 @@
+* 배열 / 용돈넣는 통장만들기 
+
+
+class Main {
+    public static void main(String[] args) {
+       int [] hsAl;          // 내가받은용돈 5개월넣는 통장만듬 - hsAL hsAllowance
+hsAl = new int[5];   // 통장엔 5개분을 나눌수있는 방이있음
+hsAl [0] = 125000;  // 첫달
+hsAl [1] = 125000;  // 둘쨋달 
+hsAl [2] = 125000;  // 셋쨋달 
+hsAl [3] = 125000;  // 넷쨋달 
+hsAl [4] = 125000;  // 다섯째달
+  System.out.println(hsAl[0]); //첫째달 용돈 보여줘 
+        
+    }
+} 
+
