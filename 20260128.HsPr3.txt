@@ -1,0 +1,21 @@
+//선생님이 작성하신 신체클래스 안보고 직접 백지 제작해서 철수의 신체데이터 저장하는 것 따라해보기 및 디테일 캐치 
+
+public class Main {
+
+
+
+        public static void main(String[] args){
+               철수 a = new 철수(); // 클래스 철수의 규격만을 따르는 리모컨 제작후 철수라는 규격을 따르는 인스턴스를 이름없이 제작 그후 그 주솟값을 만든 리모컨인 a에 쏴준다
+                a.name = "김철수";
+                a.married = false;
+                a.age = 25;
+                a.height = 184.56;
+            
+        } 
+}
+class 철수 {
+    String name;
+    boolean married;
+    int age;
+    double height;
+} //선생님은 철수라는 인스턴스 한개를 위해 철수라는 클래스를 만드셨지만 이 클래스명은  철수보단 사람의 스펙 같은 느낌이 더 어울린다 
