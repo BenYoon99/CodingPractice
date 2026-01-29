@@ -1,0 +1,21 @@
+// 선생님 출제 문제 : 3개의 자동차가 각각 1번씩 달리게 해주세요.
+
+class Main {
+  public static void main(String[] args) {
+    Car p1 = new Car();
+    Car p2 = new Car();
+    Car p3 = new Car();
+  	p1.달리기(); 
+  	p2.달리기();
+  	p3.달리기();   
+	
+  }
+}
+
+class Car {
+
+void 달리기(){
+	System.out.println("자동차는달리는중입니다");
+
+
+}

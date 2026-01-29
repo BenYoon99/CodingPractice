@@ -1,0 +1,68 @@
+/*🏆 실전 코딩 챌린지: "리그 오브 레전드 팀 관리 시스템"
+[문제 시나리오] 당신은 롤 팀의 매니저입니다. 여러 명의 챔피언을 생성하고, 팀 공통의 정보와 각 챔피언의 개별 정보를 관리해야 합니다.
+
+[요구 사항]
+
+**Champion 클래스 (부모)**를 만드세요.
+
+모든 챔피언이 공유하는 공용 변수 String teamName을 만드세요. (초기값은 "T1"으로 설정)
+
+각 챔피언의 개별 변수 String name과 int level을 만드세요.
+
+챔피언의 이름과 레벨을 출력하며 "이(가) 공격합니다!"라고 말하는 void attack() 메소드를 만드세요.
+
+**Yasuo 클래스 (자식)**를 만드세요.
+
+Champion 클래스를 상속받습니다.
+
+야스오만의 특별한 기술인 void useUlt() 메소드를 만드세요. (출력 내용: "소리에게돈! (궁극기 사용)")
+
+Main 클래스의 main 메소드에서 다음 로직을 구현하세요.
+
+Yasuo 객체(인스턴스)를 2개 만드세요. (리모컨 이름은 y1, y2)
+
+y1의 이름은 "야스오1", 레벨은 10으로 설정하세요.
+
+y2의 이름은 "야스오2", 레벨은 15로 설정하세요.
+
+y1 리모컨을 이용해 teamName을 "GenG"로 바꾸세요.
+
+그 후, y2.attack()을 호출했을 때 팀 이름이 무엇으로 출력되는지 확인해보세요.
+
+y1과 y2 모두 궁극기를 한 번씩 사용하게 하세요.*/
+
+class Main {
+    public static void main(String[] args) {
+        Yasuo y1 = new Yasuo();
+        Yasuo y2 = new Yasuo();
+        y1.name= "야스오1";
+            y1.level = 10;
+        y2.name= "야스오2";
+            y2.level = 15;
+        y1.teamName="GenG";
+
+        y2.attack();
+        y1.useUlt();
+        y2.useUlt();
+        System.out.println(y2.teamName);
+                             }
+}
+class Champion {
+    static String teamName = "T1";
+    
+    String name;
+    int level; 
+
+    void attack(){
+        System.out.println(this.name + this.level + "이(가) 공격합니다 ");
+        
+    }
+}
+class Yasuo extends Champion {
+    void useUlt(){
+        System.out.println("소리에게돈(궁극기사용)");
+    }
+}
+
+2번 컴파일 에러 
+8번 ->1 번 -> 성공 

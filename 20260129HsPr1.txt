@@ -1,0 +1,15 @@
+// 선생님 출제 문제 : 1개의 자동차가 3번 달리게 해주세요.
+
+class Main {
+  public static void main(String[] args) {
+    Car porsche = new Car();
+	porsche.달리기();
+	porsche.달리기();
+	porsche.달리기();
+  }
+}
+
+class Car {
+void 달리기(){
+System.out.println("자동차는달리는중");
+}
