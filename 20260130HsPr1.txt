@@ -1,0 +1,465 @@
+// 혼자 공부한 내용들 
+
+
+
+
+
+오버 로딩 
+
+메소드중 다른 차이를 보이는 상황 ( ex) 파라미터가 다른경우) 에  다른 출력값을 내고싶을때 
+사용한다 
+
+메소드만 사용가능하고 
+
+예시로 부모 클래스에 
+void attack(Champion.target){
+	System.out(target.name + "을 공격하는중입니다")
+}
+ 가 있다고 가정하자 
+
+근데 우리가 리그오브레전드 이해를하면
+야스오가 공격하는것과 아리가 공격하는건 다르다 
+야스오는 q1 q2 q3회오리 이고
+
+아리는 매혹이다 
+그럼 두 챔프들은 공격에 차이를 둬야하지않는가?
+고로 그 공격을 오버라이딩으로 각각 바꿔준후 
+세부 디테일 ( 파라미터의 차이 )
+예시 ) 야스오 q는 허공에쓰면 아무효과가 없고 그냥 하세기하지만
+야스오 q는 상대(적챔피언 or 정글몹(중립))을 때리면 
+q스택이 쌓여 그게 2번쌓이면 q3을 사용가능 
+아리도 다르다 매혹은 적 누구를 맞추건 나를 따라오게한다 
+이걸 
+오버라이드로 공격을 바꿔주고 
+이경우에 누구를 공격하건 결과값은 같기에 
+굳이 추가해줄필요가 없음 
+
+// 오버로딩 개념응용 세부 코드를 짜보고 제미나이에게 피드백받자 
+
+public Main{
+
+	public static void main {
+		}
+}
+
+class Champion {
+	
+	int ad;
+	int hp;
+	int moveSpeed;
+	boolean op;
+	String name;
+	
+
+	void move() {
+		System.out.println("이동합니다");
+
+	void attack(Champion target) {
+		System.out.println(target.name + "을 공격합니다");
+	}
+}
+class Yasuo extends Champion {
+	@Override 
+	void move(){
+		System.out.println("스르륵 스르륵 이동합니다" );
+}
+	
+	
+		int i =3 ; // Yasuo q 스택용 변수값 선언
+		
+		
+	@Override
+	void attack(Champion target){
+		if (i ==1) (
+		System.out.println(target.name +"에게 q 공격을 합니다");
+			i++;)
+			else if  (i ==2) (
+		System.out.println(target.name+"에게 q공격을 합니다 회오리의 기운이 몸을 감쌉니다");
+			i++;)
+				else(
+		System.out.println(target.name+"에게 회오리를 날리고 1초간 공중에 띄웁니다");
+ 		)
+	}
+
+class Ahri extends Champion {
+	@Override 
+	void attack(Champion target){
+		System.out.println(target.name+"에게 매혹을 날려 홀립니다 1초간 사용자를 따라옵니다 ");
+	}
+		
+
+
+-> 제미나이 피드백
+내가 클래스 내부 메소드영역에 정수값 인스턴스 변수 선언함   
+
+
+클래스 내부 4영역중 내가 실수한건
+메소드영역에서 변수선언한거
+여기서 알게된것 
+
+공용 변수 
+인스턴스 변수 
+공용 메소드 
+인스턴스 메소드
+이렇게 필드가 고정된줄 알았지만 
+그건 아님 
+그냥 불문율이지 이게 꼬여도 상관없다 실행은.
+그리고 클래스 내부에서 
+인스턴스 변수 값도 주고 시작할수있다
+ex) int i=3; //i는 야스오의 q 스택 
+
+이 경우 이 규격을 따르는 야스오라는 인스턴스가 있다고 가정시
+인스턴스를 따르기에 디폴트값으로 i는 3이라는 값을 갖고 태어난다
+고로 
+메인메소드에서
+Yasuo y=new Yasuo("야스오");
+  System.out.println(y.i);
+	하게되면 3의값이 나오지만
+	메인 메소드내에서 
+	y.i= 2; 라고 이렇게 수정해주게되면
+	이 인스턴스가 가지는 i값은 수정하거나 , 이 인스턴스가 죽기전까지 계속 2의 값을 갖는다 (인스턴스 없어지면 값도 없어짐 )
+
+
+
+오버 라이딩
+parent 클래스의 규격을 상속받은 child 클래스가 
+메소드를 ( 변수는 불가능함  왜 why 
+
+생각을 해봐라 이미 부모의 인스턴스 변수 규격을 다 상속받은 Yasuo 클래스가 
+int hp;
+int ad;
+int moveSpeed ;
+규격을 부모로 부터 받았는데
+그걸 만약 자기 방식대로 고치겠다고하면 
+
+
+
+
+매개변수 / 파라미터 
+
+
+클래스 메소드내의 행동의 상대이자 타겟
+
+
+예시 
+
+
+
+
+class Champion {
+
+void attack (string , chamName){
+
+ System.out.println(chamName + " 공격" );
+
+}
+ 
+이렇게 인스턴스의 행동의 대상이다.
+
+ 음 여기서 생각해야할건 
+인스턴스 메소드답게 먼저 값을 클래스에서 선언하고 
+메인 메소드에서 그에 맞게 부르는거다 
+인스턴스 변수와 메소드 차이 구분 참고 ㅇㅇ
+
+
+이해하기위해 코드 짜보면 
+
+내가 코드짜볼게 
+
+
+
+
+
+public class Main {
+
+
+
+ public static void main {
+
+	
+
+}
+
+
+
+}
+
+class Champion {
+
+
+
+int ad ;
+
+int hp;
+
+int moveSpeed;
+
+
+
+void attack(String , target){
+
+ System.out.println(target+ "을 공격하고있습니다");
+	
+void move(){
+	System.out.println("이동중입니다잇");
+}
+}
+
+} 	
+
+class Yasuo extends Champion {
+	 // 오버라이드 박아주고
+	System.out.println("E를 타고 슥슥 슥슥 이동 " );
+}
+
+ 
+
+
+	
+
+//  다형성
+
+
+
+위 경우에서 	
+
+이 경우를 따져보자 
+
+/*메인 메소드에서 야스오, 아리라는 인스턴스를 제작하고싶다.  이 경우에 어떻게 해야 가장 효율적인 코딩일까? 
+스스로 생각해서 코딩해보기.*/
+
+메인 
+
+public static void main {
+	Champion.y = new Yasuo("야스오");
+	Champion.a = new Ahri(" 아리 " );
+	}
+
+여기서 드는 의문 ? 
+
+생각해보면 아리나 야스오 모두 챔피언 구성 클래스인 부모클래스로부터  이속 공격력 체력 인스턴스 변수와 움직임 공격의 
+인스턴스 메소드 모두 상속받은상황 그럼 이경우에 굳이 참조변수를 Champion 부모 클래스의 규격을 따르게 할 필요가있을까?
+ 이 고민에서 생기는 개념 !!!
+ ->다형성 고려
+
+지금 복습하고 나서도 내가 한 고민은 상당히 합리적이다 하지만 간과한게 
+그렇게 짤 경우에는 나중에 이런식으로 코드가 짜여있을것이다.
+EX)  메인메소드 {
+	Yasuo.y = new Yasuo("야스오");
+	Ahri.a = new Ahri(" 아리 " );
+	etc;
+}
+
+이 경우에는 위 경우와 다르게 
+
+각 참조변수가 각 자식 클래스의 규격을따른다 그렇기에 
+
+추후에 이 모든 챔피언들로 하여금 움직이게 하고싶다면 ?
+거기서 조조되는거다 
+어떻게 움직이게할건데?
+  각 	y.move();
+	a.move();
+다쳐줄건가?  그럼 비효율적이다 
+그래서 고려할게 
+애초에 우리가 따로 오버라이딩으로 고치거나 그냥 자식들이 부모와 다르게 자기만의 클래스를 가지고있는 이유는 
+각 챔피언들의 스킬이 다르고 이동하는 방식 ( 오버라이딩으로 고침 ) 이 다르기떄문이다 
+고로 이경우에는  우리는 안다 이미 체력 및 스펙의 규격은 전부 같다는걸 그럼 부모클래스의 규격을 따르는 리모콘으로 
+조종해도 상관없는거다. 		
+	잠시만 근데 c가 Champion 받으면  야스오 궁을 못쓰잖아.. 이러면 어쩌지 
+
+
+	여기서 생각해야할 개념이 바로 오버라이딩 !!!!
+
+이 경우에 
+
+오버라이딩 사용하면됨 어떻게?
+
+부모 클래스인 Champion 클래스에 
+
+메소드 하나 추가 what?
+
+void useSkill(String target){
+	System.out.println(target + "에게" + "각챔피언의특유한"+ "공격을한다");
+
+}
+
+그리고 너도 알지만 야스오와 아리는 스킬이 달라 
+그럼 뭐해야하누 뭐긴 @Override 사용
+
+오버라이드 박아서 메소드값 바꿔주면되지
+
+class Yasuo extends Champion {
+	@Override
+	void useSkill(String target){
+	System.out.println(target+"에게 소용돌이를 날림 ");
+
+};  
+
+class Ahri extends Champion {
+	@Override 
+	void useSkill(String target) {
+	System.out.println(target + "에게 매혹을 날림 " );
+
+그럼 여기서 궁금증
+
+이럼 그럼 
+
+Champion a = new Ahri();
+
+로 만든 a가 
+a.useSkill();
+쓰면            부모에게 이미 클래스에 useSkill 메소드있으니까
+사용하지만 그걸 상속도 Ahri가 받았기에 사용도 가능함 
+그리고 그거 오버라이드 박아놨기에 
+자기스킬씀 야스오도 그렇고 
+	
+이렇게 코드를 구성해주니까 장점이 생긴게 
+ 모두 부모의 규격을 따르는 참조변수이기때문에
+
+향상된  for문을 사용해서 단체의 행동을 쉽게 2문장에 해줄수있다 
+그게 아니였다면 각 리모컨별 행동을 160챔피언이라면 160줄이였다
+
+// 향상된 for 문 
+
+
+구성 
+
+ 배열파기 (호텔짓기)
+
+ Champion [] teamMate = {new Yasuo(); , new Ahri();};
+
+
+	for (Champion c : teamMate) {
+		c.useSkill("적군챔프명");
+	}	
+
+호텔을 파고 거기에 손님을 박았다면 
+( 챔피언(클래스) 타입만을 받는 팀메이트라는 호텔을 지었어요 , 거기 손님은 야스오규격을 따르는 인스턴스 1 , 아리규격을 따르는 인스턴스 2
+ 	챔피언의 규격을 따르는 참조변수 리모컨 c를  팀메이트라는 호텔의 모든 손님들과 대응시키세요)
+이렇게 일일이 대응하세요 한마디로 전부 대응하세요 해버리기에 
+평소처럼 int i 변수선언 할필요 x 몇팀의 정보가 배열에 박혀있는지 숫자 알필요 x 
+그냥 호방하게 시원하게 걍 손님분들 모두 정보확인하고 모두확인했음 걍 멈춰~ 이러는 쿨한 지배인임 ㅇㅇ   
+
+->>이렇게 해주면
+아군 (teamMate)의 모든 스킬을 
+그냥 딱 저 두문장으로 사용가능하다 적군에게 
+만약 다른 규격을 받는 친구들끼리 이루어져있었다면 
+이 for문 사용이 불가능하기에 
+왜 why 배열에서도 이미 서로 다른 클래스 이기에 같은 호텔에 못집어넣고 
+for 문에서도 특정 클래스1을 따르는 리모컨에 대응시켜야하는데 서로다른 클래스면 불가능하다 
+
+
+ 
+여기서 궁금한건 
+아까 오버로딩 개념 생각할떄
+야스오 q스택을 
+미리 클래스내부에서 값을 박아두고
+그걸 불러오면 3스택시작이라했는데
+예를들면 칼바람 야스오의경우 2스택주고시작하고싶고
+그냥 소환사의협곡 야스오의 경우 스택 안주고시작하고싶다면 
+어떻게 해야할까 ?
+흠 답이안보임..
+ 생성자 개념을 배우자  <--- 제미나이 조언 
+
+
+
+
+
+
+// 아까 자체 제작한 코드 제미나이 피드백 참고 수정하고 실제 인스턴스까지 만들어보기 
+
+
+public Main{
+
+	public static void main(String[] args) {
+		Champion a = new Ahri("아리"); // 아리 인스턴스 생성
+		Champion y = new Yasuo("야스오") // 야스오 인스턴스 생성		
+			a.ad=45;
+			a.hp=800;
+			a.moveSpeed = 320;
+			a.op = false;
+			
+			y.ad = 61;
+			y.hp = 900;
+			y.moveSpeed = 345;
+			y.op = true;
+			
+			
+		Champion [] teamMate = { y, a};
+		
+			for (Champion c : teamMate) {
+				
+				c.attack(String target);
+
+							} // 야스오와 아리 상대방을 자기 스킬로 공격 
+					 
+		y.move (); // 야스오 이동시킴 
+
+	}
+}
+
+class Champion {
+	
+	int ad;
+	int hp;
+	int moveSpeed;
+	boolean op;
+	String name;
+	
+
+	void move() {
+		System.out.println("이동합니다");
+
+	void attack(Champion target) {
+		System.out.println(target.name + "을 공격합니다");
+	}
+}
+class Yasuo extends Champion {
+	
+
+	
+	int qStack = 3;	
+
+	@Override 
+	void move(){
+		System.out.println("스르륵 스르륵 이동합니다" );
+}
+	
+	
+		
+		
+		
+	@Override
+	void attack(Champion target){
+		if (qStack==1) (
+		System.out.println(target.name +"에게 q 공격을 합니다");
+			qStack++;)
+			else if  (qStack ==2) (
+		System.out.println(target.name+"에게 q공격을 합니다 회오리의 기운이 몸을 감쌉니다");
+			qStack++;)
+				else(
+		System.out.println(target.name+"에게 회오리를 날리고 1초간 공중에 띄웁니다");
+ 		)
+	}
+
+class Ahri extends Champion {
+	@Override 
+	void attack(Champion target){
+		System.out.println(target.name+"에게 매혹을 날려 홀립니다 1초간 사용자를 따라옵니다 ");
+	}
+		
+
+
+
+ <- 위 자체 제작 코드에 대한 제미나이 피드백
+
+1.사소한 ;컬럼 문법오류
+
+2.  .을 붙여 동적변수전환 오류
+
+3. 메인메소드내에서 실제값이아닌 규격불러온 오류
+
+전부 이해했다. 
+
+// 여기까지 공부하고 다음 시간에 자판기 실습 공부하면서 생성자 공부하기 
+
