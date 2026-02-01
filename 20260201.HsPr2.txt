@@ -1,0 +1,26 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
+
+
+class MyGpa{
+    private double gpa = 1.44;
+
+
+    publc void setGpaScore(double gpa){
+            if(gpa>4.5){
+                System.out.println("오류입니다");
+            }
+        else if (gpa<0)
+        {
+            System.out.println("오류입니다");
+        }
+    }
+}
