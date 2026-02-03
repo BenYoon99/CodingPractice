@@ -1,0 +1,76 @@
+// 내가 어제 복습한 개념 + 오늘 배운 개념 도입 코드 짜보기   (실행이 안되서 계속 고치다 미완 ) 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+
+// The main method must be in a class named "Main".
+
+class Main {
+    public static void main(String[] args) {
+        Noxus a = new Kat();
+        Noxus b = new Darius();
+        Noxus c = new Draven();
+        a.ad= 100;
+        a.ap =200;
+        a.as =1;
+        a.moveSpeed = 340;
+
+        b.ad =120;
+        b.ap = 0;
+        b.as = 1;
+        b. moveSpeed = 345;
+
+        c.ad = 120;
+        c.ap = 0;
+        c.as = 1;
+        c.moveSpeed = 350;
+
+        Noxus [] NoxusChamp = {Kat(),Darius(),Draven()};
+            int i = 0;
+                for(i=0;i<3;i++){
+                        void attack();
+                }
+            
+            
+                
+    }
+}
+
+abstract class Noxus {
+
+    int ad;
+    int ap;
+    int as;
+    int moveSpeed;
+
+   abstract void attack(); // 추상 메소드 적용 
+}
+
+
+class kat extends Noxus {
+    @Override    
+    void attack();{
+                System.out.println("카타의 단검이 연꽃처럼 돌아간다 ");
+        }    
+}
+
+class Darius extends Noxus {
+    @Override    
+    void attack();{
+                System.out.println("다리우스의 도끼는 상대방의 머리를 찍는다");
+        }
+}
+class Draven extends Noxus {
+    @Override
+    void attack();{
+                System.out.println("드레이븐의도끼가 적을 반으로 가른다 ");
+    }
+}
+
+    }
+}
+
+
