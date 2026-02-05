@@ -1,0 +1,39 @@
+// 선생님 자체 제작 문제 : 번호가 다른 각각의 자동차가 서로 다른 최고속력으로 달리게 해주세요.
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+            Car c1 = new Car();
+            Car c2 = new Car();
+            
+            c1.bestSpeed =240.0;
+            c2.bestSpeed =300.0;
+            c1.carNo = 1;
+            c2.carNo = 2;
+
+        Car [] CarHotel = new Car[2];
+        CarHotel[0] = c1;
+        CarHotel[1] = c2;
+        
+        int i=0;
+         for(i=0;i<2;i++){
+                CarHotel[i].move();
+         }       
+    }
+}
+
+class Car {
+
+    static String name = "황금마티즈"; // 번호만 다르다는 조건이기에 공용변수 사용해줘도 상관 ㄴ 
+    Double bestSpeed;
+    int carNo;
+
+    void move(){
+        System.out.println(carNo+"의번호를가진차가"+bestSpeed+"의 최고속도로 달립니다");
+    }
+}
