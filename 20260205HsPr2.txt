@@ -1,0 +1,77 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+//자체제작 코드 - 배열을 이용한 동적바인딩 ( 부모클래스의 규격을 따르는 참조변수사용해서 자식클래스 메소드 불러오기 )  
+
+class Main {
+    public static void main(String[] args) {
+        
+        
+        Humanity [] H1 = {new Indian(),new Chinese() ,new Korean()};
+            int i =0;
+                for(i=0;i<3;i++){
+                        H1[i].eat();
+                }
+        
+
+        
+        
+        
+        
+        
+                
+        
+        
+    }
+}
+
+
+
+
+
+
+
+class Humanity {
+        int age;
+        boolean married;
+        double height;
+        String bestFoodName;
+        
+        void eat(){
+                System.out.println("공백");
+        }
+        
+        
+}
+
+
+class Indian extends Humanity {
+        @Override
+       void eat (){
+                System.out.println("인도인은 음식을 맛있게 먹는다");
+                   
+           
+       }         
+} 
+        
+
+class Chinese extends Humanity {
+    @Override    
+    void eat(){
+                System.out.println("중국인은 음식을 맛있게 먹는다");
+            
+        }
+}
+
+
+class Korean extends Humanity {
+    @Override    
+    void eat(){
+                System.out.println("한국인은 음식을 맛있게 먹는다");
+
+            
+        }
+}

@@ -1,0 +1,71 @@
+//자체제작 코드 1
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+           BowenLee Bowen = new BowenLee();
+            Bowen.name = "LEE BO WEN";
+            Bowen.height = 165;
+            Bowen.weight = 64.3;
+            Bowen.FavorHuoguoName = "MA ZANG";
+            
+            Bowen.love();
+
+
+
+
+        
+    }
+}
+
+
+
+abstract class  Indian {
+        String FavorcurryName ; 
+        String name;
+        int height;
+        double weight;
+
+       abstract void move();
+
+        Indian(String name){
+            this.name = name;
+            
+        }
+}
+
+class Ani extends Indian  {
+
+        Ani(String name){
+                super(name); // 부모자식간의 상속상태에서의 사용하는 Super 문이라는데 잘 안와닿음 
+        }
+            
+        @Override void move(){
+                System.out.println("움직입니다");
+
+            
+        }
+    
+
+}
+
+
+class BowenLee {
+    String FavorHuoguoName;
+    String name;
+    int height;
+    double weight;
+
+    void love() {
+            System.out.println("wo ai ni HS");
+
+    
+        
+            }
+    }
+        
