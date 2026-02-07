@@ -1,0 +1,83 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Animal c= new Cat();
+        c.speed = 50;
+        c.weight = 30;
+        c.height =60.5;
+
+        c.bark();
+
+        Animal d = new Dog();
+        d.speed = 40;
+        d.weight = 25;
+        d.height = 30.4;
+
+        d.bark();
+        System.out.println(d.speed);
+
+        Animal c2 = new Capybara();
+        c2.speed = 30;
+        c2.weight = 100;
+        c2.height = 70.5;
+
+        c2.bark();
+
+
+        Animal [] Animals = new Animal [3];
+        Animals [0] = c;
+        Animals [1] = d;
+        Animals [2] = c2;
+        
+        int i;
+        i = 0;
+        for (i=0;i<3;i++){
+               Animals[i].bark();
+        }
+    }
+}
+
+class Animal {
+
+    int speed;
+    int weight;
+    double height;
+
+    void bark(){
+        System.out.println("짖습니다");
+        
+    }
+    
+}
+
+class Cat extends Animal{
+
+    @Override
+
+    void bark(){
+        System.out.println("냐옹");
+        
+        
+    }
+}
+
+class Dog extends Animal {
+
+    @Override
+
+    void bark(){
+            System.out.println("왈왈");
+    }
+}
+
+class Capybara extends Animal{
+    @Override
+
+    void bark(){
+            System.out.println("후우웅");
+    }
+} 
