@@ -1,0 +1,41 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Unit marine = new Unit();
+        marine.name = "Marine";
+        marine.hp = 40;
+
+        /
+        marine.takeDamage(15);
+
+        
+        System.out.println(marine.name + "의 남은 체력: " + marine.hp);
+    }
+}
+
+class Unit {
+    String name;
+    int hp;
+
+    
+    void takeDamage(int damage) {
+        this.hp -= damage;
+/*실전 코딩 문제 1: 유닛의 행위(Method) 구현하기
+[상황] 마린이 공격을 받았을 때 체력이 줄어드는 기능을 만들려고 합니다.
+
+[요구사항]
+
+Unit 클래스에 takeDamage(int damage) 메소드를 만드세요.
+
+이 메소드는 호출될 때마다 유닛의 hp에서 damage만큼을 뺍니다.
+
+main에서 마린 객체를 생성하고 초기 체력을 40으로 설정하세요.
+
+takeDamage(15)를 호출한 뒤, 남은 체력을 출력하세요.*/
