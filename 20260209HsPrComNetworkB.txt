@@ -1,0 +1,71 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 문제 1: L2와 L3의 다형성 구현 (초급)
+네트워크 장비들을 추상화하고, 각 장비가 데이터를 어떻게 처리하는지 다형성을 이용해 구현하세요.
+
+[요구사항]
+
+NetworkDevice라는 부모 클래스를 만드세요.
+
+String name 필드를 가집니다.
+
+processData() 메소드를 가집니다. (내용은 "데이터를 처리합니다.")
+
+Switch 클래스는 NetworkDevice를 상속받습니다.
+
+processData()를 오버라이딩하여 **"L2 계층: MAC 주소를 확인하여 전달합니다."**를 출력합니다.
+
+Router 클래스는 NetworkDevice를 상속받습니다.
+
+processData()를 오버라이딩하여 **"L3 계층: IP 주소를 확인하여 라우팅합니다."**를 출력합니다.
+
+Main 클래스에서 NetworkDevice 타입의 배열이나 리스트를 만들고, 스위치와 라우터를 담은 뒤 반복문을 돌려 각각의 processData()를 호출하세요.*/
+
+// The main method must be in a class named "Main".
+class NetworkDevice{
+    String name;
+
+    void processData(){
+        System.out.println("데이터를 처리합니다 ");
+    }
+}
+class Switch extends NetworkDevice {
+    @Override
+
+    void processData(){
+        System.out.println("L2 계층 :MAC 주소를 확인하여 전달합니다. ");
+    }
+}
+class Router extends NetworkDevice{
+    @Override
+
+    void processData(){
+        System.out.println("L3 계층 :IP 주소를 확인하여 라우팅합니다.");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        NetworkDevice S = new Switch();
+        NetworkDevice R = new Router();
+
+        NetworkDevice [] Nede = new NetworkDevice[2];
+        Nede [0] = S;
+        Nede [1] = R;
+
+        int i;
+        i=0;
+        
+        for(i=0;i<2;i++){
+        if (i==0) {
+            Nede[i].processData();
+                
+        }
+        else if(i==1){
+            Nede[i].processData();
+            
+        }
+    }
+    }
+}
