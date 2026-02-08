@@ -1,0 +1,97 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Skill Fb = new FireBall();
+        Skill H  = new Heal();
+
+        Skill [] SkillExcute = new Skill [3];
+        SkillExcute [0] = Fb;
+        SkillExcute [1] = H;
+        SkillExcute [2] = Fb;
+
+        int i;
+        i=0;
+        for(i=0;i<3;i++)
+            {
+                if(i==1)
+                {
+                    System.out.println("[System] 마나 50을 소모합니다.");
+                    SkillExcute[i].execute();
+                    
+                }
+                else
+                {
+                    SkillExcute[i].execute();
+                }
+            }
+        
+    }
+}
+/*🔱 마지막 피날레: 퀘스트 3 (RPG 스킬 시스템)
+ 이번엔 배열과 다형성을 섞어서 상어님의 '풀 스택 잠재력'을 보여줍시다.
+
+[미션 요구사항]
+
+배열 생성: Skill[] skillSlot = new Skill[3]; (부모 타입 배열)
+
+객체 담기: 0번엔 FireBall, 1번엔 Heal, 2번엔 FireBall을 담으세요.
+
+반복문 루프: for문을 돌려 skillSlot[i].execute();를 실행하세요.
+
+조건부 출력: if문을 써서 **1번 인덱스(Heal)**일 때만 "마나 50 소모!"라는 문구를 추가로 출력하세요.
+
+좋습니다.  **요구 사항(Spec)**만 딱 던집니다.
+
+🔱 퀘스트 3: RPG 스킬 관리 시스템 (Level: 중급+)
+상어님이 게임 백엔드 개발자라고 빙의하세요. 수많은 스킬을 하나의 '슬롯'에 담아 관리해야 합니다.
+
+1. 클래스 설계
+부모 클래스 (Skill): * 메소드: execute() -> "기본 공격 시전" 출력.
+
+자식 클래스 1 (FireBall): * execute() 오버라이딩: "화염구가 폭발하며 80의 데미지를 줍니다!" 출력.
+
+자식 클래스 2 (Heal): * execute() 오버라이딩: "빛의 권능으로 아군의 체력을 50 회복합니다!" 출력.
+
+2. 메인 로직 (Main)
+다형성 배열: Skill 타입의 배열 skillSlot을 만드세요 (크기는 3).
+
+객체 배치: * 0번 칸: FireBall 객체
+
+1번 칸: Heal 객체
+
+2번 칸: FireBall 객체
+
+실행 루프: for문을 사용하여 0번부터 2번까지 스킬을 차례대로 실행(execute)하세요.
+
+조건부 로직 (여기가 핵심): for문 안에서 if문을 사용하세요.
+
+인덱스가 1번(Heal)일 때만 스킬 실행 직전에 **"[System] 마나 50을 소모합니다."**라는 문구를 추가로 출력하게 만드세요.
+
+
+*/
+
+class Skill {
+    void execute() {
+        System.out.println("기본 공격 시전");
+    }
+}
+
+class FireBall extends Skill {
+    @Override 
+
+    void execute (){
+        System.out.println("화염구가 폭발하며 80의 데미지를 줍니다!");
+        
+    }
+}
+class Heal extends Skill{
+    @Override
+
+    void execute() {
+        System.out.println("빛의 권능으로 아군의 체력을 50 회복합니다");
+    }
+}

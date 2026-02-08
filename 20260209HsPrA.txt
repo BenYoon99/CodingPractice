@@ -1,0 +1,59 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Payment Cardpay = new CardPayment();
+
+        Payment Cashpay = new CashPayment();
+
+        Payment [] Payments = new Payment[2];
+        Payments [0] = Cardpay;
+        Payments [1] = Cashpay;
+        
+        int i;
+        i = 0;
+
+        for(i=0;i<2;i++){
+            Payments[i].process();
+        }
+    }
+}
+
+class Payment {
+
+    void process(){
+        System.out.println("결제를 진행합니다");
+    }
+}
+
+class CardPayment extends Payment {
+
+    @Override 
+
+    void process(){
+            System.out.println("카드로 10% 할인 적용 후 결제합니다.");
+    }
+}
+
+class CashPayment extends Payment {
+
+    @Override
+
+    void process(){
+        System.out.println("현금영수증 발행 후 결제합니다");
+    }
+}
+
+/*🔱 퀘스트 1: 백엔드 결제 시스템 (Level: 초급)
+다양한 결제 수단이 있지만, 결제 버튼을 누르면 각기 다른 방식으로 처리되는 로직을 설계하세요.
+
+부모 클래스: Payment (메소드: process()) -> "결제를 진행합니다." 출력.
+
+자식 클래스 1: CardPayment -> process() 오버라이딩: "카드로 10% 할인 적용 후 결제합니다." 출력.
+
+자식 클래스 2: CashPayment -> process() 오버라이딩: "현금영수증 발행 후 결제합니다." 출력.
+
+미션: Payment 타입 배열에 두 객체를 담고, for문을 돌려 process()를 실행하여 각기 다른 결과가 나오게 하세요.*/

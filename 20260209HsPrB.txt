@@ -1,0 +1,63 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*미션: 1. Database 타입의 참조 변수 하나를 선언하세요. 2. if-else문을 사용해서 랜덤하게(혹은 특정 변수 값에 따라) 변수에 MySQL이나 Oracle 객체를 할당하세요. 
+    3. 할당된 변수로 .connect()를 호출했을 때, 어떤 객체냐에 따라 다른 문구가 나오는지 확인하세요*/
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+       int i ;
+        i = 0;
+        if (i==0){
+            
+        
+        Database SQL = new MySQL ();
+             SQL.connect();   
+        i++;
+        }
+        if (i==1){
+        
+        Database Orac = new Oracle();
+            Orac.connect();
+        }
+
+    
+    }
+}
+class Database {
+
+    void connect(){
+        System.out.println("DB에 연결 시도 중 .. ");
+
+        
+    }
+}
+class MySQL extends Database {
+
+    @Override
+
+    void connect(){
+        System.out.println("MySQL 엔진에 최적화된 연결을 시작합니다. ");
+    }
+}
+
+class Oracle extends Database {
+    
+    @Override
+    void connect(){
+    System.out.println("Oracle 보안 프로토콜을 거쳐 연결을 시작합니다.");
+}
+}
+
+/*퀘스트 2: 상어의 데이터베이스 커넥터 (Level: 중급)
+백엔드 개발자는 여러 종류의 DB(MySQL, Oracle 등)를 다뤄야 합니다. 이를 다형성으로 관리해 봅시다.
+
+부모 클래스: Database (메소드: connect()) -> "DB에 연결 시도 중..." 출력.
+
+자식 클래스 1: MySQL -> connect() 오버라이딩: "MySQL 엔진에 최적화된 연결을 시작합니다." 출력.
+
+자식 클래스 2: Oracle -> connect() 오버라이딩: "Oracle 보안 프로토콜을 거쳐 연결을 시작합니다." 출력.
+
+미션: 1. Database 타입의 참조 변수 하나를 선언하세요. 2. if-else문을 사용해서 랜덤하게(혹은 특정 변수 값에 따라) 변수에 MySQL이나 Oracle 객체를 할당하세요. 
+    3. 할당된 변수로 .connect()를 호출했을 때, 어떤 객체냐에 따라 다른 문구가 나오는지 확인하세요 */
