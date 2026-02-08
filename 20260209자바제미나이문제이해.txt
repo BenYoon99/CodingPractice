@@ -1,0 +1,69 @@
+import java.util.*;
+
+
+//내가 짠 코드 제미나이가 수정 ( 오답 , 한문장식 뜯어서 이해하기.)
+
+
+// 1. 패킷 클래스: 목적지 IP를 들고 다니는 택배 상자
+class Packet {
+    String destinationIP;
+
+    // [생성자]: 객체를 만들 때 목적지를 바로 박아넣음
+    Packet(String destinationIP) {
+        this.destinationIP = destinationIP;
+    }
+}
+
+// 2. 부모 클래스: 일반적인 라우터 (대전, 김천)
+class BasicRouter {
+    String regionName;
+
+    // [생성자]: 지역명을 받아서 저장
+    BasicRouter(String regionName) {
+        this.regionName = regionName;
+    }
+
+    void forward(Packet p) {
+        System.out.println(this.regionName + " 라우터가 " + p.destinationIP + "로 패킷을 던집니다.");
+    }
+}
+
+// 3. 자식 클래스: 특별한 기능을 가진 경북대 라우터 (대구)
+class GyeongbukRouter extends BasicRouter {
+    
+    // 부모의 생성자를 호출해서 지역명을 설정함
+    GyeongbukRouter(String regionName) {
+        super(regionName);
+    }
+
+    @Override
+    void forward(Packet p) {
+        // [로직]: 목적지가 경북대인지 확인
+        if (p.destinationIP.equals("경북대")) {
+            System.out.println("★경북대 도착! 내부 스위치(L2)로 연결합니다.★");
+        } else {
+            // 경북대가 아니면 부모(BasicRouter)의 일반 전달 기능 사용
+            super.forward(p);
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        // 1. 패킷 생성 (목적지는 경북대)
+        Packet myPacket = new Packet("경북대");
+
+        // 2. 다형성 배열 생성: 부모 타입(BasicRouter)으로 한꺼번에 관리
+        BasicRouter[] barr = new BasicRouter[3];
+        barr[0] = new BasicRouter("대전");
+        barr[1] = new BasicRouter("김천");
+        barr[2] = new GyeongbukRouter("대구"); // 다형성: 자식을 부모 타입에 넣음
+
+        // 3. 반복문: 패킷이 라우터를 하나씩 통과함
+        for (int i = 0; i < barr.length; i++) {
+            barr[i].forward(myPacket); // i=2일 때 자동으로 오버라이딩된 메소드 실행!
+        }
+    }
+}
+
+// 내가 생성자 개념과 사용방법 그리고 Super 함수의 사용방법과 개념에 대해서 까먹었다 각 라인별 이해 완료했고 생성자 개념과 super 함수 복습하자. 

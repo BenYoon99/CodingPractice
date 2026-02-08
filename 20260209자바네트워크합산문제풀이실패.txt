@@ -1,0 +1,82 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*문제 2: 라우팅 패킷 전달 시뮬레이션 (중급)
+[요구사항 다시 확인]
+
+Packet 클래스:
+
+String destinationIP 필드를 가집니다. (생성자로 목적지를 받으세요)
+
+BasicRouter 클래스 (부모):
+
+String regionName (지역명) 필드를 가집니다.
+
+void forward(Packet p) 메소드: **"[지역명] 라우터가 [목적지IP]로 패킷을 던집니다."**를 출력합니다.
+
+GyeongbukRouter 클래스 (자식):
+
+BasicRouter를 상속받습니다.
+
+forward(Packet p)를 오버라이딩합니다.
+
+로직:
+
+만약 p.destinationIP가 **"경북대"**라면 → "★경북대 도착! 내부 스위치로 연결합니다.★" 출력.
+
+아니라면 → **super.forward(p);**를 호출하여 부모의 일반적인 전달 기능을 실행.
+
+Main 클래스 실행:
+
+Packet 목적지를 **"경북대"**로 설정하여 생성.
+
+BasicRouter 타입 배열에 BasicRouter("대전"), BasicRouter("김천"), GyeongbukRouter("대구") 객체를 담으세요.
+
+반복문을 돌려 각 라우터의 forward()를 호출하며 패킷이 이동하는 과정을 출력하세요.*/
+
+// The main method must be in a class named "Main".
+class GyeongbukRouter extends BasicRouter {
+        @Override
+        void forward (Packet p){
+            
+        }
+}
+class BasicRouter{
+    string regionName;
+        destinationIP();
+    this.regionName = regionName;
+    this.destinationIP = destinationIP;
+
+    void forward(Packet p){
+        System.out.println(this.regionName + "라우터가" +this.destinationIP+"로 패킷을 던집니다" );
+    }
+}
+class Packet {
+    String destinationIP;
+    
+}
+class Main {
+    public static void main(String[] args) {
+        destinationIP();
+        BasicRouter daejeon = new BasicRouter();
+        BasicRouter kimcheon = new BasicRouter();
+        BasicRouter daegu = new GyeongbukRouter();
+
+        BasicRouter [] Barr = new BasicRouter [3]
+            Barr[0] = daejeon;
+            Barr[1] = kimcheon;
+            Barr[2] = daegu;
+
+        int i;
+        i=0;
+        for(i=0;i<3;i++){
+            if(i<2){
+            Barr[i].forward();
+            }
+            else if (i==2){
+                System.out.println("★경북대 도착! 내부 스위치로 연결합니다.★")
+                    Barr[i].forward();
+            }
+        }
+    }
+}
