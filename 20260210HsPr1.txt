@@ -1,0 +1,95 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+
+
+
+
+
+/*🔱 [실전 문제] 동물원 관리 시스템 (Zoo Management System)
+[요구 사항]
+
+부모 클래스 Animal: name 필드와 makeSound() 메서드를 가집니다.
+
+자식 클래스 Dog: Animal을 상속받고, makeSound()를 오버라이딩하여 "멍멍!"을 출력합니다. 추가로 고유 메서드인 wagTail()을 가집니다.
+
+자식 클래스 Cat: Animal을 상속받고, makeSound()를 오버라이딩하여 "야옹~"을 출력합니다. 추가로 고유 메서드인 scratch()를 가집니다.
+
+메인 클래스 Zoo:
+
+Animal 타입의 배열(크기 3)을 생성하고 Dog, Cat, Dog 객체를 각각 담으십시오.
+
+**반복문(for문)**을 사용하여 배열에 담긴 모든 동물의 makeSound()를 호출하십시오.
+
+중요: 반복문 안에서 instanceof를 사용하여, 객체가 Dog일 때만 wagTail()을, Cat일 때만 scratch()를 호출하도록 구현하십시오.*/
+
+
+
+
+
+// The main method must be in a class named "Main".
+class Animal{
+    String name;
+
+    void makeSound(){
+        
+    }
+}
+class Dog extends Animal{
+    @Override 
+
+    void makeSound(){
+            System.out.println("멍멍!");
+
+    }
+    void wagTail(){
+            System.out.println("꼬리를흔듭니다");
+    }    
+    
+}
+class Cat extends Animal{
+    @Override 
+
+    void makeSound(){
+        System.out.println("야옹~");
+    }
+
+    void scratch (){
+
+        System.out.println("할큅니다");
+    }
+    
+}   
+   
+
+class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+
+        Animal [] Animals = new Animal [3];
+
+        Animals [0] = dog;
+        Animals [1] = cat;
+        Animals [2] = dog;
+
+        int i;
+        i =0;
+            for(i=0;i<3;i++){
+                if(Animals[i] instanceof Dog){
+                    ((Dog)Animals[i]).wagTail();
+                    Animals[i].makeSound();
+
+
+                }
+                else if (Animals[i] instanceof Cat){
+                        ((Cat)Animals[i]).scratch();
+                        Animals[i].makeSound();
+                }
+            }
+
+                
+    }
+}
