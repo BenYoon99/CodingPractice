@@ -1,0 +1,99 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+// The main method must be in a class named "Main".
+/*🔱 마지막 실전 문제: [전자제품(Appliance) 제어 시스템]
+경북대 전공 지필고사에서 **"자료구조(List)와 다형성을 결합하여 시스템을 설계하라"**는 문제가 나왔다고 가정하고 풀어보십시오.
+
+[요구 사항]
+
+부모 클래스 Appliance:
+
+turnOn() 메서드를 가집니다. (출력: "전원을 켭니다.")
+
+자식 클래스 WashingMachine:
+
+Appliance를 상속받고 turnOn()을 오버라이딩하여 "세탁기가 가동됩니다."를 출력합니다.
+
+고유 메서드 wash()("빨래를 시작합니다.")를 가집니다.
+
+자식 클래스 Refrigerator:
+
+Appliance를 상속받고 turnOn()을 오버라이딩하여 "냉장고가 가동됩니다."를 출력합니다.
+
+고유 메서드 setTemp()("냉장고 온도를 설정합니다.")를 가집니다.
+
+메인 클래스 HomeSystem:
+
+**ArrayList<Appliance>**를 생성하십시오.
+
+세탁기 객체 1개와 냉장고 객체 1개를 리스트에 추가하십시오.
+
+**향상된 for문 (for(Appliance a : list))**을 사용하여 리스트를 순회하십시오.
+
+각 제품의 turnOn()을 먼저 호출한 뒤, instanceof와 인라인 캐스팅을 사용하여 각자의 고유 기능을 호출하십시오.*/
+
+class Appliance{
+
+    void turnOn(){
+        System.out.println("전원을 켭니다");
+    }
+    
+}
+class WashingMachine extends Appliance {
+    @Override
+
+    void turnOn (){
+        System.out.println("세탁기가 가동됩니다");
+
+        
+            
+    }
+    void wash(){
+        System.out.println("빨래를 시작합니다");
+    }
+
+    
+}
+
+class Refrigerator extends Appliance {
+
+    @Override
+
+    void turnOn(){
+        System.out.println("냉장고가 가동됩니다");
+
+        
+    }
+    void setTemp(){
+        System.out.println("냉장고 온도를 설정합니다");
+        
+    }
+
+    
+}
+// The main method must be in a class named "Main".
+
+class Main {
+    public static void main(String[] args) {
+        Appliance washingmachine = new WashingMachine();
+        Appliance refrigerator = new Refrigerator();
+
+        ArrayList<Appliance> appliance = new ArrayList<>();
+
+        appliance.add( new WashingMachine());
+        appliance.add(new Refrigerator());
+
+        for (Appliance a : appliance ){
+            if(a instanceof Refrigerator){
+                ((Refrigerator)a).setTemp();
+                a.turnOn();
+            }
+            else if (a instanceof WashingMachine){
+                ((WashingMachine)a).wash();
+                a.turnOn();
+            }
+        }
+        
+    }
+}
