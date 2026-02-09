@@ -1,0 +1,84 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*실전 문제 1: [탈것(Vehicle) 관리 시스템]
+경북대 지필고사에서 객체 지향의 상속과 형변환을 물을 때 가장 자주 나오는 예제입니다.
+
+[요구 사항]
+
+부모 클래스 Vehicle: move() 메서드를 가집니다. (출력: "이동합니다.")
+
+자식 클래스 Car: Vehicle을 상속받고, move()를 오버라이딩하여 "도로 위를 달립니다."를 출력합니다. 고유 메서드로 drift()("드리프트를 합니다!")를 가집니다.
+
+자식 클래스 Airplane: Vehicle을 상속받고, move()를 오버라이딩하여 "하늘을 비행합니다."를 출력합니다. 고유 메서드로 fly()("고공 비행을 시작합니다!")를 가집니다.
+
+메인 클래스 Transport:
+
+Vehicle 타입 배열(크기 2)을 만들고 Car와 Airplane 객체를 각각 하나씩 담으십시오.
+
+반복문을 돌리며 모든 요소의 move()를 실행하십시오.
+
+중요: instanceof와 **강제 형변환(Casting)**을 사용하여 Car일 때만 drift()를, Airplane일 때만 fly()를 실행하게 하십시오.*/
+
+
+
+
+// The main method must be in a class named "Main".
+
+class Vehicle {
+
+    void move(){
+            System.out.println("이동합니다");
+        
+    }
+}
+class Car extends Vehicle {
+    @Override 
+
+    void move(){
+            System.out.println("도로 위를 달립니다. ");}
+    void drift(){
+            System.out.println("드리프트를 합니다");
+        
+    }
+}
+class Airplane extends Vehicle {
+    @Override
+
+    void move() {
+        System.out.println("하늘을 비행합니다");
+    }
+    
+    void fly(){
+        System.out.println("고공 비행을 시작합니다!");
+    }
+}
+    
+
+
+class Main {
+    public static void main(String[] args) {
+        Vehicle car = new Car();
+        Vehicle airplane = new Airplane();
+
+        Vehicle [] Vehicles = new Vehicle [2];
+
+        Vehicles[0] = car;
+        Vehicles [1] = airplane;
+
+        int i;
+        i =0;
+
+        for(i=0;i<2;i++){
+            if(Vehicles[i] instanceof Car ){
+                ((Car)Vehicles[i]).drift();
+                Vehicles[i].move();
+                
+            }
+            else if(Vehicles[i] instanceof Airplane){
+                ((Airplane)Vehicles[i]).fly();
+                Vehicles[i].move();
+            }
+        }
+    }
+}
