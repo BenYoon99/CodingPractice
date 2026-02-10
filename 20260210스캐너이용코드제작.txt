@@ -1,0 +1,20 @@
+//스캐너 활용 코드제작 
+
+
+import java.util.Scanner;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+                System.out.print("정수를 입력하세요 :");
+                int number = sc.nextInt();
+
+
+                System.out.println("입력한 값은" + number + "입니다 ");
+
+                sc.close();
+        
+        
+    }
+}

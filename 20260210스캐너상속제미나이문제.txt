@@ -1,0 +1,103 @@
+// 제미나이 제작 문제 스캐너 상속 문제 풀이 - 오답 ( 85프로 설계 정답 15프로 오답) -내일 마저 풀기  
+
+
+import java.util.Scanner;
+
+
+/*🏛️ [문제] 동아시아 만두 주문 시스템 구축
+당신은 동아시아 만두 가게의 키오스크 시스템을 개발하고 있습니다. 다음 조건에 맞는 프로그램을 작성하세요.
+
+1. 클래스 설계
+부모 클래스 Mandoo:
+
+void cook() 메서드: "만두를 찌기 시작합니다." 출력
+
+자식 클래스 KimchiMandoo:
+
+cook() 오버라이딩: "김치만두를 맵게 찝니다." 출력
+
+자식 클래스 Gyoza:
+
+cook() 오버라이딩: "교자를 바삭하게 굽습니다." 출력
+
+자식 클래스 XiaoLongBao:
+
+cook() 오버라이딩: "샤오롱바오의 육즙을 살려 찝니다." 출력
+
+2. 메인 로직 (Main 클래스)
+Scanner를 사용하여 주문할 만두의 개수를 먼저 입력받으세요.
+
+입력받은 개수만큼 Mandoo[] 배열을 생성하세요. (다형성 활용)
+
+반복문을 통해 어떤 만두를 주문할지 숫자로 입력받아 배열에 저장하세요.
+
+1번: 김치만두 / 2번: 교자 / 3번: 샤오롱바오
+
+마지막에 향상된 for문을 사용하여 배열에 담긴 모든 만두의 cook() 메서드를 실행하세요.*/
+
+class Mandoo{
+    void cook() {
+        System.out.println("만두를 찌기 시작합니다.");
+        
+    }
+}
+class KimchiMandoo extends Mandoo {
+    @Override
+
+    void cook(){
+        System.out.println("김치만두를 맵게 찝니다.");
+    }
+}
+class Gyoza extends Mandoo {
+    @Override
+    void cook(){
+        System.out.println("교자를 바삭하게 굽습니다.");
+    }
+}
+class XiaoLongBao extends Mandoo {
+    @Override
+    void cook(){
+        System.out.println("샤오롱바오의 육즙을 살려 찝니다.");
+        
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner km = new Scanner (System.in);
+        System.out.print("드실 김치만두 갯수를 입력하세요");
+        int km = sc.nextInt();
+        
+        Scanner gy = new Scanner (System.in);
+        System.out.print("드실 교자의 갯수를 입력하세요");
+        int gy = sc.nextInt();
+        
+        Scanner xlb = new Scanner(System.in);
+        System.out.println("드실 샤오롱바오의 육즙을 살려 찝니다");
+    
+        
+        for(int i=0;i<3;i++){
+            Scanner wm = new Scanner(System in);
+            System.out.println("무슨 만두를 드실건가요?");
+            String wm = wm.next();
+
+        
+            
+        }    
+        Mandoo gyoza = new Gyoza();
+        Mandoo kimchiMandoo = new KimchiMandoo();
+        Mandoo xiaoLongBao  = new XiaoLongBao();
+
+        Mandoo [] MandooResult = new Mandoo[3];
+        MandooResult [0] = gyoza;
+        MandooResult [1] = kimchiMandoo;
+        MandooResult [2] = xiaoLongBao;
+        
+        for(Mandoo M : MandooResult){
+            M.cook();
+            
+        }
+        
+        
+        }
+}
