@@ -1,0 +1,97 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*🥖 [성심당 빵 관리 시스템 구축 문제]
+1. 배경 설명
+성심당에는 다양한 빵들이 있습니다. 모든 빵은 이름과 가격을 가집니다. 하지만 성심당의 상징인 **'튀김소보로'**는 특별하게 **'튀긴 횟수'**를 추가로 관리하며, 가격을 계산할 때 튀긴 공임비 500원이 추가됩니다.
+
+2. 요구 사항
+Bread 클래스 (부모):
+
+필드: String name, int price
+
+생성자: 이름과 가격을 받아 초기화합니다.
+
+메서드: public int getPrice() -> 현재 가격을 반환합니다.
+
+메서드: public void info() -> "빵 이름: 이름, 가격: [가격]"을 출력합니다.
+
+FriedSoboro 클래스 (자식):
+
+Bread를 상속받습니다.
+
+추가 필드: int friedCount (튀긴 횟수)
+
+메서드 오버라이딩 (getPrice): 부모의 가격에 튀긴 공임비 500원을 더해 반환하도록 재정의하세요.
+
+메서드 오버라이딩 (info): 부모의 출력 내용 뒤에 " (튀긴 횟수: [횟수])"를 추가로 출력하세요.
+
+SungsimdangMain 클래스 (실행):
+
+Bread 타입의 **배열(크기 3)**을" 생성합니다.
+
+배열에 다음 데이터를 넣으세요:
+
+일반 빵: 이름="보문산 메아리", 가격=6000
+
+튀김 소보로: 이름="원조 튀소", 가격=1500, 튀긴 횟수=1
+
+튀김 소보로: 이름="초코 튀소", 가격=2000, 튀긴 횟수=2
+
+향상된 for문을 사용하여 배열 내 모든 빵의 info()를 호출하고, getPrice()를 통해 모든 빵의 가격 합계를 구해 출력하세요.*/
+class Bread{
+    String name;
+    int price;
+
+    public int getprice(){
+        return price;
+        
+    }
+    public void info() {
+        System.out.println("빵이름" + name+"가격:"+price);
+            this.name = name;
+            this.price = price;
+    }
+}
+class FriedSoboro extends Bread {
+        int friedCount;
+        
+        @Override
+        public int getprice() {
+            return price + 500;
+        }
+        @Override
+        public void info() {
+        System.out.println("빵이름" + name+"가격:"+price + "튀긴횟수" + friedCount);
+            this.name = name;
+            this.price = price;
+            this.friedCount = friedCount;
+            
+        }
+}
+class Main {
+    public static void main(String[] args) {
+           Bread normalBread = new Bread();
+            normalBread.name = "보문산 메아리";
+            normalBread.price = 6000;
+           Bread friedSoboro = new FriedSoboro();
+            friedSoboro.name = "원조 튀소";
+            friedSoboro.price = 1500;
+            friedSoboro.friedCount = 1;
+           Bread chocoSoboro = new FriedSoboro();
+            chocoSoboro.name = "초코 튀소";
+            chocoSoboro.price = 2000;
+            chocoSoboro.friedCount = 2;
+
+        Bread [] breadList = new  Bread[3];
+        breadList [0] = normalBread;
+        breadList [1] = friedSoboro;
+        breadList [2] = chocoSoboro;
+
+        for (Bread b :breadList){
+            b.info();
+            b.getprice();
+        }
+        
+    }
+}
