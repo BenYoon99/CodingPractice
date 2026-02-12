@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+
+/*🚀 실전 코딩 과제: 객체지향 기초 및 다형성
+문제 1: 전자제품 관리 및 할인 시스템 (상속/오버라이딩/향상된 for문)
+[요구사항]
+
+Product 클래스 (부모)
+
+필드: String name, int price
+
+메서드: int getDiscountedPrice() -> 기본적으로는 정가를 반환합니다.
+
+메서드: void printDetails() -> "상품명: [name], 가격: [price]"를 출력합니다.
+
+Laptop 클래스 (자식)
+
+Product를 상속받습니다.
+
+getDiscountedPrice()를 오버라이딩: 노트북은 일괄적으로 10% 할인된 가격을 반환합니다.
+
+printDetails()를 오버라이딩: "노트북: [name], 할인가: [할인가격]"을 출력합니다.
+
+Main 클래스 로직
+
+Scanner를 사용하여 제품 2개의 이름과 가격을 입력받습니다.
+
+입력받은 데이터를 기반으로 Laptop 객체 2개를 생성하여 Product[] 배열에 저장합니다.
+
+향상된 for문을 사용하여 배열 내의 모든 제품 정보를 출력하세요.*/
+class Product {
+    String name;
+    int price;
+
+    public Product(String name, int price){
+        this.name = name;
+        this.price = price;
+        
+    }  
+
+    
+    int getDiscountedPrice(){
+        return price;
+    }
+    void printDetails(){
+        System.out.println("상품명:"+name+"가격:"+price);
+    }
+}
+class Laptop extends Product{
+    @Override 
+
+    int getDiscountedPrice() {
+        return (int) (price - (price*0.1));
+        
+        }
+    @Override
+
+    void printDetails() {
+        System.out.println("노트북:"+name+"할인가:"+getDiscountedPrice());
+    }
+    public Laptop (String name , int price){
+        super (name, price);
+    }
+
+    
+}
+
+/*Main 클래스 로직
+
+Scanner를 사용하여 제품 2개의 이름과 가격을 입력받습니다.
+
+입력받은 데이터를 기반으로 Laptop 객체 2개를 생성하여 Product[] 배열에 저장합니다.
+
+향상된 for문을 사용하여 배열 내의 모든 제품 정보를 출력하세요*/
+    
+class Main {
+    public static void main(String[] args) {
+
+        Product [] products = new Product[2];
+            Scanner sc = new Scanner(System.in);
+                    
+                    
+                  
+        
+            for(int i=0;i<2;i++){
+
+                    System.out.println((i+1)+"번째 제품의 이름을 입력하시요:");
+                    String name = sc.next();
+                    
+                    System.out.println((i+1)+"번째 제품의 가격을 입력하시요 ");
+                    
+                    int price= sc.nextInt();
+        
+        
+                    products[i] = new Laptop(name, price);
+            }
+        
+            
+            for(Product a : products) {
+                    a.printDetails();
+            }
+    }
+}
