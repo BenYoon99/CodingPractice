@@ -1,0 +1,113 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*
+[문제 2: 중급] 다중 결제 시스템 (콘센트 설계)
+목표: 결제 수단이 바뀌어도 Store(상점) 클래스의 코드는 단 한 줄도 수정하지 않는다.
+
+1. 인터페이스 설계
+Payment 인터페이스를 만듭니다.
+
+내부에는 void processPayment(int amount); 메소드 하나만 존재합니다.
+
+2. 구현 클래스 (알맹이)
+KakaoPay 클래스: "카카오페이로 [금액]원 결제 중..." 출력
+
+NaverPay 클래스: "네이버페이로 [금액]원 결제 중..." 출력
+
+3. 메인 클래스 (콘센트 본체)
+Store 클래스를 만듭니다.
+
+핵심 필드: private Payment payment; (특정 페이가 아닌 인터페이스 타입으로 선언하세요!)
+
+메소드 1: void setPayment(Payment p) -> 결제 수단을 주입(변경)하는 콘센트 역할을 합니다.
+
+메소드 2: void order(int price) -> 현재 설정된 payment 객체의 processPayment를 호출합니다.
+
+4. 테스트 시나리오 (Main)
+Store 객체를 생성한다.
+
+카카오페이 객체를 만들어 Store에 꽂는다 (setPayment).
+
+10,000원을 결제한다 (order).
+
+네이버페이 객체로 갈아 끼운다.
+
+20,000원을 결제한다.*/
+interface Payment {
+    public void processPayment (int amount);
+}
+
+
+class KakaoPay implements Payment {
+        @Override
+
+        public void processPayment (int amount) {
+            System.out.println("카카오페이로 "+amount+ "원 결제 중..." );
+
+            
+            
+        }
+}
+class NaverPay implements Payment {
+        @Override 
+
+        public void processPayment (int amount) {
+            System.out.println("네이버페이로"+ amount +"원 결제 중...");
+        }
+}
+
+class Store {
+    private Payment payment; // 클래스 내부에서 선언하는 참조변수 
+
+    void setPayment(Payment p) {
+        this.payment = p; //setter 
+        
+        
+    }
+    void order(int price){
+            if(payment != null){
+                payment.processPayment(price);
+            }
+            else {
+                System.out.println("결제수단이 안 정해졌습니다");
+            }
+    }
+        
+    }
+
+
+/*3. 메인 클래스 (콘센트 본체)
+Store 클래스를 만듭니다.
+
+핵심 필드: private Payment payment; (특정 페이가 아닌 인터페이스 타입으로 선언하세요!)
+
+메소드 1: void setPayment(Payment p) -> 결제 수단을 주입(변경)하는 콘센트 역할을 합니다.
+
+메소드 2: void order(int price) -> 현재 설정된 payment 객체의 processPayment를 호출합니다.*/
+
+
+// 지금 상황 보면                 store ------      컨센트인 인터페이스        ---------결제수단들 (카카오페이 네이버페이들 )
+class Main {
+    public static void main(String[] args) {
+        Store store =new Store();
+        Payment kakao = new KakaoPay();
+        store.setPayment(kakao);
+        store.order(10000);
+        Payment naver = new NaverPay();
+        
+        store.setPayment(naver);
+        store.order(20000);
+        
+    }
+}
+
+/*4. 테스트 시나리오 (Main)
+Store 객체를 생성한다.
+
+카카오페이 객체를 만들어 Store에 꽂는다 (setPayment).
+
+10,000원을 결제한다 (order).
+
+네이버페이 객체로 갈아 끼운다.*/

@@ -1,0 +1,64 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+/*🟢 [문제 1: 초급] 도형 넓이 계산기 (인터페이스와 다형성)
+사용자님이 언급하신 "가문이 달라도 규격이 같으면 묶을 수 있다"는 개념을 실습하는 문제입니다.
+
+조건:
+
+Shape 인터페이스를 만드세요. 내부에는 double getArea(); 메소드가 있습니다.
+
+Rectangle 클래스는 가로(width), 세로(height) 필드를 가집니다. Shape를 구현하세요.
+
+Circle 클래스는 반지름(radius) 필드를 가집니다. Shape를 구현하세요. (원주율은 3.14)
+
+Main 함수: Shape[] shapes = new Shape[2]; 배열을 만들고 직사각형과 원 객체를 담은 뒤, 반복문을 돌려 각각의 넓이를 출력하세요.*/
+
+interface Shape{
+
+    public double getArea();
+}
+class Rectangle implements Shape{
+    int width ;
+    int height;
+
+    @Override 
+
+    public double getArea(){
+        return width * height;
+        
+    }
+}
+class Circle implements Shape {
+    int radius;
+
+    @Override
+
+    public double getArea(){
+        return radius * 3.14;
+        
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+       Circle circle = new Circle();
+        circle.radius = 5;
+       Rectangle rectang = new Rectangle();
+        rectang.width = 5;
+        rectang.height = 5;
+        
+        Shape [] shapes = new Shape[2];
+            shapes [0] =rectang;
+            shapes [1] =circle;
+        
+        for (Shape s :shapes){
+            s.getArea();
+            System.out.println("도형의 넓이는 :" + s.getArea());
+            
+        }
+    
+    }
+}
