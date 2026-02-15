@@ -1,0 +1,27 @@
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+/*🔱 초급 1단계: 가전제품 관리 시스템 (배열/반복문)
+문제: 크기가 3인 일반 배열 String[] products를 만들고, Scanner로 가전제품 이름 3개를 입력받아 저장하세요. 
+    그 후 향상된 for문을 사용하여 저장된 모든 제품명을 출력하세요.*/
+
+// The main method must be in a class named "Main".
+
+class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        String [] products = new String[3];
+        for (int i=0;i<3;i++){
+        
+        System.out.println("가전제품 이름을 입력하시요");
+            products [i] = sc.next();
+            
+        }
+        //배열 3칸에 이제 정수기 밥솥 청소기가 들어있는 상황 
+
+        for(String e :products){
+            System.out.println(e);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.lang.*;
+import java.io.*;
+
+/*[초급 2단계] 동물 울음소리 (상속 / 오버라이딩)
+미션: Animal 클래스를 부모로, Dog와 Cat을 자식으로 만드세요.
+
+핵심: 부모의 makeSound() 메서드를 자식들이 각자 "멍멍", "야옹"으로 오버라이딩하여 출력하게 만드세요. 메인에서 두 객체를 각각 실행해 봅니다.*/
+class Animal {
+    void makeSound(){
+        System.out.println("짖습니다");
+    }
+}
+class Dog extends Animal {
+    @Override
+
+    void makeSound(){
+        System.out.println("멍멍");
+    }
+}
+class Cat extends Animal {
+    @Override
+
+
+    void makeSound(){
+        System.out.println("야옹");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        
+        ArrayList <Animal> animals = new ArrayList <>();
+        animals.add(dog);
+        animals.add(cat);
+
+        for(Animal a : animals){
+            a.makeSound();
+        }
+    }
+}
