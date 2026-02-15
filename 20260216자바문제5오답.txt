@@ -1,0 +1,73 @@
+//중급문제 풀다 막힘 
+
+
+
+
+import java.util.ArrayList;
+
+
+/*🔱 중급 5단계: 종합 쇼핑몰 관리 시스템
+이 설계도대로 코드를 빌드해 보십시오.
+
+1. 인터페이스 설계
+이름: Item
+
+기능: void showInfo() 메서드 (추상 메서드)
+
+2. 부모 클래스 설계
+이름: Product
+
+필드(변수): String name, int price
+
+생성자: 이름을 받아서 필드에 저장하는 생성자 만들기
+
+3. 자식 클래스 설계
+이름: Electronics
+
+상속 및 구현: Product를 상속받고, Item을 구현하세요.
+
+오버라이딩: showInfo()를 구현하여 "제품명: [name], 가격: [price]원"이 출력되게 하세요.
+
+4. 메인 로직 (Main 클래스)
+ArrayList<Electronics> 가방을 만드세요.
+
+Scanner로 제품 3개의 이름과 가격을 입력받으세요. (반복문 사용!)
+
+입력받은 값으로 Electronics 객체를 만들어 리스트에 add() 하세요.
+
+마지막에 향상된 for문을 써서 리스트에 담긴 모든 제품의 showInfo()를 실행하세요.*/
+
+interface Item{
+    void showInfo();
+}
+class Product{
+    String name;
+    int price;
+
+    Product (String name,int price){
+        this.name = name;
+        this.price = price;
+    }
+}
+class Electronics extends Product implements Item {
+   Electronics (String name,int price){
+       super(name,price);
+   }
+    
+    @Override
+
+    public void showInfo(){
+        System.out.println("제품명:"+name+"가격:"+price);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        ArrayList<Electronics> elec = new ArrayList<>();
+        Scanner sc = new Scanner (System.in);
+        for(int i =0;i<3;i++){
+            System.out.println("제품의 이름과 가격을 입력해주세요")
+            //씨발 여기서 어떻게 한 배열에 이름이랑 가격을 같이 넣는지 모르겠다 하 결국 웃긴건 저러고 나중에 출력할때 두개로 나눠서 내놔야하잖아 name price니까 
+                
+        }
+    }
+}

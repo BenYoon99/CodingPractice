@@ -1,0 +1,78 @@
+//5번 오답 문제 제미나이 코드보고 한줄 한줄 해석/ 씹어먹기 
+
+
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+// 어레이리스트용, 스캐너용 유틸 라이브러리 받아주고 
+
+interface Item {
+    void showInfo(); 
+}
+//인터페이스로 보이드 쇼인포 메소드 강제하는거 이전에 개념 공부할때 해서 알겠지만 인터페이스 내부의 메소드는 public 기본디폴트로 갖고있따.  구현강제 -> 공유의 목적이니 
+
+
+class Product {
+    String name;
+    int price;
+
+    
+    Product(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+}
+//부모 클래스 생성 Product 내부 필드 그리고 생성자 만들어서 처음 인스턴스 생성시 이름이랑 가격 박고 시작하기 위해서 ㅇㅇ 
+
+
+class Electronics extends Product implements Item {
+    
+    
+    Electronics(String name, int price) {
+        super(name, price); 
+    }
+	// 자녀 생성자 생성  super 사용해서 이름과 가격값을 부모에게 전달함 
+
+    
+    @Override
+    public void showInfo() {
+        System.out.println("제품명: " + name + " | 가격: " + price + "원");
+    }
+// 인터페이스 내부 메소드   자녀 클래스 원하는대로 오버라이딩하는것 
+}
+// 자녀 클래스 생성 부모클래스인 Product 따르고 그리고 Item의 기능을 구현함 
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // Electronics 객체만 담을 수 있는 동적 가방 생성
+        ArrayList<Electronics> list = new ArrayList<>();
+
+        System.out.println("--- 가전제품 3개를 등록합니다 ---");
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print((i + 1) + ". 제품 이름 입력: ");
+            String n = sc.next(); // 이름을 따로 받고 이름 따로받은 값을 n에 저장 
+            
+            System.out.print((i + 1) + ". 제품 가격 입력: ");
+            int p = sc.nextInt(); // 가격을 따로 받음 그 받은값 p에 저장 
+
+            // [핵심] 이름과 가격을 하나로 묶어 '객체'라는 덩어리를 만들고 리스트에 저장! <- 이부분이 존나이해가안간다 어렵네 오늘 머리 너무아픈데 추석끝나고 바로 이거 추가학습 ***
+            list.add(new Electronics(n, p));
+        }
+
+        System.out.println("\n--- 등록된 제품 목록 ---");
+        
+        // 향상된 for문: 리스트에 담긴 Electronics 객체를 하나씩 꺼내서 출력 아 씨발 이해했다 그니까 위에 새로받은 Electronics 객체에 넣어져있는 이름과 가격값들을  enhanced for loop으로 e 명찰달고 내보내서 showinfo 하면 알아서 name price가 박히겟네 순서대로 아 ..
+        for (Electronics e : list) {
+            e.showInfo();
+        }
+        
+        sc.close(); // 스캐너 리소스 닫기     ㅇㅇ 스캐너 닫기임 
+    }
+}

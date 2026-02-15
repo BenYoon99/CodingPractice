@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+
+/*🔱 초급 4단계: 이름 사냥꾼 (ArrayList / size / 반복문)
+[미션 지시서]
+
+가방 준비: ArrayList<String>형태의 리스트를 하나 만드세요.
+
+무한 사냥: Scanner를 사용하여 이름을 계속 입력받으세요.
+
+중단 조건: 사용자가 **"그만"**이라고 입력하면 더 이상 입력받지 않고 반복문을 빠져나옵니다. (힌트: while(true)와 break를 활용해 보세요!)
+
+주의: 문자열 비교는 name == "그만"이 아니라 name.equals("그만")입니다!
+
+정보 확인: 입력이 끝나면 리스트의 size() 메서드를 사용하여 "총 [X]명이 저장되었습니다."를 출력하세요.
+
+전수 조사: 일반 for문(int i = 0; ...)을 사용하여 가방에 담긴 이름들을 0번 칸부터 마지막 칸까지 순서대로 출력하세요.*/
+
+class Main {
+    public static void main(String[] args) {
+        ArrayList<String> arr = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        for(String a: arr){
+            System.out.println("이름을 입력하시요:");}
+        if(sc.next()!=그만){
+            a.add(sc.next();)
+        }
+        else if (sc.next()==그만){
+            break;
+        }
+        //이름은 다 받았고 넣어놨음 어레이리스트에 이러면 
+        String peopleNumber;
+        peopleNumber = {"총"+arr.size()+"명이 저장되었습니다"};
+
+        for(int i=0;i<peopleNumber+1;i++){
+            System.out.println(arr.get(i));
+        }
+    }
+}

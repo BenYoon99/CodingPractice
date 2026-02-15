@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 3단계 사냥터: 스마트 리모컨 (인터페이스)
+이번에는 **상속(extends)**이 아니라 **구현(implements)**입니다. '상속'이 부모의 피를 물려받는 거라면, '인터페이스'는 **"이 기능을 반드시 갖춰라!"**라는 계약서입니다.
+
+미션: RemoteControl이라는 인터페이스를 만드세요.
+
+요구사항 1: 인터페이스 안에 void turnOn() 메서드를 선언하세요. (인터페이스 안에서는 몸통 { } 없이 ;으로 끝나는 거 아시죠?)
+
+요구사항 2: TV 클래스가 RemoteControl을 **구현(implements)**하게 하세요.
+
+요구사항 3: TV 클래스 안에서 turnOn()을 오버라이딩하여 **"TV 전원을 켭니다."**를 출력하세요.
+
+요구사항 4: 메인에서 TV 객체를 생성하고 turnOn()을 호출하세요.*/
+interface RemoteControl {
+    public void turnOn();
+}
+class TV implements RemoteControl {
+    @Override
+
+    public void turnOn(){
+        System.out.println("TV 전원을 켭니다");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        TV tv = new TV();
+        tv.turnOn();
+        
+    }
+}
