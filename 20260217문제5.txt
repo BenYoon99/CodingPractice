@@ -1,0 +1,38 @@
+// 문제5 정답 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 Mission 2: '도형'의 넓이 계산 (Abstract Class 연습)모든 도형은 넓이를 가지지만, 계산법은 다릅니다. 
+    이걸 추상 클래스로 풀어보세요.조건:Shape 라는 추상 클래스를 만드세요.
+    필드로 double area;를 가집니다.
+    abstract void calculateArea();
+메서드를 선언하세요.
+Circle 클래스(반지름 r 필드 필요)를 만들고 상속받아 넓이를 구하세요. 
+    (넓이 = $3.14 \times r \times r$)Main에서 Circle 
+    객체를 하나 만들고 넓이를 출력하세요. */
+
+abstract class Shape{
+     double area;
+
+    abstract void calculateArea();
+}
+class Circle extends Shape {
+    int r;
+    
+    @Override 
+
+     void calculateArea(){
+        area= r*r*3.14;
+        //여기서 출력도 가능하지만 최대한 1메소드 1행동 원칙 지키자 메인메소드에서 출력 ㄱㄱ 
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        circle.r=5;
+        circle.calculateArea();  //넓이구함 
+        System.out.println(circle.area); // 넓이가 잘 할당됬는지 확인  잘 할당되었다. 고로 정답 78.5 
+        
+    }
+}
