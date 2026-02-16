@@ -1,0 +1,71 @@
+//문제1에 대한 고찰점 및 디테일 고민
+
+
+
+class Smartphone {
+    String model;
+    int batteryLevel;
+
+    void charge(){
+        batteryLevel+=10;
+        if(batteryLevel>=100){
+            batteryLevel=100;
+            
+        }
+    }
+    void useApp(){
+        batteryLevel-=15;
+        if(batteryLevel<=0){
+            batteryLevel=0;
+        }
+    }
+    void showStatus(){
+        System.out.println(model+batteryLevel);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+       Smartphone smartphone = new Smartphone();
+        smartphone.model = "삼성갤럭시 폴드";
+        smartphone.batteryLevel = 10;
+        
+        smartphone.charge();//충전 성능체크 
+        smartphone.showStatus();//충전 성능체크
+        
+    }
+}
+
+이렇게 자체제작한 코드를 보면 출력값이     삼성 갤럭시 폴드20 이렇게나오는데
+이렇게되면 소비자나 이용자입장에서 삼성 갤럭시의 폴드20이 제품명이고 배터리량은 안나온거 아니야? 라고 착각할수있다
+이렇게 일이 생기는 이유는
+자바는 문자열 String과 int형을 그냥 붙여서 출력하기때문이다 ( 이게 디폴트값 ) 
+
+고로 이경우에는 두가지방법으로 극복이 가능하다
+
+1.
+
+void showStatus(){
+	System.out.println(model+" "+batteryLevel);
+}
+이런식으로 문자열하나를 추가해주는것이다
+
+이 경우에 내가 문자열 내부에 스페이스바를 쳐서 
+1칸짜리의 공백의 문자열만들어주면
+1칸짜리의 스페이스바가 출력값에 나온다 
+
+고로 출력값은
+ 
+"삼성갤럭시 폴드 20" 이렇게 된다
+
+2. 
+ 디테일 추가 및 가시성 완화를 위해 문자열로 직접적 설명추가 
+void showStatus(){
+	System.out.println("모델명은"+" "+model+" "+ "배터리량은"+" "+batteryLevel+" "+"%");
+}
+    
+
+이경우에는 
+
+"모델명은 삼성갤럭시 폴드 배터리량은 20 % " 라고
+가시성있게 나오게 된다.  

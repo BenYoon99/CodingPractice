@@ -1,0 +1,52 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*🔱 오늘의 자바 사격 연습 (생성자 없이 객체 다루기)
+[문제 1: 스마트폰 상태 관리]
+Smartphone 클래스를 만들고, 초기 상태를 설정한 뒤 메서드로 상태를 변경해보세요.
+
+조건:
+
+필드(속성): String model, int batteryLevel
+
+메서드:
+
+charge(): 호출할 때마다 배터리가 10씩 증가 (최대 100)
+
+useApp(): 호출할 때마다 배터리가 15씩 감소 (최소 0)
+
+showStatus(): 현재 모델명과 배터리 잔량을 출력
+
+실행: 메인 메서드에서 객체를 생성하고, 모델명을 직접 할당한 뒤 charge()와 useApp()을 각각 실행하여 상태 변화를 확인하세요.*/
+class Smartphone {
+    String model;
+    int batteryLevel;
+
+    int charge(){
+        return batteryLevel +10;
+        if(batteryLevel>100){
+            System.out.println("최댓값 초과하였습니다");
+            break;
+        }
+    }
+    use useApp(){
+        return batteryLevel -10;
+        if(batteryLevel<0){
+            System.out.println("최솟값보다 작습니다");
+            break;
+        }
+    }
+    String showStatus(){
+        System.out.println(model+batteryLevel);
+    }
+}
+
+
+class Main {
+    public static void main(String[] args) {
+        Smartphone smartphone = new Smartphone();
+        smartphone.model ="삼성 폴드";
+        smartphone.batteryLevel = 10;
+        smartphone.charge();
+    }
+}

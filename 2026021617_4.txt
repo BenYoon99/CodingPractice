@@ -1,0 +1,56 @@
+//문제2 정답 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*🔱 [문제 2: 누적 계산기 (SimpleCalculator)]
+데이터를 보관(누적)하고 연산 결과를 반환하는 클래스를 구현하세요.
+
+1. 클래스 구성 조건
+클래스명: SimpleCalculator
+
+필드(속성): int result
+
+모든 연산의 결과가 이 변수에 계속 누적되어야 합니다. (기본값 0)
+
+2. 메서드 조건
+add(int value): 매개변수로 받은 값을 result에 더합니다. (반환값 없음)
+
+subtract(int value): 매개변수로 받은 값을 result에서 뺍니다. (반환값 없음)
+
+reset(): result 값을 다시 0으로 초기화합니다. (반환값 없음)
+
+getResult(): 현재까지 누적된 result 값을 호출한 곳으로 돌려줍니다. (반환타입: int)
+
+3. 실행(Main) 조건
+메인 메서드에서 아래 순서대로 동작하게 코드를 짜고 최종 결과값을 출력하세요.
+
+객체 생성 -> add(50) 실행 -> subtract(20) 실행 -> getResult()로 값을 받아와서 출력.*/
+class SimpleCalculator{
+    int result;
+
+    void add(int value){
+        result += value;
+        
+        
+    }
+    void subtract(int value){
+        result -= value;
+        
+    }
+    int getResult(){
+        System.out.println("결과는:  "+result);
+        return result;
+        
+    }
+    
+}
+class Main {
+    public static void main(String[] args) {
+        SimpleCalculator simp = new SimpleCalculator();
+        simp.result = 10; //초깃값 0이겠지만 걍 10으로 초기화  해주고 시작하고싶음 
+        simp.add(50);
+        simp.subtract(20);
+        simp.getResult();
+    }
+}
