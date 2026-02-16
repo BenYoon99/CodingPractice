@@ -1,0 +1,54 @@
+///문제 4 정답 
+
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 Mission 1: '전자의 제품' 규격 만들기 (Interface 연습)
+상어님이 백엔드 개발자로서 '제품의 전원'을 관리하는 시스템을 만든다고 가정해봅시다.
+
+조건:
+
+RemoteControl 이라는 인터페이스를 만드세요. 메서드는 void turnOn(); 하나입니다.
+
+Television과 Radio 클래스를 만들고 이 인터페이스를 구현하세요.
+
+각 클래스의 turnOn()은 "TV를 켭니다", "라디오를 켭니다"를 출력합니다.
+
+Main에서 RemoteControl 타입 배열에 두 객체를 담고, 향상된 for문으로 전원을 다 켜보세요.*/
+
+interface RemoteControl {
+    void turnOn();
+}
+class Television implements RemoteControl{
+
+    @Override
+
+    public void turnOn(){
+        System.out.println("TV를 켭니다");
+        
+    }
+}
+class Radio implements RemoteControl {
+    @Override
+
+    public void turnOn(){
+        System.out.println("라디오를 켭니다");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        RemoteControl radio = new Radio();
+        RemoteControl television = new Television();
+        RemoteControl [] electronic = new RemoteControl[2];
+        electronic[0]= radio;
+        electronic[1]= television;
+
+        for(RemoteControl a :electronic){
+            a.turnOn();
+        }
+    }
+}
