@@ -1,0 +1,91 @@
+// 실전문제 3       코드 정답률 92프로 - 상속 인터페이스 상 문제 
+
+/*🔱 Mission: The Legion of Warriors (전사 군단)
+[조건]
+
+Interface Attackable: void attack(); 메서드를 정의하십시오.
+
+Parent Class Warrior:
+
+필드: String name, int power
+
+메서드: void showStatus() (이름과 공격력을 출력)
+
+Child Classes: Warrior를 상속받고 Attackable을 구현하는 두 클래스를 만드십시오.
+
+Swordsman (검사): attack() 호출 시 "검으로 베기!" 출력
+
+Archer (궁수): attack() 호출 시 "활로 쏘기!" 출력
+
+Main Class:
+
+생성자를 사용하지 말고, 객체 생성 후 직접 필드 값을 할당하십시오. (예: s.name = "상어";)
+
+ArrayList에 Swordsman과 Archer를 모두 담으십시오. (다형성 활용)
+
+향상된 for문을 사용하여 리스트에 담긴 모든 전사의 상태(showStatus)를 보여주고 공격(attack) 시키십시오.*/
+
+import java.util.ArrayList;
+
+
+
+interface Attackable {
+    void attack();
+    
+}
+class Warrior{
+    String name;
+    int power;
+
+    void showStatus(){
+        System.out.println("이름은:  "+name+" 입니다  "+"공격력은:  "+power+" 입니다");
+    }
+}
+class Swordsman extends Warrior implements Attackable {
+    @Override
+
+    public void attack(){
+        System.out.println("검으로 베기");
+    }
+
+    
+}
+class Archer extends Warrior implements Attackable {
+    @Override
+
+    public void attack(){
+        System.out.println("활로 쏘기!");
+        
+    }
+}
+/*Main Class:
+
+생성자를 사용하지 말고, 객체 생성 후 직접 필드 값을 할당하십시오. (예: s.name = "상어";)
+
+ArrayList에 Swordsman과 Archer를 모두 담으십시오. (다형성 활용)
+
+향상된 for문을 사용하여 리스트에 담긴 모든 전사의 상태(showStatus)를 보여주고 공격(attack) 시키십시오.*/
+class Main {
+    public static void main(String[] args) {
+        Attackable sword = new Swordsman();
+        Attackable archer = new Archer();
+
+        sword.name = "검사";
+        sword.power = 150;
+        archer.name = "궁수";
+        archer.power = 130;
+        //할당완료했고
+
+        ArrayList < Attackable> champions = new ArrayList<>();
+        champions.add(sword);
+        champions.add(archer);
+        //다 담았고
+
+        for(Attackable a : champions){
+            a.showStatus();
+            a.attack();
+        }
+            
+        
+    }
+}
