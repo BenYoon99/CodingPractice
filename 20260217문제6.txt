@@ -1,0 +1,126 @@
+// 실전문제6 중급 -정답 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*🔱 중급 Mission: [The Evolution of Shark (상어의 진화)]
+상어(Shark)는 처음엔 작지만, 진화할수록 강력한 공격을 가집니다.
+
+1. Interface: Evolvable
+
+void levelUp(); 메서드를 정의하세요. (레벨을 올리는 규격)
+
+2. Abstract Class: Shark (부모)
+
+인터페이스 Evolvable을 구현(implements) 하세요.
+
+필드: String species (종류), int level (레벨)
+
+메서드:
+
+void showInfo(): 현재 종과 레벨을 출력.
+
+abstract void specialAttack();: 추상 메서드 (자식들이 직접 구현).
+
+levelUp() 구현: 호출 시 레벨을 1 증가시키고 "레벨업!" 출력.
+
+3. Child Classes:
+
+GreatWhite (백상아리): specialAttack() 호출 시 "치명적인 물어뜯기!" 출력.
+
+HammerHead (귀상어): specialAttack() 호출 시 "강력한 머리박기!" 출력.
+
+4. Main Class:
+
+Shark 타입 배열을 만드세요 (크기 2).
+
+직접 필드 값을 할당하여 GreatWhite와 HammerHead 객체를 배열에 담으세요.
+
+향상된 for문을 사용하여 다음을 실행하세요:
+
+정보 출력 (showInfo)
+
+레벨업 (levelUp)
+
+정보 다시 출력 (showInfo)
+
+특수 공격 실행 (specialAttack)*/
+
+interface Evolvable {
+    void levelUp();
+}
+abstract class Shark implements Evolvable {
+    String species;
+    int level;
+
+    void showInfo(){
+        System.out.println("종은: "+species+" 레벨은: "+level);
+    }
+    @Override
+
+    public void levelUp(){
+        level += 1;
+        System.out.println("레벨업!");
+
+    
+        
+    
+    }
+    abstract  void specialAttack();
+}
+class GreatWhite extends Shark {
+    @Override
+
+     public void specialAttack(){
+        System.out.println("치명적인 물어뜯기!");
+    }
+}
+class HammerHead extends Shark {
+    @Override
+
+     public void specialAttack(){
+        System.out.println ("강력한 머리박기!");
+    }
+}
+
+
+
+/*4. Main Class:
+
+Shark 타입 배열을 만드세요 (크기 2).
+
+직접 필드 값을 할당하여 GreatWhite와 HammerHead 객체를 배열에 담으세요.
+
+향상된 for문을 사용하여 다음을 실행하세요:
+
+정보 출력 (showInfo)
+
+레벨업 (levelUp)
+
+정보 다시 출력 (showInfo)
+
+특수 공격 실행 (specialAttack)*/
+
+class Main {
+    public static void main(String[] args) {
+        Shark [] sharks = new Shark[2];
+        Shark greatWhite = new GreatWhite();
+        Shark hammerHead = new HammerHead();
+        greatWhite.species = "백상아리";
+        greatWhite.level = 1;
+        hammerHead.species = "귀상어";
+        hammerHead.level = 2;
+        
+        
+        sharks[0]= greatWhite;
+        sharks[1]= hammerHead;
+
+        for (Shark s : sharks){
+            s.showInfo();
+            s.levelUp();
+            s.showInfo();
+            s.specialAttack();
+        }
+        
+    }
+}
