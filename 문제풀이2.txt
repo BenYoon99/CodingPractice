@@ -1,0 +1,71 @@
+//문제2 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*Mission 2: '스타크래프트' 유닛 관리 (Abstract Class)
+상어님이 테란 사령관이 되어 유닛들을 출동시킨다고 생각하십시오.
+
+조건:
+
+Unit 추상 클래스: String name, int hp 필드. abstract void move(int x, int y) 메서드.
+
+Marine: move 호출 시 "마린이 (x, y)로 뛰어갑니다" 출력. 특수 메서드 void stimpack() 출력.
+
+Dropship: move 호출 시 "드랍쉽이 (x, y)로 날아갑니다" 출력. 특수 메서드 void load() 출력.
+
+Main: Unit 타입 배열을 만들고, 두 유닛의 체력을 각각 40, 120으로 설정한 뒤 좌표 (100, 200)으로 이동시키세요.*/
+
+abstract class Unit {
+    String name;
+    int hp;
+
+    abstract void move(int x, int y);
+}
+class Marine extends Unit{
+    @Override
+
+    public void move(int x, int y){
+        System.out.println("마린이"+x+" "+y+" 로 뛰어갑니다");
+        
+    }
+    void stimpack() {
+        hp -= 1;
+        System.out.println("스팀팩 사용하였습니다 "+ " 현재 체력은 "+ hp + " 입니다");
+    }
+}
+class Dropship extends Unit {
+    @Override
+    public void move( int x, int y){
+        System.out.println("드랍쉽이 "+x+" "+y+" 로 날아갑니다");
+    }
+    void load(String name){
+        System.out.println("드랍쉽이 "+name+" 을 태웁니다");
+        
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Unit marine = new Marine();
+        Unit dropship = new Dropship();
+
+        marine.name = "마린";
+        marine.hp = 40;
+
+        dropship.name = "메딕";
+        dropship.hp =120; 
+        
+        Unit [] units = new Unit [2];
+            units [0] =  marine;
+            units [1] =  dropship;
+        for(Unit u : units){
+            u.move(100,200);
+
+            if(u instanceof Dropship){
+                ((Dropship)u).load("마린");
+            }
+            else if (u instanceof Marine){
+                ((Marine)u).stimpack();
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+//문제풀이3 오답 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* 🔱 Mission 3: '상어 은행(Shark Bank)' 시스템 (SRP & Encapsulation)
+계좌는 **'돈 계산'**만 하고, 출력은 **'매니저'**가 전담하는 구조입니다.
+
+조건:
+
+Account 추상 클래스: * 필드: long balance (잔액)
+
+추상 메서드: abstract void deposit(long amount) (입금)
+
+추상 메서드: abstract void withdraw(long amount) (출금)
+
+MyAccount 자식 클래스: * 부모의 메서드들을 상속받아 구현하세요.
+
+출금 시 balance < amount라면 "잔액 부족!"을 출력하고 돈을 빼지 마세요.
+
+AccountManager 일반 클래스 (핵심): * 메서드: void printBalance(Account account)
+
+역할: 인자로 받은 계좌의 현재 잔액을 "현재 잔액은 [금액]원입니다."라고 출력합니다.
+
+왜 이렇게 하나요? 계좌 클래스 안에 출력 로직을 넣지 않음으로써, 나중에 출력 형식이 바뀌어도 계좌 로직은 건드릴 필요가 없게 만드는 SRP 실천입니다.
+
+Main: * MyAccount 객체 생성.
+10,000원 입금 -> 5,000원 출금 -> AccountManager 객체 생성 후 잔액 출력 호출.*/
+
+
+class AccountManager extends Account{
+    void printBalance(Account account){
+        System.out.println("현재 잔액은 "+"["+account+"]"+"원입니다.");}
+
+        @Override
+
+        public void deposit(long amount){
+            System.out.println("아무것도안하는거임");
+        }
+        @Override
+
+        public void withddraw(long amount){
+            System.out.println("아무고토안해요");
+        }
+    }
+
+
+abstract class Account {
+    long balance;
+
+    abstract void deposit(long amount);
+
+    abstract void withdraw(long amount);
+}
+class MyAccount extends Account{
+
+    @Override
+
+    public void deposit(long amount){
+        balance +=amount;
+        
+    }
+    
+
+
+    @Override
+
+    public void withdraw(long amount){
+        if(balance>=amount){
+            balance -=amount;
+        }
+        else if (balance<amount){
+            System.out.println("잔액 부족!");
+            
+        }
+        
+    }
+}
+
+/*Main: * MyAccount 객체 생성.
+10,000원 입금 -> 5,000원 출금 -> AccountManager 객체 생성 후 잔액 출력 호출.*/
+
+
+class Main {
+    public static void main(String[] args) {
+        Account myAccount = new MyAccount();
+        myAccount.balance = 20000;
+        myAccount.deposit(10000);
+        myAccount.withdraw(5000);
+        //중간점검
+
+        System.out.println(myAccount.balance);
+        //점검 완료 잘 진행되고있음
+
+        ((AccountManager)myAccount).printBalance(25000);
+        
+        
+    }
+}

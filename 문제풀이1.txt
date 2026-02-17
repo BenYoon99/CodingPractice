@@ -1,0 +1,81 @@
+//문제풀이1 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*
+Mission 1: '스마트 홈' 기기 제어 (Interface & Array)
+모든 스마트 기기는 전원을 켜고 끄는 공통 기능이 있지만, 기기마다 특수 기능이 다릅니다.
+
+조건:
+
+SmartDevice 인터페이스: void powerOn(), void powerOff() 메서드.
+
+AirConditioner 클래스: 인터페이스 구현. 특수 메서드 void setTemp(int t) (출력: "온도를 t도로 설정합니다").
+
+SmartTV 클래스: 인터페이스 구현. 특수 메서드 void changeChannel(int c) (출력: "채널을 c번으로 바꿉니다").
+
+Main: SmartDevice 타입 배열에 두 기기를 담고, 향상된 for문으로 모든 기기의 전원을 켜세요.
+
+보너스: instanceof를 사용하여 TV일 때만 채널을 7번으로 바꾸는 로직을 추가해 보세요. */
+interface SmartDevice {
+    void powerOn();
+    void powerOff();
+
+    
+}
+
+class AirConditioner implements SmartDevice {
+    @Override
+
+    public void powerOn(){
+        System.out.println("전원이 켜집니다");
+        
+        
+    }
+    @Override
+
+    public void powerOff(){
+        System.out.println("전원이 꺼집니다");
+    }
+    void setTemp(int t) {
+        System.out.println("온도를 "+t+"도로 설정합니다.");
+    }
+    }
+class SmartTv implements SmartDevice {
+    @Override
+
+    public void powerOn(){
+         System.out.println("전원이 켜집니다");
+    }
+    @Override
+
+    public void powerOff(){
+        System.out.println("전원이 꺼집니다");
+    }
+    void changeChannel(int c){
+
+        System.out.println("채널을 "+c+"번으로"+" 바꿉니다");
+    }
+}
+/*Main: SmartDevice 타입 배열에 두 기기를 담고, 향상된 for문으로 모든 기기의 전원을 켜세요.
+
+보너스: instanceof를 사용하여 TV일 때만 채널을 7번으로 바꾸는 로직을 추가해 보세요. */
+class Main {
+    public static void main(String[] args) {
+        SmartDevice air = new AirConditioner();
+        SmartDevice tv = new SmartTv();
+
+        SmartDevice [] devices = new SmartDevice[2];
+        devices [0] = air;
+        devices [1] = tv;
+        for (SmartDevice s :devices){
+            s.powerOn();
+            if(s instanceof SmartTv){
+              ((SmartTv)s).changeChannel(7);
+                
+            }
+        }
+    }
+    }
