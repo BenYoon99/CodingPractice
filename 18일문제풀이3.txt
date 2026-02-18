@@ -1,0 +1,58 @@
+//18일문제풀이3
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*Mission 3: '메시지 전송 시스템' (Interface)
+[조건]
+
+Sender 인터페이스:
+
+void send(String msg); 메서드 정의.
+
+KakaoSender 클래스:
+
+인터페이스 구현. 출력: "[카톡 전송] " + msg
+
+SmsSender 클래스:
+
+인터페이스 구현. 출력: "[문자 전송] " + msg
+
+Main 클래스:
+
+Sender 타입의 변수 s를 하나 만드세요.
+
+s에 KakaoSender 객체를 담고 send("열공하자!") 호출.
+
+그다음 s에 SmsSender 객체로 갈아끼우고(재할당) send("경북대 가자!") 호출.*/
+
+interface Sender {
+    void send(String msg);
+}
+class KakaoSender implements Sender {
+    @Override
+
+    public void send(String msg){
+        System.out.println("[카톡 전송] "+msg);
+    }
+}
+class SmsSender implements Sender {
+    @Override
+
+    public void send(String msg){
+        System.out.println("[문자 전송] "+msg);
+    } 
+}
+class Main {
+    public static void main(String[] args) {
+        Sender s = new KakaoSender();
+        s.send("열공하자");
+        //호출 1차적 결과확인 
+
+        s= new SmsSender();
+            s.send("경북대 가자!");
+
+        //이로인해 확인한건 , 내가 원래있던 참조변수에 새로운 인스턴스의 주솟값을 쏴주면 그 참조변수로 저놈을 조종가능해진다 ( 두번쨰놈 )
+    }
+}

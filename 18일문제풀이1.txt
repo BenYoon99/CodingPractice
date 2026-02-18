@@ -1,0 +1,49 @@
+//문제풀이1 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 Mission 1: '동물 울음소리' (다형성 기초)
+가장 기본적이지만 다형성을 이해하기에 가장 좋은 예제입니다.
+
+조건:
+
+Animal 추상 클래스: abstract void sound() 메서드.
+
+Dog, Cat 클래스: Animal을 상속받아 각각 "멍멍", "야옹" 출력.
+
+Main: Animal 타입 배열에 강아지와 고양이를 담고, 향상된 for문으로 울음소리를 내게 하세요.*/
+
+abstract class Animal {
+    abstract void sound();
+}
+class Dog extends Animal {
+    @Override
+
+    public void sound(){
+        System.out.println("멍멍");
+    }
+}
+class Cat extends Animal {
+    @Override
+
+    public void sound(){
+        System.out.println("야옹");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        
+        Animal [] animals = new Animal [2];
+        animals[0] = dog; 
+        animals[1] = cat;
+
+        for(Animal a :animals){
+            a.sound();
+        }
+    }
+}
