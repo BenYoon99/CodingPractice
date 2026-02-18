@@ -1,0 +1,92 @@
+//20260219 문제풀이1 
+
+/*🔱 엔지니어 상어 전용 코딩 미션: "룬테라 연합 공격 시스템 구축"
+[문제 시나리오]
+당신은 롤의 공격 시스템을 설계하는 수석 엔지니어입니다. 서로 다른 진영(데마시아, 녹서스)의 챔피언들이 각자의 방식으로 공격하고, 이를 통합 관리하는 시스템을 만들어야 합니다.
+
+1. 요구사항 (Constraints)
+인터페이스 (Attackable):
+
+void attack(); 추상 메소드를 가집니다. 모든 공격 가능한 객체는 이 계약을 따라야 합니다.
+
+추상 클래스 (Champion):
+
+Attackable 인터페이스를 구현(implements)합니다.
+
+필드: String name, int power
+
+생성자: name과 power를 받아 this를 이용해 초기화합니다. (데이터 무결성 보장!)
+
+상속 및 오버라이딩 클래스:
+
+Garen 클래스 (Champion 상속): attack() 메소드를 오버라이딩하여 **"가렌이 [power]의 데미지로 심판 회전을 합니다!"**를 출력합니다.
+
+Darius 클래스 (Champion 상속): attack() 메소드를 오버라이딩하여 **"다리우스가 [power]의 데미지로 학살을 시전합니다!"**를 출력합니다.
+
+중요: 가렌과 다리우스의 생성자에서 **super()**를 사용하여 부모의 방(영역)을 먼저 완공시켜야 합니다.
+
+메인 메소드 (Main):
+
+Champion 타입의 배열(또는 리스트)을 만듭니다.
+
+배열 안에 new Garen("가렌", 100)과 new Darius("다리우스", 120) 객체를 담습니다.
+
+향상된 for문을 사용하여 배열에 담긴 모든 챔피언의 attack() 메소드를 호출합니다.*/
+import java.util.ArrayList;
+
+interface Attackable {
+
+    public void attack();
+}
+abstract class Champion implements Attackable {
+    String name;
+    int power;
+
+    Champion(String name,int power){
+        this.name=name;
+        this.power=power;
+    }
+    
+    @Override
+
+    public abstract void attack();
+    
+}
+class Garen extends Champion {
+
+    Garen(String name,int power){
+        super(name,power);
+    }
+    @Override
+
+    public void attack(){
+        System.out.println("가렌이 "+power+"의 데미지로 심판 회전을 합니다!");
+        
+    }
+}
+class Darius extends Champion {
+
+    Darius(String name,int power){
+        super(name,power);
+    }
+    @Override
+
+    public void attack(){
+        System.out.println("다리우스가 "+power+" 의 데미지로 학살을 시전합니다!");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Champion garen = new Garen("가렌", 100);
+        Champion darius = new Darius("다리우스", 120);
+        
+        ArrayList<Champion> champions = new ArrayList<>();
+        champions.add(garen);
+        champions.add(darius);
+
+        for(Champion c : champions){
+            c.attack();
+        }
+        
+    }
+}
