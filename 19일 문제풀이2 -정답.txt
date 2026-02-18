@@ -1,0 +1,68 @@
+// 19일 문제풀이2 -정답 
+
+import java.util.ArrayList;
+import java.lang.*;
+import java.io.*;
+
+interface SkillUsable {
+
+    void useSkill();
+    
+}
+abstract class Unit implements SkillUsable{
+    String name;
+    int hp;
+
+    Unit(String name,int hp){
+        this.name=name;
+        this.hp=hp;
+        
+    }
+    
+    @Override
+
+    public abstract void useSkill();
+    
+}
+class Marine extends Unit{
+    
+    
+    Marine(String name,int hp){
+    super(name,hp);
+    }
+    
+    
+    @Override
+
+    public void useSkill(){
+        hp -=1;
+        System.out.println(name+"이 스팀팩을 사용하여 HP가 감소합니다! 현재 체력은 : "+hp+" 입니다.");
+        
+        
+    }
+}
+class Medic extends Unit{
+
+    Medic(String name,int hp){
+        super(name,hp);
+    }
+
+    @Override
+
+    public void useSkill(){
+        System.out.println(name+"이 마나를 소모하여 치료를 시작합니다!");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Unit marine = new Marine("마린",50);
+        Unit medic  = new Medic("메딕",50);
+        ArrayList<Unit> units = new ArrayList<>();
+        units.add(marine);
+        units.add(medic);
+        for(Unit u :units){
+            u.useSkill();
+        }
+        
+    }
+}

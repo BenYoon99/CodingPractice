@@ -1,0 +1,65 @@
+//19일 문제풀이 3 -정답 
+
+import java.util.ArrayList;
+
+interface Weapon {
+
+    public void swing();
+}
+
+abstract class Item implements Weapon {
+
+    String itemName;
+    double weight;
+
+    Item(String itemName,double weight){
+        this.itemName=itemName;
+        this.weight=weight;
+
+    
+    }
+    @Override 
+
+    public abstract void swing();
+    
+}
+class Sword extends Item{
+
+    Sword(String itemName,double weight){
+        super(itemName,weight);
+    }
+    
+    @Override
+
+    public void swing(){
+        System.out.println(itemName+"을 휘둘러 검기를 발사!"+"( "+weight+" )");    
+    }
+}
+class Bow extends Item {
+
+    Bow(String itemName ,double weight){
+        super(itemName,weight);
+    }
+    @Override
+
+    public void swing(){
+        System.out.println(itemName+"의 시위를 당겨 화살을 쏨 !"+"( "+weight+" )");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+       Item sword = new Sword("검",50.5);
+       Item bow   = new Bow("활",30.5);
+
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(sword);
+        items.add(bow);
+        
+        
+        
+        for(Item a :items){
+            a.swing();
+        }
+        
+    }
+}
