@@ -1,0 +1,75 @@
+// 2026 02 20 21 문제1 풀이 
+
+import java.util.ArrayList;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 미션 1: "카페 주문 시스템" (다형성 + 오버라이딩)
+[목표] 아메리카노와 라떼가 각자 다른 방식으로 제조되는 과정을 코드로 구현하세요.
+
+인터페이스 Recipe: void make(); 메소드.
+
+추상 클래스 Beverage: Recipe 구현.
+
+필드: String menuName
+
+생성자: this 사용.
+
+자식 클래스 Americano, Latte:
+
+Americano는 "에스프레소에 물을 섞습니다." 출력.
+
+Latte는 "에스프레소에 우유를 섞습니다." 출력.
+
+두 클래스 모두 생성자에서 super()를 사용해 메뉴 이름을 전달하세요.
+
+Main: ArrayList<Beverage>에 두 음료를 담고 향상된 for문으로 make()를 실행하세요.*/
+
+interface Recipe {
+    void make();
+}
+abstract class Beverage implements Recipe {
+    String menuName;
+
+    Beverage(String MenuName){
+        this.menuName=MenuName;
+    }
+    
+    public abstract void make();
+}
+class Americano extends Beverage {
+
+    Americano(String menuName){
+        super(menuName);
+    }
+    @Override
+
+    public void make(){
+        System.out.println("에스프레소에 물을 섞습니다 ");
+        
+    }
+}
+class Latte extends Beverage{
+
+    Latte(String menuName){
+        super(menuName);
+    }
+    @Override
+
+    public void make(){
+        System.out.println("에스프레소에 우유를 섞습니다 ");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Beverage ame = new Americano("아메리카노");
+        Beverage latte = new Latte("라떼");
+        ArrayList<Beverage> bevs = new ArrayList<>();
+        bevs.add(ame);
+        bevs.add(latte);
+
+        for(Beverage b :bevs){
+            b.make();
+        }
+    }
+}
