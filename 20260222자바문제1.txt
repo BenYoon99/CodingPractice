@@ -1,0 +1,39 @@
+// DMD 변수쉐도잉 문제풀이 1 
+
+🔱 심화 문제 1: [그림자 속의 진실]
+이 코드를 실행했을 때, 출력되는 A와 B의 값은 무엇일까요?
+
+Java
+
+class Parent {
+    int x = 100;
+    void display() { System.out.println("Parent Display: " + x); }
+}
+
+class Child extends Parent {
+    int x = 200; // 변수 쉐도잉
+    @Override
+    void display() { System.out.println("Child Display: " + x); } // 다이나믹 디스패치
+}
+
+public class ShadowTest {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        
+        // A: 변수 출력
+        System.out.println("A: " + p.x); 
+        
+        // B: 메서드 호출
+        p.display(); 
+    }
+}
+/* 
+
+p -------- 차일드 객체 ( 200 /100) 
+
+
+A== 100;
+
+B==child display 200;
+
+1회오답 - 정답 
