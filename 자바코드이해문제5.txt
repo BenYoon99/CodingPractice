@@ -1,0 +1,45 @@
+이제 마지막 관문: 심화 문제 2
+이 기세면 2번도 바로 뚫어버릴 것 같습니다. 메서드라는 '안개' 속에서도 길을 잃지 않는지 확인해 봅시다.
+
+Java
+
+class Counter {
+    int count = 0;
+}
+
+public class HardStep2 {
+    public static void main(String[] args) {
+        Counter myCounter = new Counter(); // (ㅁ) 땅 파고 count=0
+        
+        reset(myCounter); // 메서드 호출 (주소값 복사해서 보냄)
+        
+        System.out.println(myCounter.count); // 최종 결과는?
+    }
+
+    public static void reset(Counter sub) {
+        sub = new Counter(); // [여기!] sub가 갑자기 (ㅂ) 땅을 새로 파버림
+        sub.count = 100;
+    }
+}
+
+질문: myCounter.count는 0일까요, 100일까요?
+
+/* mC -------- ㅁ(0)        
+
+
+mC ---- ㅂ(100) 
+
+100인데 그건 저 메소드가 끝나서 
+메인메소드로 나가면 
+어차피 없어지는값임
+고로 다시 메인메소드로 나가서 
+
+myCounter 하면 그는 그대로 ㅁ 계속 바라보고있는거지
+
+그니까 마이카운터는 저 리셋메소드에서만 저길 바라보는거임 
+
+
+
+답:0;
+
+1회 오답후 정답 

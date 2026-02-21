@@ -1,0 +1,64 @@
+🔱 최종 보스 미션: [상속과 참조의 소용돌이]
+아래 코드를 보고 A, B, C에 출력될 값을 정확히 맞히십시오.
+
+Java
+
+class Unit {
+    int hp = 10;
+    void upgrade() { hp += 10; }
+}
+
+class Medic extends Unit {
+    int hp = 5; // [함정 1] 부모와 같은 이름의 변수
+    @Override
+    void upgrade() { hp += 5; } // [함정 2] 오버라이딩
+}
+
+public class FinalBoss {
+    public static void main(String[] args) {
+        Unit u1 = new Medic(); // [다형성] 부모 타입으로 자식 객체 생성
+        Unit u2 = u1;          // [참조 복사]
+
+        u2.upgrade();          // (1) 실행
+
+        System.out.println("A: " + u1.hp); 
+        
+        Medic m1 = (Medic) u1; // [형변환]
+        System.out.println("B: " + m1.hp);
+        
+        m1.upgrade();          // (2) 실행
+        System.out.println("C: " + m1.hp);
+    }
+}
+
+
+
+/* 
+
+u1 --------메딕(5 +5 ) -------u2  
+
+
+*/
+
+/*
+
+m1 ------ u1(메딕클래스따름 다운캐스팅)
+
+B:10
+
+
+upgrade 5 
+
+C : 15 */
+
+
+
+A==  A:10
+
+B==   B:10
+
+C==  C:15
+
+
+<-- 정답 
+

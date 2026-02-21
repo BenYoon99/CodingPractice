@@ -1,0 +1,30 @@
+문제 2: [중급] 메서드로 전달되는 참조 변수
+이 문제는 조금 까다롭습니다. 메서드(함수)에 참조 변수를 넘겼을 때 어떤 일이 벌어지는지 확인하는 문제입니다.
+
+class Score {
+    int value = 50;
+}
+
+public class MemoryMaster2 {
+    public static void main(String[] args) {
+        Score myScore = new Score();
+        
+        System.out.println("변경 전: " + myScore.value); // (1)번 출력
+        
+        changeScore(myScore); // 메서드 호출 (주소값 전달)
+        
+        System.out.println("변경 후: " + myScore.value); // (2)번 출력
+    }
+
+    public static void changeScore(Score s) {
+        s.value = 100;
+    }
+}
+질문: (1)번과 (2)번에 출력될 값은 각각 무엇입니까?
+
+1번 : 변경전:50
+
+2번:변경후:100
+
+
+<--정답 

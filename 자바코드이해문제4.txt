@@ -1,0 +1,30 @@
+🔱 심화 문제 1: [리모컨 교체]
+다음 코드를 실행했을 때, 최종적으로 d1.value는 몇이 찍힐까요?
+
+Java
+
+class Data {
+    int value = 10;
+}
+
+public class HardStep1 {
+    public static void main(String[] args) {
+        Data d1 = new Data(); // 힙에 1번 땅 파고 d1이 가리킴 (value=10)
+        Data d2 = d1;         // d2도 1번 땅을 같이 가리킴
+
+        d2 = new Data();      // [중요!] 여기서 d2가 갑자기 2번 땅을 새로 파버림
+        d2.value = 20;        // d2가 2번 땅의 값을 20으로 바꿈
+
+        System.out.println(d1.value); // 출력값은?
+    }
+}
+
+
+
+// d1 ----- ㅁ(10) d2 -----ㅂ(20)  
+
+
+답: 10 
+
+
+<--정답 

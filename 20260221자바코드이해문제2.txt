@@ -1,0 +1,27 @@
+🔱 문제 1: [초급] 리모컨 공유의 함정
+다음 코드를 보고, 최종적으로 출력될 값을 맞혀보세요. (직접 코딩해본다고 생각하고 흐름을 따라가십시오.)
+
+Java
+
+class SmartPhone {
+    String model = "iPhone 15";
+}
+
+public class MemoryMaster1 {
+    public static void main(String[] args) {
+        SmartPhone p1 = new SmartPhone();
+        SmartPhone p2 = p1; // 참조 복사 발생!
+
+        p2.model = "Galaxy S24"; 
+
+        System.out.println("p1의 모델명: " + p1.model);
+        System.out.println("p2의 모델명: " + p2.model);
+    }
+}
+질문: p1.model과 p2.model은 각각 무엇이 출력될까요? 그 이유는 무엇입니까?
+
+p1 모델 :s24 
+
+p2 모델 :s24 
+
+<--정답 
