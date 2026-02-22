@@ -1,0 +1,33 @@
+🔱 제 1탄: 인터페이스와 DMD의 결합
+인터페이스 리모컨을 들었을 때, 변수와 메소드는 각각 어떻게 작동할까요?
+
+Java
+
+interface Animal {
+    int legCount = 2; // 인터페이스 변수는 자동 public static final
+    void speak();
+}
+
+class Dog implements Animal {
+    int legCount = 4; // 변수 쉐도잉 (자식만의 방 생성)
+
+    @Override
+    public void speak() {
+        System.out.println("Dog says: " + legCount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog(); // 인터페이스 리모컨으로 자식 객체 조종
+        
+        System.out.println("A: " + a.legCount); 
+        a.speak(); // B: 메소드 호출
+    }
+}
+질문 1: 출력되는 A와 B의 값은 무엇일까요?
+
+A==  A:2
+
+
+B==Dog says:4

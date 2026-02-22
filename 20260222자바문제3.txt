@@ -1,0 +1,32 @@
+🔱 제 2탄: 리모컨으로 값 변경 시 발생하는 마법 (함정 주의!)
+자, 이제 진짜 '방 두 개'의 원리를 꿰뚫어야 풀 수 있는 2번 문제입니다. 아까 상어님이 질문하셨던 **"부모 방의 값을 바꿀 수 있는가"**에 대한 해답이 이 코드의 실행 결과에 담겨 있습니다.
+
+Java
+
+class Super {
+    String name = "Super";
+    void printName() {
+        System.out.println(name);
+    }
+}
+
+class Sub extends Super {
+    String name = "Sub"; // 변수 쉐도잉 (재선언)
+
+    @Override
+    void printName() {
+        System.out.println(name);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Super obj = new Sub(); // 부모 리모컨으로 자식 조종
+        
+        obj.name = "Changed"; // 부모 리모컨으로 name 수정!
+        
+        obj.printName(); // 최종 출력값은 과연 무엇일까요?
+    }
+}
+
+정답 : Sub 
