@@ -1,0 +1,65 @@
+// 예외처리 없이 만드는 자판기 -성공
+
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.*;
+
+interface function{
+   public void buy(int money);
+}
+class VendingMachine implements function {
+    String productName;
+    int productMoney;
+    String status;
+    int quantity;
+
+    VendingMachine(String productName ,int productMoney){
+        this.productName= productName;
+        this.productMoney=productMoney;
+        
+    }
+    
+    @Override
+
+    public void buy(int money){
+        if(money==productMoney){
+            status = "구매완료";
+            quantity -=1;
+            System.out.println(status+"하였습니다");
+            
+        }
+        else if(money<productMoney){
+            status = "구매실패";
+            System.out.println(status+"하였습니다"+(productMoney-money)+ "만큼의 돈을 추가로 지불해 주십시요");
+            
+        }
+        else if(money>productMoney){
+            status ="구매완료";
+            quantity-=1;
+            System.out.println(status+"하였습니다"+(money-productMoney)+"만큼의 돈을 거슬러드리겠습니다");
+            
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        VendingMachine a = new VendingMachine("포카리스웨트" ,1000);
+        VendingMachine b = new VendingMachine("코카콜라" ,2000);
+        VendingMachine c = new VendingMachine("데자와" ,3000);
+        VendingMachine d = new VendingMachine("조지아라떼" ,4000);
+
+        Scanner sc = new Scanner(System.in); //쓸필요없는것같은딩..
+        
+        ArrayList<VendingMachine> vendingList = new ArrayList<>();
+        vendingList.add(a);
+        vendingList.add(b);
+        vendingList.add(c);
+        vendingList.add(d);
+
+        for(VendingMachine v :vendingList){
+            v.buy(10000);
+        }
+        
+    }
+}
