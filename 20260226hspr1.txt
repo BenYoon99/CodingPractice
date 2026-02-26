@@ -1,0 +1,46 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+/*🔱 실전 코딩 미션: "영속성을 흉내 내는 익명 자판기"
+[문제 시나리오]
+상어님은 지금 자판기 관리 프로그램을 만들고 있습니다. 기본적으로 자판기는 매출을 기록하는 Record 인터페이스를 가지고 있습니다. 하지만 특정 이벤트 기간(예: 치앙마이 원정 기간)에는 매출을 파일이나 DB에 저장하는 척하는(영속성) 특별한 기록 방식이 필요합니다.
+
+[요구사항]
+
+Record라는 인터페이스를 만드십시오. (메서드: void save(int amount))
+
+VendingMachine 클래스를 만드십시오.
+
+이 클래스 안에서 Record 인터페이스를 익명 객체로 구현하여 다음 로직을 완성하십시오.
+
+save 메서드 호출 시: "데이터 영속성 확보: [금액]원이 안전하게 DB에 저장되었습니다."라고 출력하기.
+
+메인 메서드에서 이 익명 객체를 실행하여 매출 5000원을 저장하는 코드를 작성하십시오.*/
+
+interface Record{
+    public void save(int amount);
+}
+
+
+
+class Main {
+    public static void main(String[] args) {
+        Record r1 = new Record(){
+
+            @Override
+
+            public void save(int amount){
+                System.out.println("데이터 영속성 확보 : "+ amount+"원이 안전하게 DB에 저장되었습니다");
+                
+                    
+                
+            }
+           
+        };
+        
+         r1.save(5000);
+        
+    }
+}
