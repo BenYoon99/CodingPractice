@@ -1,0 +1,18 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 문제 1: AND (&&) 사용하기
+[문제] 놀이공원 입장 제한 로직을 만드세요. 나이가 14세 이상이면서 19세 이하인 경우에만 "청소년 할인 대상입니다"를 출력하는 코드를 완성하세요.*/
+
+class Main {
+    public static void main(String[] args) {
+        int age = 17; // 이 숫자를 바꿔가며 테스트해보세요.
+
+if (age >= 14 && age <= 19) {
+    System.out.println("청소년 할인 대상입니다.");
+} else {
+    System.out.println("일반 요금 대상입니다.");
+}
+    }
+}
