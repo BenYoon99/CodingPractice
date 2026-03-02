@@ -1,0 +1,36 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*💻 실습 2: 초급 (메소드 상속과 || 연산)
+[문제]
+
+User 클래스에 boolean isAdmin = false;와 boolean isWriter = true; 속성을 넣으세요.
+
+Manager 클래스가 User를 상속받게 하세요.
+
+Manager 클래스 안에 void checkAccess() 메소드를 만듭니다.
+
+이 메소드는 "관리자(isAdmin)이거나 작성자(isWriter)인 경우" 중 하나라도 만족하면 "수정 권한이 있습니다."를 출력해야 합니다.
+
+main에서 Manager 객체를 만들어 checkAccess()를 호출하세요.*/
+
+class User {
+    boolean isAdmin = false;
+    boolean isWriter = true;
+    
+}
+class Manager extends User {
+
+    void checkAccess(){
+        if(isAdmin==true || isWriter==true){
+            System.out.println("수정 권한이 있습니다");
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Manager m = new Manager();
+        m.checkAccess();
+    }
+}

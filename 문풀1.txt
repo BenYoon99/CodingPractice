@@ -1,0 +1,24 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*💻 실습 1: 초급 (상속의 기초와 && 연산)
+[문제] 1. Laptop 클래스를 부모로, GamingLaptop 클래스를 자식으로 만드세요.
+2. Laptop에는 boolean hasPower = true; 속성이 있습니다.
+3. GamingLaptop에는 int ram = 16; 속성이 있습니다.
+4. main 메소드에서 GamingLaptop 객체를 생성하고, **"전원이 켜져 있고 RAM이 16GB인 경우"**에만 "게임 실행 가능"을 출력하는 if문을 작성하세요.*/
+
+class Laptop {
+    boolean hasPower = true;
+    
+}
+class GamingLaptop extends Laptop {
+    int ram = 16;
+}
+class Main {
+    public static void main(String[] args) {
+        Laptop gL = new GamingLaptop();
+        if(gL.hasPower==true && ((GamingLaptop)gL).ram==16){
+            System.out.println("게임 실행 가능");
+        }
+    }
+}

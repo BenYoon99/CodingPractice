@@ -1,0 +1,35 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*💻 실습 3: 중급 (상속 구조에서의 복합 논리 연산)
+마지막 문제입니다. 이 문제는 연산자 우선순위와 괄호의 활용이 핵심입니다.
+
+[문제]
+
+부모 클래스 Account: int balance = 5000; (잔액) 속성을 가집니다.
+
+자식 클래스 VipAccount: boolean isVip = true; 속성을 추가합니다.
+
+main 메소드에서 VipAccount 객체를 생성하고, 다음 조건이 true일 때 "특별 승인 완료"를 출력하세요.
+
+조건: (잔액이 10,000원 이상이다) 또는 (잔액이 0원보다 크고 동시에 VIP 멤버이다)
+
+요구사항: 반드시 &&와 ||를 한 if문 안에 섞어서 사용하고, 로직을 명확하게 하기 위해 괄호를 적절히 배치하십시오.*/
+class Account {
+    int balance = 5000;
+    
+}
+class VipAccount extends Account {
+    boolean isVip = true;
+    
+}
+
+class Main {
+    public static void main(String[] args) {
+        Account vA = new VipAccount();
+        //조건문 시작 
+        if ((vA.balance>=10000)||(vA.balance>=0 && ((VipAccount)vA).isVip==true)){
+            System.out.println("특별 승인 완료");
+        }
+    }
+}
