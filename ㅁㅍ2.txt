@@ -1,0 +1,43 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*💻 실습 2: 메소드 오버라이딩과 동적 바인딩
+[문제 복습]
+
+Animal 클래스: void speak() 메소드 ("동물이 소리를 냅니다." 출력)
+
+Dog 클래스: Animal 상속, speak() 오버라이딩 ("멍멍!" 출력)
+
+Cat 클래스: Animal 상속, speak() 오버라이딩 ("야옹~" 출력)
+
+[미션] Main에서 Animal myPet; 참조 변수 하나만 사용하여, new Dog()와 new Cat()을 번갈아 할당하며 각각의 울음소리를 출력하세요.*/
+
+class Animal {
+    void speak(){
+        System.out.println("동물이 소리를 냅니다");
+    }
+}
+class Dog extends Animal{
+    @Override
+    public void speak(){
+        System.out.println("멍멍!");
+    }
+}
+class Cat extends Animal {
+    @Override
+
+    public void speak(){
+        System.out.println("야옹~");
+        
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Animal mypet = new Dog();
+        mypet.speak();
+        //강아지울음 완 
+        mypet = new Cat();
+        mypet.speak();
+    }
+}
