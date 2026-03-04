@@ -1,24 +1,44 @@
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-/*💻 실습 1: 초급 (상속의 기초와 && 연산)
-[문제] 1. Laptop 클래스를 부모로, GamingLaptop 클래스를 자식으로 만드세요.
-2. Laptop에는 boolean hasPower = true; 속성이 있습니다.
-3. GamingLaptop에는 int ram = 16; 속성이 있습니다.
-4. main 메소드에서 GamingLaptop 객체를 생성하고, **"전원이 켜져 있고 RAM이 16GB인 경우"**에만 "게임 실행 가능"을 출력하는 if문을 작성하세요.*/
 
-class Laptop {
-    boolean hasPower = true;
-    
+/*1. [초급] 인터페이스와 논리 연산자 실습
+문제: 배달 앱의 '주문 가능 여부'를 체크하는 시스템을 만드세요.
+
+OrderCheck라는 인터페이스를 만들고 boolean isOrderable(int price, boolean isOpen) 메서드를 정의하세요.
+
+이를 구현하는 YogiyoOrder 클래스에서 다음 조건이 **모두 참(&&)**일 때만 true를 반환하도록 로직을 작성하세요.
+
+price가 15,000원 이상이다.
+
+isOpen이 true(영업 중)이다.
+
+테스트: 메인 메서드에서 인터페이스 타입 변수를 사용해 주문 가능 여부를 출력하세요.*/
+
+interface OrderCheck {
+    public  boolean isOrderable(int price, boolean isOpen);
 }
-class GamingLaptop extends Laptop {
-    int ram = 16;
+class YogiyoOrder implements OrderCheck {
+    boolean yes;
+    @Override
+
+    public  boolean isOrderable(int price, boolean isOpen){
+        if(price>=15000 && isOpen==true){
+            yes = isOpen;
+            return yes;
+        }
+        else{
+            return false;
+        }
+    }
+    //여기서 궁금한건 파라미터 내부에서 int price 그리고 isOpen을 선언했기에 굳이 YogiyoOrder 클래스에서 먼저 선언해줄필요없는건지? 제미나이? 
+    // ㅇㅇ 파라미터 내부 선언 변수들은 지역변수로 해당메소드에서만 살아감 고로 해당클래스내부의 다른 메소드에서도 사용하고싶다면 그떄 필드변수로선언해야함
+    //그럼 이경우에 지변으로 파라미터에서 사용하고 필드에서도 똑같이 사용하면 그럼 오류남? 제미나이? 
 }
 class Main {
     public static void main(String[] args) {
-        Laptop gL = new GamingLaptop();
-        if(gL.hasPower==true && ((GamingLaptop)gL).ram==16){
-            System.out.println("게임 실행 가능");
-        }
+       OrderCheck yogiyoOrder = new YogiyoOrder();
+        yogiyoOrder.isOrderable(16000,true); //동적바인딩 부모리모컨으로 부모 메소드 조종했는데 오버라이딩 인식해서 동적으로 런타임도중 자녀찾아가서 메소드실행.
+        
     }
 }

@@ -1,0 +1,68 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 제 4관문: [중급] 배달료 계산기 설계도 (다시 확인)
+상어님이 지금 바로 IDE(또는 메모장)에 쳐야 할 가이드라인입니다.
+
+인터페이스 선언: DeliveryFee (메서드: int calculate(int distance))
+
+클래스 1: BasicDelivery (거리당 1,000원)
+
+클래스 2: PremiumDelivery
+
+필드: boolean isRaining
+
+생성자: public PremiumDelivery(boolean isRaining) (받은 값을 this.isRaining에 저장!)
+
+메서드: 기본 distance * 2000 + 할증 조건 (distance >= 5 || isRaining) 일 때 3,000원 추가.
+
+메인: DeliveryFee 변수 하나로 두 객체를 갈아 끼우며 테스트.*/
+
+interface DeliveryFee{
+
+    int calculate(int distance);
+}
+class BasicDelivery implements DeliveryFee{
+    int fee;
+    @Override
+
+    public int calculate(int distance){
+        System.out.println(1000*distance);
+        return distance;
+    }
+}
+class PremiumDelivery implements DeliveryFee{
+    boolean isRaining;
+    int fee;
+    PremiumDelivery(boolean isRaining){
+        this.isRaining=isRaining; //이제 완벽한 의미 이해했다한줄의 
+        // 이한줄은 내 클래스 내부의 필드변수 isRaining의 값은 이 지역변수 isRaining의값이야 한마디로 내가넣은 매개변수값이라는거지 고로 
+            // 메인메소드에서 다른값넣으면 이 클래스 타입의 인스턴스의 isRaining 필드변수값은 내가 넣은 매개변수 isRaining값으로 변하기에
+                // 다른 메소드나 다른 곳에서 isRaining을 사용할시 변한 isRaining 값으로 사용하게되는거지 ㅇㅇ
+        
+    }
+    @Override
+
+
+    public int calculate(int distance){
+        if(distance>=5 || this.isRaining){
+            System.out.println((distance*2000)+3000);
+            fee =((distance*2000)+3000);
+        }
+        else{
+        System.out.println(distance*2000);
+            fee =(distance*2000);
+    }
+        return fee;
+}
+}
+
+class Main {
+    public static void main(String[] args) {
+        DeliveryFee basicDel = new BasicDelivery();
+        DeliveryFee preDel = new PremiumDelivery(true);
+        basicDel.calculate(15);
+        preDel.calculate(12);
+    }
+}

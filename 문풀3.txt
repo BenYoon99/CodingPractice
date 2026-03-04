@@ -1,35 +1,45 @@
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-/*💻 실습 3: 중급 (상속 구조에서의 복합 논리 연산)
-마지막 문제입니다. 이 문제는 연산자 우선순위와 괄호의 활용이 핵심입니다.
 
-[문제]
+/*🔱 제 3관문: [초급] 논리 연산자(||)와 조건문
+이제 머리를 조금 더 써서 논리 연산자의 우선순위와 조건을 다루는 훈련을 하겠습니다.
 
-부모 클래스 Account: int balance = 5000; (잔액) 속성을 가집니다.
+문제: 사용자 등급에 따른 '할인 대상자' 판별기를 만드세요.
 
-자식 클래스 VipAccount: boolean isVip = true; 속성을 추가합니다.
+메서드 설계: void checkDiscount(String grade, int couponCount) 메서드를 만드세요.
 
-main 메소드에서 VipAccount 객체를 생성하고, 다음 조건이 true일 때 "특별 승인 완료"를 출력하세요.
+판별 조건: 아래 조건 중 **하나라도 참(||)**이면 "할인 적용 대상입니다"를 출력하고, 아니면 "일반 대상입니다"를 출력하세요.
 
-조건: (잔액이 10,000원 이상이다) 또는 (잔액이 0원보다 크고 동시에 VIP 멤버이다)
+grade가 "VIP"이다. (주의: 문자열 비교는 .equals()를 권장하지만, 일단 연습이니 편하게 짜보세요.)
 
-요구사항: 반드시 &&와 ||를 한 if문 안에 섞어서 사용하고, 로직을 명확하게 하기 위해 괄호를 적절히 배치하십시오.*/
-class Account {
-    int balance = 5000;
+couponCount가 5개보다 많다(> 5).
+
+실행 예시:
+
+checkDiscount("VIP", 2); -> 할인 대상
+
+checkDiscount("NORMAL", 10); -> 할인 대상
+
+checkDiscount("NORMAL", 3); -> 일반 대상*/
+
+class DiscountObject {
+    // 필드변수 만들필요없음 애초에 메소드만 돌리니까 
+
+    void checkDiscount(String grade, int couponCount){
+        if(grade.equals("VIP") || couponCount>5){
+            System.out.println("할인 적용 대상입니다");
+
+        }
+        else{
+            System.out.println("일반 대상입니다");
+        }
+    }
     
 }
-class VipAccount extends Account {
-    boolean isVip = true;
-    
-}
-
 class Main {
     public static void main(String[] args) {
-        Account vA = new VipAccount();
-        //조건문 시작 
-        if ((vA.balance>=10000)||(vA.balance>=0 && ((VipAccount)vA).isVip==true)){
-            System.out.println("특별 승인 완료");
-        }
+        DiscountObject dobj = new DiscountObject();
+        dobj.checkDiscount("VIP",6);
     }
 }

@@ -2,35 +2,60 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-/*💻 실습 2: 초급 (메소드 상속과 || 연산)
-[문제]
+/*🔱 자바 백엔드 자객 훈련: 제 2관문
+2. [초급] 상속과 동적 할당 (Dynamic Allocation)
+문제: 요기요의 다양한 '결제 수단'을 관리하는 시스템을 설계하세요.
 
-User 클래스에 boolean isAdmin = false;와 boolean isWriter = true; 속성을 넣으세요.
+부모 클래스 생성 (Payment):
 
-Manager 클래스가 User를 상속받게 하세요.
+void process() 메서드를 정의하고, 내부에는 "결제 수단을 선택해주세요."를 출력하도록 하세요.
 
-Manager 클래스 안에 void checkAccess() 메소드를 만듭니다.
+자식 클래스 1 생성 (CardPayment):
 
-이 메소드는 "관리자(isAdmin)이거나 작성자(isWriter)인 경우" 중 하나라도 만족하면 "수정 권한이 있습니다."를 출력해야 합니다.
+Payment를 상속받고 process()를 오버라이딩하여 "카드로 긁어서 15,000원 결제합니다."를 출력하세요.
 
-main에서 Manager 객체를 만들어 checkAccess()를 호출하세요.*/
+자식 클래스 2 생성 (CashPayment):
 
-class User {
-    boolean isAdmin = false;
-    boolean isWriter = true;
-    
+Payment를 상속받고 process()를 오버라이딩하여 "현금으로 영수증 없이 결제합니다."를 출력하세요.
+
+[핵심 실행 로직 (Main 메서드)]
+
+부모 타입의 배열 Payment[] payments = new Payment[2];를 생성하세요. (이게 바로 '규격의 통합'입니다.)
+
+payments[0]에는 CardPayment 객체를, payments[1]에는 CashPayment 객체를 동적 할당하여 저장하세요.
+
+향상된 for문(for-each) 또는 일반 for문을 사용하여 배열 내의 모든 process() 메서드를 호출하세요.*/
+
+class Payment{
+    public void process(){
+        System.out.println("결제 수단을 선택해주세요.");
+    }
 }
-class Manager extends User {
+class CardPayment extends Payment {
+    @Override
 
-    void checkAccess(){
-        if(isAdmin==true || isWriter==true){
-            System.out.println("수정 권한이 있습니다");
-        }
+    public void process(){
+        System.out.println("카드로 긁어서 15,000원 결제합니다. ");
+    }
+}
+class CashPayment extends Payment{
+    @Override
+
+    public void process(){
+        System.out.println("현금으로 영수증 없이 결제합니다.");
     }
 }
 class Main {
     public static void main(String[] args) {
-        Manager m = new Manager();
-        m.checkAccess();
+        Payment [] payments = new Payment[2];
+        // 자녀 클래스 타입의 인스턴스 두개를 한가지 배열로 관리 가능하게 하기위해 자바의 다형성 특성 활용 부모 배열사용
+        Payment cp = new CardPayment();
+        Payment csh = new CashPayment();
+        
+        payments[0] = cp;
+        payments[1] = csh;
+        for(Payment p : payments){
+            p.process();
+        }
     }
 }
