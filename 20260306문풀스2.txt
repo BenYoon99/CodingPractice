@@ -1,0 +1,99 @@
+import java.util.ArrayList;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 7. [LAST BOSS] 객체지향의 정수 (종합 세트)
+이번 문제는 **추상 클래스(공통 속성)**와 **인터페이스(공통 기능)**가 한 클래스에서 어떻게 조화롭게 만나는지, 그리고 **다형성(Polymorphism)**이 얼마나 강력한지 증명하는 무대입니다.
+
+요구사항 상세
+인터페이스 선언:
+
+Attackable: void attack(); 메서드 한 개.
+
+추상 클래스 선언:
+
+Character: 필드(String name, int level)와 이를 초기화하는 생성자를 만드십시오.
+
+자식 클래스 구현 (2개):
+
+Warrior: Character를 상속받고 Attackable을 구현합니다. attack() 시 "전사 [이름]이 검을 휘두릅니다!" 출력.
+
+Mage: Character를 상속받고 Attackable을 구현합니다. attack() 시 "마법사 [이름]이 파이어볼을 던집니다!" 출력.
+
+Main 클래스 (실전 데이터 관리):
+
+ArrayList<Character> team = new ArrayList<>(); 생성.
+
+전사와 마법사 객체를 생성하여 리스트에 추가하십시오.
+
+향상된 for문으로 리스트를 순회하며 각 캐릭터의 이름을 출력하십시오.
+
+핵심: 각 캐릭터가 Attackable 인터페이스를 가지고 있는지 instanceof로 확인한 뒤, 맞다면 (Attackable)로 **형변환(Casting)**하여 attack() 메서드를 호출하십시오.*/
+
+interface Attackable{
+
+    void attack();
+    
+}
+
+abstract class Character{
+    String name;
+    int level;
+
+    Character(String name, int level){
+        this.name = name;
+        this.level = level;
+        
+    }
+}
+class Warrior extends Character implements Attackable{
+    
+    Warrior(String name, int level){
+        super(name,level);
+    }
+    @Override
+    
+    public void attack(){
+        System.out.println("전사"+name+"이 검을 휘두릅니다");
+    }
+}
+class Mage extends Character implements Attackable{
+
+    Mage(String name,int level){
+        super(name,level);
+    }
+
+    @Override
+
+    public void attack(){
+        System.out.println("마법사"+name+"이 파이어볼을 던집니다");
+        
+    }
+}
+/*Main 클래스 (실전 데이터 관리):
+
+ArrayList<Character> team = new ArrayList<>(); 생성.
+
+전사와 마법사 객체를 생성하여 리스트에 추가하십시오.
+
+향상된 for문으로 리스트를 순회하며 각 캐릭터의 이름을 출력하십시오.
+
+핵심: 각 캐릭터가 Attackable 인터페이스를 가지고 있는지 instanceof로 확인한 뒤, 맞다면 (Attackable)로 **형변환(Casting)**하여 attack() 메서드를 호출하십시오.*/
+class Main {
+    public static void main(String[] args) {
+        ArrayList<Character> team = new ArrayList<>();
+
+        Character mage = new Mage("홍길순",15);
+        Character warrior = new Warrior("홍길동",17);
+        team.add(mage);
+        team.add(warrior);
+
+        for(Character c :team){
+            if(c instanceof Character){
+                ((Attackable)c).attack();
+                
+            }
+        }
+        
+    }
+}
