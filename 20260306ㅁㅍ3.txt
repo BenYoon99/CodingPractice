@@ -1,0 +1,70 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*3. 논리 연산자 (||, &&)
+
+문제: 정수형 변수 int score와 int attendance를 선언하고 값을 임의로 넣으십시오.
+
+조건: 1. 점수가 90점 이상 이고(&&) 출석률이 80% 이상인 경우
+2. 또는(||) 점수가 100점인 경우
+
+위 조건에 해당하면 "PASS", 아니면 **"FAIL"**을 출력하는 if-else문을 작성하십시오.
+
+
+
+포인트: 논리 연산자의 우선순위를 고려하여 **괄호 ()**를 정확하게 사용하십시오.*/
+
+class Main {
+    public static void main(String[] args) {
+        int score = 50;
+        int attendance = 80;
+
+        
+        if(score>=90 && attendance>=80){
+            System.out.println("PASS");
+        }
+        else if(score==100){
+            System.out.println("PASS");
+        }
+        else{
+            System.out.println("FAIL");
+        }
+    }
+}
+
+
+//좀더 깔끔한버전으로 풀이
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*3. 논리 연산자 (||, &&)
+
+문제: 정수형 변수 int score와 int attendance를 선언하고 값을 임의로 넣으십시오.
+
+조건: 1. 점수가 90점 이상 이고(&&) 출석률이 80% 이상인 경우
+2. 또는(||) 점수가 100점인 경우
+
+위 조건에 해당하면 "PASS", 아니면 **"FAIL"**을 출력하는 if-else문을 작성하십시오.
+
+
+
+포인트: 논리 연산자의 우선순위를 고려하여 **괄호 ()**를 정확하게 사용하십시오.*/
+
+class Main {
+    public static void main(String[] args) {
+        int score = 50;
+        int attendance = 80;
+
+        if((score>=90 && attendance >=80) || (score==100)){
+            System.out.println("PASS");
+           
+    
+        }
+        else{
+            System.out.println("FAIL");        }
+    }
+}

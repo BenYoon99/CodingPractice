@@ -1,0 +1,34 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*2. 상속의 기본 (Inheritance)
+
+문제: Animal 클래스를 부모로, Dog 클래스를 자식으로 만드십시오.
+
+Animal에는 eat() 메서드가 있고 "동물이 음식을 먹습니다"를 출력합니다.
+
+Dog에서는 이를 **오버라이딩(Overriding)**하여 "강아지가 사료를 맛있게 먹습니다"라고 출력하게 하십시오.
+
+포인트: Main에서 Dog 객체를 생성하고 eat()을 호출했을 때 무엇이 나오는지 확인하십시오.*/
+
+class Animal {
+
+    public void eat(){
+        System.out.println("동물이 음식을 먹습니다");
+    }
+}
+class Dog extends Animal{
+    @Override
+
+    public void eat(){
+        System.out.println("강아지가 사료를 맛있게 먹습니다");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.eat();
+
+    }
+}

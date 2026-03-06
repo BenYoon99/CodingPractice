@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.lang.*;
+import java.io.*;
+
+/*4. ArrayList 기초 (Lv.1 마지막 관문)
+자, 이제 이등병 코스의 마지막 문제입니다. ArrayList는 상어님이 앞으로 코딩 테스트나 실무에서 가장 많이 쓰게 될 **'자바의 핵심 컬렉션'**입니다.
+
+문제: String 타입을 담는 ArrayList를 생성하십시오.
+
+좋아하는 음식 이름 3개를 add() 하십시오.
+
+**향상된 for문(Enhanced for-loop)**을 사용하여 리스트에 담긴 모든 음식을 "내가 좋아하는 음식: OOO" 형식으로 출력하십시오.*/
+
+
+class Main {
+    public static void main(String[] args) {
+        ArrayList <String> foods = new ArrayList<>();
+        foods.add("짜장면");
+        foods.add("탕수육");
+        foods.add("짬뽕");
+
+        for(String f: foods){
+            System.out.println("내가 좋아하는 음식: "+f);
+        }
+    }
+}

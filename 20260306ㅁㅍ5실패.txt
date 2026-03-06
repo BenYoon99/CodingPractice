@@ -1,0 +1,49 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*5. 추상 클래스와 생성자 활용 (Abstract Class)문제: 추상 클래스 Shape를 만드십시오.필드: String color
+생성자: color 값을 매개변수로 받아 필드를 초기화합니다.
+    추상 메서드: abstract double calculateArea() (도형마다 넓이 구하는 법이 다르니 본체는 비워둡니다.)
+    자식 클래스: Circle (상속 필수)필드: int radius (반지름)생성자: color와 radius를 모두 받습니다. 
+    color는 부모 생성자(super)를 호출하여 초기화하고, 
+    radius는 직접 초기화하십시오.
+    메서드 구현: calculateArea()를 오버라이딩하여 원의 넓이($반지름 \times 반지름 \times 3.14$)를 리턴하십시오.*/
+
+
+abstract class Shape {
+    String color;
+    
+    Shape(String color){
+        this.color=color;
+    }
+    abstract double calculateArea();
+    
+} 
+
+class Circle extends Shape {
+    int radius;
+    double nulbi;
+    Circle(String color,int radius){
+        //여기서 궁금한건 color super 안쓰고 그냥 이렇게 받아도됨?
+        super(color);
+        this.radius=radius;
+        
+    }
+    @Override
+    
+    public double calculateArea(){
+        nulbi= radius*radius*3.14;
+        return nulbi;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle("빨간색",5);
+        circle.calculateArea();
+        
+        
+        
+    }
+}
