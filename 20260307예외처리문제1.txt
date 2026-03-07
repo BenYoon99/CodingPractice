@@ -1,0 +1,26 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[초급 1] 0으로 나누기 (ArithmeticException)
+문제: int a = 10, b = 0; 준비. a / b를 시도하고 사고가 나면 "상어님, 0으로 나눌 수 없습니다!" 출력.*/
+
+class Main {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 0;
+        int result;
+        try{
+            System.out.println("산수중입니다");
+            result = (a/b);
+            
+        }
+        catch(ArithmeticException e){
+            System.out.println("어떠한수도 0으로 나눌수없습니다");
+            System.out.println("다시 시도해주세요 에러내용은 : "+e.getMessage());
+        }
+        finally{
+            System.out.println("고생하셨습니다");
+        }
+    }
+}
