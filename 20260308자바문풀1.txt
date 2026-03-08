@@ -1,0 +1,40 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 [최종 보스전] 상어님의 '자바 마스터' 인증 미션
+미션 1: 토익 만점 방지 시스템 (사용자 정의 예외)
+상황: 토익 점수 입력 프로그램을 만듭니다. 990점을 넘기면 "사고"가 나야 합니다.
+
+조건: 1.  InvalidToeicException 클래스를 만드세요 (RuntimeException 상속).
+2.  main 메서드 안에서 int score = 1000;을 선언하세요.
+3.  try 안에서 if문을 사용해 점수가 990보다 크면 throw 키워드로 예외를 직접 던지세요.
+4.  catch에서 이 예외를 잡고 "상어님, 토익은 990점이 만점입니다!"라고 출력하세요.*/
+
+
+class InvalidToeicException extends RuntimeException {
+        InvalidToeicException(String errorName){
+            super(errorName);
+        }
+}   
+class Main {
+    public static void main(String[] args) {
+        int score = 1000;
+        try{
+            if(score>990){
+                throw new InvalidToeicException("990점이상의 점수는 존재가 불가능합니다");
+            }
+            
+        }
+        catch(InvalidToeicException e){
+
+            System.out.println("에러가 발생하였습니다 에러내용은: "+e.getMessage());
+            System.out.println("토익점수는 990점을 넘을수없습니다 입력칸으로 다시 이동후 입력해주세요");
+            
+        }
+        finally{
+            System.out.println("토익응시와 점수입력까지 고생많으셨습니다");
+            
+        }
+    }
+}

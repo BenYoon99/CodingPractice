@@ -1,0 +1,17 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Student {
+    int age;
+    Student(int age) {
+        this.age=age;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
