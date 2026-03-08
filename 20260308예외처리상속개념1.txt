@@ -1,0 +1,252 @@
+// 개념 학습
+
+
+
+자바 예외처리 -수동 사고 유발
+
+
+1. throw
+
+
+사고를 수동으로 try 문내에서 일으키고싶다면
+그럼 throw 로 일으키면된다.
+
+예 토익 990점이 최대치임
+근데 1000점시 
+이건 예외임
+
+이 예외의 경우를
+일부러 설정해서 
+catch로 던져줄수있다
+수동 사고 유발
+
+구성 
+
+throw new 예외클래스명 ("에러메시지");
+
+여기서 왜 new 가 쓰이냐 할수있고
+예외클래스명은 뭐냐할수있는데
+우리가 자바에서 쓰는 예외는 객체다
+사고가 났다는 증거물이기에 객체다
+고로 new로 땅을 파주고 그 해당 예외클래스명을 선언과 동시에 catch로 던져버리면된다
+
+
+catch( 너가 방지하고싶은 예외 클래스명   이름표 ) 
+
+이경우 너는 너가 try 구문내 구동중 방지하고싶은 예외 클래스명을 적고
+해당 실행중 너가 방지하고싶은 예외발생시 catch문 내부의 대응문을  저렇게 진행해준다.
+
+여기서 throw로 굳이 수동 예외 유발을 하지않아도
+미리 막는것이기에 저기에 해놓을수있는것이다.  
+
+
+
+
+
+2. 자바 예외들은 객체다?
+
+
+예외들은 전부다 실재하는 객체들이며( 클래스)
+
+해당 클래스들중 대부분 일반적인 예외 클래스들
+
+NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException, 그리고 상어님이 상속받은 RuntimeException
+이들은 굳이 import할필요없이 그냥 자바 기본패키지 내부에 존재한다.
+
+고로 util에서  
+ArrayList 나 Scanner 처럼 
+import 할필요 xx
+ 
+java.lang에 자바 기본패키지로 존재한다.
+
+나머지 예외들의 존재처 
+
+java.io: 파일 읽고 쓰다 사고 날 때 (IOException)
+
+java.sql: 데이터베이스 만지다 사고 날 때 (SQLException)
+
+java.util: 스캐너나 컬렉션 쓰다 사고 날 때 (InputMismatchException)
+
+특징: 얘네는 쓰려면 상단에 import를 박아줘야 합니다.
+ like ArrayList 사용시
+
+
+
+
+
+3. 상속관계간 상속의 범위 구분?
+
+
+3-1 상속이 되는것
+
+알다싶이
+
+
+필드 (변수들)
+
+
+메서드 (함수들)
+
+
+3-2 상속이 안되는것들
+
+생성자
+애초에 생성시 자기 이름과 같은 생성자를 파잖아 그게 설계도가 되는거고 추후 인스턴스 생성시의
+근데 부모의 이름은 자식클래스와 이름이 다른데 그럼 
+생성자를 어떻게 같이 물려받겠어
+자식은 자기이름의 생성자를 파야지 
+그럼 여기서 생긴 궁금증은 // 부모와 자식의 이름이 같은 클래스로 존재하며 서로 상속관계일수있나? ex ) Family extends Family 
+
+
+대답: 절대로 안된다 
+그렇게되면 자기가 자기를 상속하는 구조 - 순환상속구조라
+추후 코드파악이 어렵고 에러가 발생한다.
+
+
+private 멤버들 // 여기도 public private 구분을 자세히 공부한게아니라( 데이터구조 ) 잘 모르겟어 .. 
+ 
+초기화블록 // 여기는 잘모르겟어 
+
+
+
+4. 기본 상속관계간 상속자 super 와 예외클래스 상속관계간 상속자 super의 기능의 차이
+
+super의 기능은
+
+
+여기서 부모 -자식 간의 상속관계를 편의상 본점 - 분점 관계로 이해하겠다.
+
+본점 상속자의 기능을 따라라 ! 이다
+
+고로 
+
+4-1 예외클래스 상속관계간 super기능
+
+
+class InvalidToeicException extends RuntimeException {
+        InvalidToeicException(String errorName){
+            super(errorName);
+        }
+}   
+class Main {
+    public static void main(String[] args) {
+        int score = 1000;
+        try{
+            if(score>990){
+                throw new InvalidToeicException("990점이상의 점수는 존재가 불가능합니다");
+            }
+            
+        }
+        catch(InvalidToeicException e){
+
+            System.out.println("에러가 발생하였습니다 에러내용은: "+e.getMessage());
+            System.out.println("토익점수는 990점을 넘을수없습니다 입력칸으로 다시 이동후 입력해주세요");
+            
+        }
+        finally{
+            System.out.println("토익응시와 점수입력까지 고생많으셨습니다");
+            
+        }
+    }
+}
+
+여기서  super(errorName); 
+이 되어있는데
+이상하게 생각할만하다
+분명 가시적으로 보이는 부모클래스 RuntimeException이 없는데
+뭐지 그럼 이럴것이다
+하지만 부모클래스 RuntimeException은 예외 클래스로서 
+Java.lang 에 기본패키지로 존재하며
+그 내부에  public RuntimeException () 으로 생성자마저 파져있다
+그 내부에는 detailMessage가 존재하기에
+해당 분점의 생성자의 매개변수명이 무엇이든지간에
+
+
+그 매개변수명이 가리키는 매개변수값을 
+
+ 
+
+super을 사용해
+
+본점에 방문 // RuntimeException 클래스
+
+해당 생성자에 도착
+
+생성자 규칙대로 해당 detailMessage라는 매개변수로 받아 
+super내부의 detailMessage 필드변수값에 저장한다.
+그렇게되면 
+RuntimeException 타입의 참조변수로 해당 인스턴스 조종 , 해당 변수값 소환시 해당 값 나온다.
+
+
+4-2 일반적인 상속관계내 
+
+
+super의 기능은
+
+부모의 기능 
+
+
+*제미나이제작코드 ( 이걸로 이해해보자!)
+// 1. 본사의 매뉴얼 (부모 클래스)
+class Student {
+    String schoolName; // 본사 창고
+
+    Student(String schoolName) { // 본사 매뉴얼: "받은 건 내 창고(this)에 넣어라"
+        this.schoolName = schoolName; 
+    }
+}
+
+// 2. 지점의 행동 (자식 클래스)
+class KnuaStudent extends Student {
+    KnuaStudent(String name) {
+        super(name); // 👈 상어님이 말씀하신 "본사 매뉴얼을 따라라!"
+        // 이 한 줄이 실행되는 순간, 본사의 'this.schoolName = schoolName;'이 실행됩니다.
+    }
+}
+ 
+
+knuaStudent 클래스내부 생성자에서 
+super 사용하자마자
+name 필변값은 
+본점의 규칙을 따라야함 
+본점의 규칙이뭔데?
+
+본점의 규칙 <- this.schoolName = schoolName         이 클래스의 필드변수 스쿨네임값은 매개변수값 스쿨내임으로 대입한다
+그렇게 내가 경북대라는 이름을 갖고 태어나면 
+부모 student의 스쿨내임 창고에는 경북대 저장되고
+그 스쿨내임값인 경북대를 내가 상속받으니 knuaStudnet도 필드값으로 경북대 갖으면서
+this.schoolName=name;이 되는것이다
+
+
+고로 
+
+
+일반적인 상황에서는
+
+schoolName = 경북대;
+라는값을
+
+물려받고
+
+물려받은뒤 
+
+생성자 내부에
+super로 
+안보이지만
+
+this.schoolName= name;
+이 되어있는거다
+본점의 규격을따르는거니까
+
+고로 완벽히 된거지
+
+내가 자식 타입의 인스턴스 생성때 ( "경북대") 박고
+태어나면
+
+해당 자식에게 schoolName 필드변수값이 경북대가 되는거고
+그렇게 태어나는 생성자 역할이 되는거니까 
+그러니 해당 자식타입참조변수.schoolName으로 해당 이름값 확인하면
+
+경북대 라는 출력값이 나오겠지 
+
+이해 완료 !   
