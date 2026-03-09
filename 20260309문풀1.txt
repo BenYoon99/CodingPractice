@@ -1,0 +1,31 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[초급 1] 변수와 연산: "편입 합격 총점 계산기"
+상어님의 현재 상황을 코드로 구현해 봅시다.
+
+문제: 공인영어 점수(double), 전적대 성적(double), 전공 시험 점수(double) 세 개의 변수를 선언하고 값을 할당한 뒤, 
+이 세 점수의 합계와 평균을 출력하는 프로그램을 작성하세요.
+
+핵심: 데이터 타입 선택과 기본적인 산술 연산자 사용법.*/
+
+
+class Main {
+    public static void main(String[] args) {
+        double engScore;
+        double uniScore;
+        double majorScore;
+
+        double sum;
+        double average;
+        engScore = 985;
+        uniScore = 1.9;
+        majorScore = 85;
+
+        sum=(engScore+ uniScore + majorScore);
+        
+        average = ((engScore+ uniScore + majorScore)/3);
+        System.out.println("합계는 : "+sum+"성적평균은: "+average);
+    }
+}

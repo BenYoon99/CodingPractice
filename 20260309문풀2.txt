@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+
+/*[초급 2] 조건문: "합격 컷 판독기"
+상황: 상어님의 이번 학기 목표 점수가 score 변수에 들어갑니다.
+
+문제: int score = 88; (예시) 일 때, 아래 조건에 맞춰 출력하세요.
+
+85점 이상: "안정권입니다. 경북대 과잠 사이즈 고르십시오."
+
+70점 이상 85점 미만: "면접과 자소서에 올인해야 합니다."
+
+70점 미만: "윤상병에게 기강 잡히고 다시 공부하십시오."
+
+핵심: if - else if - else 구조 완성.*/
+
+
+class Main {
+    public static void main(String[] args) {
+        int score;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("성적을 입력해주세요");
+        score = sc.nextInt();
+        
+        if(score>=85){
+            System.out.println("안정권입니다. 경북대 과잠 사이즈 고르십시오.");
+            
+        }
+        else if(score>=70){
+            System.out.println("면접과 자소서에 올인해야 합니다");
+        }
+        else {
+            System.out.println("윤상병에게 기강 잡히고 다시 공부하십시오");
+        }
+        
+        
+        
+        
+        sc.close();
+    }
+}

@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[초급 3] 반복문: "만점 세뇌 교육"
+문제: for 문을 사용하여 아래 문구를 1번부터 10번까지 출력하세요.
+
+출력 예: 1. 나는 2개월 안에 토익 만점을 찍는다!
+2. 나는 2개월 안에 토익 만점을 찍는다!
+... (10번까지)*/
+
+class tool{
+    String sentence;
+    tool(String sentence){
+        this.sentence = sentence;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+            tool again = new tool("나는 2개월 안에 토익 만점을 찍는다");
+            tool [] forAgain = new tool[10];
+            forAgain [0] = again;
+            forAgain [1] = again;
+            forAgain [2] = again;
+            forAgain [3] = again;
+            forAgain [4] = again;
+            forAgain [5] = again;
+            forAgain [6] = again;
+            forAgain [7] = again;
+            forAgain [8] = again;
+            forAgain [9] = again;
+            for (tool a :forAgain){
+                System.out.println(a.sentence);
+            }
+        
+        
+    }
+}
