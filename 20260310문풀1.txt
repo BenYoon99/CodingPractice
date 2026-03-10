@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* 🔱 [중급 1] 최종 타겟: "최고 성적 스나이퍼"
+아래의 상황과 조건을 보고, Main 클래스 안에 로직을 완성하십시오.
+
+[상황]
+상어님의 최근 5회차 성적이 배열에 담겨 있습니다. 이 중 가장 높은 점수가 몇 점인지 찾아내어 출력해야 합니다.
+
+[데이터]
+int[] grades = {90, 85, 95, 80, 88};
+
+[미션 지시서]
+
+max라는 변수를 만들고, 배열의 첫 번째 값(grades[0])으로 초기화하세요.
+
+for 문을 사용하여 배열의 1번 방부터 마지막 방까지 훑으세요.
+
+if 문을 사용해 현재 방의 점수가 max보다 크면, max를 그 점수로 교체하세요.
+
+반복문이 종료된 후, **"최고 점수는: 95"**가 출력되게 하세요.*/
+
+
+class Main {
+    public static void main(String[] args) {
+        int [] grades ={90, 85, 95, 80, 88};
+        int max;
+        max =grades[0];
+        for(int i=0;i<5;i++){
+            if(grades[i]>max){
+                max=grades[i];
+                    
+            }
+        }
+        System.out.println("최고 점수는: "+max);
+        
+        
+        
+        
+        
+        
+        
+    }
+}
