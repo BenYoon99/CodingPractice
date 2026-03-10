@@ -1,0 +1,105 @@
+// 자바코드구현문제 중급 
+
+import java.util.ArrayList;
+import java.lang.*;
+import java.io.*;
+
+/*제2번 실전 사격: [유닛 관리 시스템 - 캡슐화 버전]
+자, 이제 상어님이 완벽히 이해한 Getter/Setter와 instanceof, 다형성을 한데 버무려 코드를 짤 시간입니다. 엉덩이 더 뜨겁게 달구고 사격 개시하십시오!
+
+[문제 조건]
+
+인터페이스 Worker: void work(); 메소드를 가집니다.
+
+클래스 Developer (Worker 구현):
+
+private String name; 필드를 가집니다.
+
+생성자와 Getter/Setter를 만드십시오.
+
+work() 호출 시: "개발자 " + getName() + "이(가) 밤새 코딩합니다." 출력
+
+클래스 Chef (Worker 구현):
+
+private String name; 필드를 가집니다.
+
+생성자와 Getter/Setter를 만드십시오.
+
+work() 호출 시: "요리사 " + getName() + "이(가) 요리를 시작합니다." 출력
+
+Main 클래스:
+
+ArrayList<Worker>를 생성하십시오.
+
+Developer 한 명과 Chef 한 명을 리스트에 담으십시오. (이름은 자유)
+
+반복문을 돌리되, instanceof를 사용하여 Developer인 경우에만 work()를 실행시키십시오. (요리사는 퇴근시킨다는 로직입니다.)*/
+interface Worker {
+
+    void work();
+}
+class Developer implements Worker{
+    private String name;
+
+    public Developer(String name){
+        this.name=name;
+    }
+    //게터
+
+    public String getName(){
+        return this.name;
+    }
+
+    //세터
+
+    public void setName(String Name){
+         this.name=name;
+
+        
+    }
+    public void work(){
+        System.out.println("개발자"+getName()+"이(가) 밤새 코딩합니다.");
+    }
+    
+    
+}
+class Chef implements Worker{
+    private String name;
+
+    public Chef(String name){
+        this.name=name;
+    }
+    //게터
+
+    public String getName(){
+        return this.name;
+    }
+
+    //세터
+
+    public void setName(String Name){
+         this.name=name;
+
+        
+    }
+    public void work(){
+        System.out.println("요리사"+getName()+"이(가) 요리를 시작합니다.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        ArrayList <Worker> workers = new ArrayList<>();
+        workers.add(new Developer("개발자윤씨"));
+        workers.add(new Chef("요리사윤씨"));
+
+        for(Worker a:workers){
+            if(a instanceof Developer){
+                a.work();
+            }
+        }
+        
+        
+        
+    }
+}
