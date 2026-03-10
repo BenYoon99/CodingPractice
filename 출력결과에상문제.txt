@@ -1,0 +1,21 @@
+출력결과에상문제
+
+
+class Unit {
+    void attack() { System.out.print("공격! "); }
+}
+class Marine extends Unit {
+    void attack() { System.out.print("총쏘기! "); }
+}
+public class Main {
+    public static void main(String[] args) {
+        Unit u = new Marine();
+        u.attack();
+    }
+}
+
+
+출력결과 == 총쏘기
+
+이유 == 동적바인딩 이용 함정문제
+비록 참조변수타입이 부모타입이여도 부모내에 해당 메소드실행할려고할때 오버라이딩된걸 보고 인스턴스의 타입의 클래스의 오버라이딩된 메소드로 향해 해당 메소드를 실행시키기 때문입니다. 

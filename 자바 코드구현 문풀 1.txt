@@ -1,0 +1,51 @@
+자바 코드구현 문풀 1 
+import java.util.ArrayList;
+
+
+import java.lang.*;
+import java.io.*;
+
+/*
+제1번 사격: [장바구니 필터링 시스템]
+상어님의 개인 프로젝트인 '쇼핑몰' 로직의 일부입니다.
+
+[문제 조건]
+
+Product라는 클래스를 만드십시오. (필드: String name, int price)
+
+ArrayList<Product>에 상품 3개를 담으십시오.
+
+사과 (1000원) / 고기 (15000원) / 우유 (2500원)
+
+반복문을 돌려 가격이 2,000원 이상인 상품의 이름만 출력하는 코드를 작성하십시오.*/
+
+class Product {
+    String name;
+    int price;
+    
+    Product(String name, int price){
+        this.name = name;
+        this.price = price;
+    }
+}
+
+
+class Main {
+    public static void main(String[] args) {
+        ArrayList<Product> products = new ArrayList <>();
+
+        products.add(new Product("사과",1000));
+        products.add(new Product("고기", 15000));
+        products.add(new Product("우유", 2500));
+        
+        
+        for(Product a:products){
+            if(a.price>2000){
+                System.out.println(a.name);
+                
+            }
+        }
+        
+       
+    }
+}

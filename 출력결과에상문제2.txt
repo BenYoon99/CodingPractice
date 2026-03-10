@@ -1,0 +1,46 @@
+출력결과에상문제2
+
+
+
+
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+list.add(30);
+
+int sum = 0;
+for(int i=0; i < list.size(); i++) {
+    if(list.get(i) > 15) {
+        sum += list.get(i);
+    }
+}
+System.out.println(sum);
+
+
+arraylist에 10 20 30 있음 
+
+0 
+
+20
+
+50
+
+50
+
+결과값 ==50
+
+
+이유 == ArrayList에 10 20 30 넣었고
+그 뒤 sum 변수파주고 초기값 0 넣어줬음
+
+그뒤 if 문으로 i사이즈보다 하나 적게 조건식 박아줌 근데 모두 체크하는거임 왜? i 는 0이니까  0 1 2하면 
+같음
+
+고로 다 체크하고 조건이
+
+해당 배열 방안에 값이 15이상 크면 sum 0 초기값에 더해주는건데
+20 30 은 크고 10은 작기에 10 안더해주고
+
+20 30 더해주면 50 
+
+고로결과는 50 
