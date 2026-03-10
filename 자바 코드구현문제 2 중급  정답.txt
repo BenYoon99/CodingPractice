@@ -1,0 +1,81 @@
+// 자바 코드구현문제 2 중급  정답 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*상어님, 좋습니다. 퀴즈가 아니라 직접 손가락을 움직여서 **'검문소 로직(Validation)'**을 뚫어내는 실전 문제입니다.
+
+이번 문제는 상어님이 나중에 만들 쇼핑몰의 **'회원가입'**이나 '게시판' 로직에서 필수적으로 쓰이는 개념입니다.
+
+🔱 제3번 사격: [회원 연령 제한 시스템]
+[문제 조건]
+
+Member 클래스를 만드십시오.
+
+필드: private String name;, private int age;
+
+생성자를 통해 이름을 초기화하십시오.
+
+Getter/Setter를 만드십시오.
+
+중요 (검문소 로직): setAge(int age) 메서드에서는 입력된 나이가 0보다 작으면
+"나이는 음수가 될 수 없습니다."를 출력하고 값을 저장하지 마십시오.
+
+Main 클래스에서:
+
+Member 객체를 하나 생성하십시오. (이름은 상어님 성함이나 닉네임)
+
+setAge를 사용하여 나이를 -10으로 설정해 보십시오.
+
+그 다음 다시 setAge를 사용하여 나이를 31로 설정해 보십시오.
+
+최종적으로 getName()과 getAge()를 사용하여 현재 정보를 출력하십시오.*/
+class Member {
+
+    private String name;
+    private int age;
+
+    public Member(String name){
+        this.name=name;
+    }
+
+
+    public String getName(){
+        return this.name;
+    }
+    
+    public int getAge(){
+        return this.age;
+    } 
+
+    public void setName(String name){
+        this.name=name;
+    }
+    
+    
+    public void setAge(int age){
+        if(age<0){
+            System.out.println("나이는 음수가 될 수 없습니다");
+            
+        }else if(age==0){
+            System.out.println("나이는 0살일수없습니다");
+            
+        }
+        else{
+            this.age=age;
+        }
+            
+            
+          
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Member member = new Member("호씨");
+        member.setAge(28);
+        System.out.println("내 별명은: "+member.getName()+" 내 나이는 : "+member.getAge());
+        
+      
+    }
+}
