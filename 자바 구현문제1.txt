@@ -1,0 +1,54 @@
+//자바 구현문제1 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*제4번 사격: [온도 조절 시스템]
+스마트홈 시스템의 일부입니다. 온도가 너무 높거나 낮으면 기기가 고장 날 수 있으니 Setter에서 막아줘야 합니다.
+
+[문제 조건]
+
+Thermostat 클래스를 만드십시오.
+
+필드: private double temperature;
+
+Getter/Setter를 만드십시오.
+
+검문소 로직: setTemperature 메서드에서 온도가 -50.0도 미만이거나 100.0도 초과인 경우, "위험 범위를 벗어난 온도입니다."를 출력하고 값을 저장하지 마십시오.
+
+Main 클래스에서:
+
+객체를 생성하고 처음 온도를 25.0으로 설정하십시오.
+
+setTemperature(150.0)을 호출하여 에러 메시지가 뜨는지 확인하십시오.+
+
+최종적으로 getTemperature()를 통해 현재 온도를 출력하십시오.*/
+
+class Thermostat {
+    private double temperature;
+
+        
+    Thermostat(double temperature){
+        this.temperature = temperature;
+
+    }
+    public double getTemperature(){
+        return this.temperature;
+    }
+    public void setTemperature(double temperature){
+        this.temperature = temperature;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Thermostat thermo = new Thermostat(25.0);
+        thermo.setTemperature(150.0);
+        
+        
+        System.out.println(thermo.getTemperature());
+    
+        System.out.println(thermo.getTemperature());
+        
+    }
+}

@@ -1,0 +1,66 @@
+// 자바 코드구현문제2 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 2. 제5번 사격: [비밀번호 보안 시스템]
+자, 4번에서 놓친 검문소 로직을 5번에서 완벽하게 복수해 봅시다. 이번엔 글자 수를 체크하는 겁니다!
+
+[문제 조건]
+
+User 클래스를 만드십시오. (필드: private String password;)
+
+생성자를 통해 초기 비밀번호를 설정하십시오.
+
+Getter/Setter를 만드십시오.
+
+검문소: setPassword에서 비밀번호 길이가 8자 미만이면 "비밀번호는 최소 8자 이상이어야 합니다." 출력 후 변경 중단.
+(힌트: password.length() < 8)
+
+Main에서:
+
+처음 비번을 "secure123"으로 생성.
+
+setPassword("1234") 시도 (에러 메시지 확인).
+
+setPassword("sharks2026!") 시도 (성공).
+
+최종 비밀번호 출력.*/
+
+class User {
+    private String password;
+
+    User(String password){
+        this.password = password;
+        
+    }
+
+    public String getPassword(){
+         return this.password;
+    }
+}
+    public void setPassword(String password){
+        if(this.password.length()<8){
+            System.out.println("비밀번호는 최소 8자 이상이어야 합니다.");
+        }
+        else{
+            this.password= password;
+            
+        }
+    }
+    
+class Main {
+    public static void main(String[] args) {
+        User user = new User("secure123");
+        user.setPassword("1234");
+        System.out.println(user.getPassword());
+
+        user.setPassword("sharks2026!");
+        System.out.println(user.getPassword());
+        
+        
+        
+        
+        
+    }
+}
