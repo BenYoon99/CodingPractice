@@ -1,0 +1,64 @@
+//자바 코드구현 3번문제 
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 제6번 사격: [자동차 속도 조절 시스템]
+자동차의 현재 속도를 관리하는 시스템입니다. 속도는 **음수(-)**가 될 수 없다는 상식적인 검문소를 세워봅시다.
+
+[문제 조건]
+
+Car 클래스를 만드십시오.
+
+필드: private int speed;
+
+Getter/Setter를 만드십시오.
+
+검문소: setSpeed에서 들어온 값이 0보다 작으면 "에러: 속도는 음수가 될 수 없습니다."를 출력하고 값을 저장하지 마십시오.
+
+Main 클래스에서:
+
+Car 객체를 하나 만드십시오.
+
+setSpeed(-50)을 호출해 보고 에러가 뜨는지 확인하십시오.
+
+setSpeed(80)을 호출해 보고 정상적으로 저장되는지 확인하십시오.
+
+최종적으로 getSpeed()를 통해 현재 속도를 출력하십시오.*/
+class Car{
+
+    private int speed;
+
+    Car(int speed){
+        this.speed = speed;
+        
+    }
+
+    public int getSpeed(){
+        return this.speed;
+        
+    }
+    public void setSpeed(int speed){
+        if(speed<0){
+            System.out.println("에러: 속도는 음수가 될 수 없습니다.");
+            
+        }
+        else{
+            this.speed = speed;
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Car car = new Car(1);
+        System.out.println(car.getSpeed());
+        
+        car.setSpeed(-50);
+        System.out.println(car.getSpeed());
+        
+        car.setSpeed(80);
+        System.out.println(car.getSpeed());
+    }
+}
