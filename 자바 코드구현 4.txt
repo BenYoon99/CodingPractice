@@ -1,0 +1,66 @@
+// 자바 코드구현 4 
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*제7번 사격: [은행 잔액 관리 시스템]
+은행 계좌의 잔액은 음수가 될 수 없으며, 출금(set)할 때 현재 잔액보다 
+큰 금액은 설정할 수 없게 막아야 합니다. (이번엔 좀 더 실감 나게 가봅시다.)
+
+[문제 조건]
+
+Account 클래스를 만드십시오.
+
+필드: private int balance;
+
+Getter/Setter를 만드십시오.
+
+검문소: setBalance에서 들어온 값이 현재 잔액(this.balance)보다 작으면 
+
+"에러: 잔액이 부족합니다."를 출력하고 값을 변경하지 마십시오.
+
+참고: 여기서는 Setter를 '새로운 잔액을 설정하는 용도'로 사용합니다.
+
+Main 클래스에서:
+
+처음 잔액을 10000으로 설정하십시오.
+
+setBalance(5000)으로 변경 시도 (성공해야 함).
+
+setBalance(20000)으로 변경 시도 (에러 메시지 출력되어야 함).*/
+
+class Account {
+    private int balance;
+
+}
+    Account(int balance){
+        this.balance=balance;
+    }
+    public getBalance(){
+        return this.balance;
+    }
+    public setBalance(int balance){
+        if(balance<this.balance){
+            System.out.println("에러: 잔액이 부족합니다");
+        }
+        else{
+            this.balance=balance;
+        }
+
+        
+        
+    }
+최종 잔액을 출력하십시오.
+class Main {
+    public static void main(String[] args) {
+       `Account account = new Account(10000);
+        account.setBalance(5000);
+        account.setBalance(20000);
+        System.out.println(account.getBalance());
+       
+        
+        System.out.println("Hello world!");
+    }
+}
