@@ -1,0 +1,93 @@
+//결과예상문제 3개 
+
+
+public class Quiz1 {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i <= 5; i++) {
+            if (i % 2 == 0) {
+                sum += i;
+            } else {
+                sum -= i;
+            }
+        }
+        System.out.println(sum);
+    }
+}
+
+
+// 1 2 3 4 5            시행횟수 ==5         2의 배수시      i가 ㅇㅇ 그럼 sum에 i 대입하고 저장 아니면 sum에 i 빼고 저장         2 4   1 3 5 빼기        0  -1         1  -1 3 0  -5 
+
+//  0         -1    1    -2     2 -3 
+
+
+출력값 == -3
+
+
+
+
+
+public class Quiz2 {
+    public static void main(String[] args) {
+        String[] fruits = {"Apple", "Banana", "Cherry"};
+        int index = fruits[1].length() - 5; 
+        System.out.println(fruits[index]);
+    }
+}
+
+
+
+//  2번째니까 Banana       이경우 길이는 6 -5 면 1         fruits 1 이니까 banana
+
+
+출력값 ==Banana 
+
+
+
+
+
+
+
+class Parent {
+    String name = "Parent";
+    Parent() {
+        System.out.print("P1 ");
+    }
+    Parent(String name) {
+        this.name = name;
+        System.out.print("P2 ");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        super("Kildong");
+        System.out.print("C1 ");
+    }
+    Child(String name) {
+        System.out.print("C2 ");
+    }
+}
+
+public class Quiz3 {
+    public static void main(String[] args) {
+        new Child();
+        new Child("Gildong");
+    }
+}
+
+
+//  parent---- child         이고                    child 내부에 name 받앗고 해당내용이 Kildong으로 채워짐 
+// C1  그리고 이름 내역이 kildong으로 채워짐        
+// C2  Gildong으로 채워짐 
+
+
+
+
+출력값 == P1 C1 P2  C2 
+
+
+오답 
+
+생성자 오류  
+추후 생성자 추가 공부 
