@@ -1,0 +1,25 @@
+// 20260316 자바 수업중 실습문제 1 
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+
+
+
+
+class Main {
+    public static void main(String[] args) {
+        int days =10;
+
+        int speed =20;
+
+        
+        
+        
+        System.out.println(days+" "+speed);
+    }
+}
