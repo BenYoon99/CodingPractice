@@ -1,0 +1,85 @@
+//20260318 자바 실습문제1문제 풀이 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 [초급 문제] 동물원 관리 시스템 (기초 상속과 인터페이스)
+목표: 상속을 통해 공통 기능을 묶고, 인터페이스로 특정 행동을 강제한다.
+ 
+Interface Soundable: void makeSound(); 메소드를 가집니다.
+
+Abstract Class Animal:
+
+필드: String name (private)
+
+생성자: 이름을 초기화합니다.
+
+메소드: String getName() (Getter)
+
+Sub Classes: Dog, Cat 클래스는 Animal을 상속받고 Soundable을 구현합니다.
+
+makeSound() 호출 시 강아지는 "멍멍!", 고양이는 "야옹!"을 출력합니다.
+
+Main Class: 강아지와 고양이객체를 생성하고, 이름을 출력한 뒤 소리를 내게 하십시오.*/
+
+
+interface Soundable {
+
+    void makeSound();
+    
+}
+
+abstract class Animal implements Soundable {
+    private String name;
+
+    Animal(String name){
+        this.name = name;
+        
+    }
+    public String getName(){
+        return name;
+    }
+}
+
+class Dog extends Animal {
+
+    Dog(String name){
+        super(name);
+    }
+    @Override
+
+    public void makeSound(){
+        System.out.println(getName()+"멍멍!");
+    }
+}
+
+class Cat extends Animal {
+
+    Cat(String name){
+        super(name);
+    }
+
+    @Override 
+
+    public void makeSound(){
+        System.out.println(getName()+"야옹!");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Animal cat = new Cat("고양이");
+        Animal dog = new Dog("강아지");
+
+        Animal [] animals = new Animal[2];
+        animals [0] = cat;
+        animals [1] = dog;
+
+        for(int i=0;i<2;i++){
+            animals[i].makeSound();
+                    
+        }
+                
+        
+        
+    }
+}
