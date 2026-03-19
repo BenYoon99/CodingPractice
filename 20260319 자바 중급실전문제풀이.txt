@@ -1,0 +1,96 @@
+//20260319 자바 중급실전문제풀이 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+interface NetworkDevice {
+
+    void sendData (String data);
+
+}
+abstract class BaseDevice {
+
+    private String ipAddress ;
+    private String macAddress ;
+
+    BaseDevice(String ipAddress,String macAddress){
+        this.ipAddress = ipAddress;
+        this.macAddress = macAddress;
+    }
+    public void showInfo(){
+        System.out.println((this.ipAddress)+(this.macAddress));
+       
+    }
+    public String getIp(){
+        return this.ipAddress;
+    }
+    public String getMac(){
+        return this.macAddress;
+    }
+}
+
+/*[중급 문제 1] 네트워크 장비 시뮬레이터 (다형성과 캡슐화)
+목표: 공통 주소 정보를 가진 부모 클래스를 설계하고, 각 계층 장비의 전송 방식을 다형성으로 구현한다.
+
+Interface NetworkDevice:
+
+void sendData(String data); 메소드
+
+Abstract Class BaseDevice:
+
+필드: String ipAddress, String macAddress (private으로 설정)
+
+생성자: 두 주소를 인자로 받아 초기화
+
+메소드: public void showInfo() (현재 장비의 IP와 MAC을 출력)
+
+메소드: public String getIp() / public String getMac() (자식들이 쓸 수 있게 Getter 제공)
+
+Concrete Classes:
+
+Router: BaseDevice 상속 + NetworkDevice 구현. sendData 호출 시 "L3 패킷 전송: [IP주소]로 [데이터]를 보냅니다." 출력.
+
+Switch: BaseDevice 상속 + NetworkDevice 구현. sendData 호출 시 "L2 프레임 전송: [MAC주소]로 [데이터]를 보냅니다." 출력.
+
+Main Class:
+
+NetworkDevice 타입 배열을 만들고 Router와 Switch를 하나씩 담으십시오.
+
+반복문을 통해 showInfo()를 부르고 sendData("합격 자소서")를 실행하십시오.*/
+
+class Router extends BaseDevice implements NetworkDevice {
+
+    Router(String ipAddress, String macAddress){
+        super(ipAddress,macAddress);
+    }
+    
+    @Override
+
+    public void sendData(String data ){
+        System.out.println("L3 패킷 전송 : [IP주소]로 [데이터]를 보냅니다");
+        
+    }
+}
+class Switch extends BaseDevice implements NetworkDevice {
+
+    Switch(String ipAddress, String macAddress){
+        super(ipAddress,macAddress);}
+    @Override
+
+    public void sendData(String data){
+        System.out.println("L2 프레임 전송 : [MAC주소]로 [데이터를] 보냅니다");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        NetworkDevice router = new Router("1010","2020");
+        NetworkDevice switch2 = new Switch("3030","4040");
+        NetworkDevice [] networks = new NetworkDevice [2];
+        networks [0] = router;
+        networks [1] = switch2;
+        for(NetworkDevice n : networks){
+            ((BaseDevice)n).showInfo();
+            n.sendData("합격 자소서");
+        }
+    }
+}

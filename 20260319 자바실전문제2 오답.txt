@@ -1,0 +1,87 @@
+//20260319 자바실전문제2 오답 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🔱 [중급 문제 2] 데이터 캡슐화 프로세스 (계층별 포장)
+1번 문제를 정복했으니, 이제 오늘 배운 '상자 속의 상자' 개념을 코드로 완성할 차례입니다. 1번보다 짧지만 논리가 중요합니다.
+
+목표: 데이터가 4계층에서 3계층으로 내려가며 포장되는 과정을 구현하십시오.
+
+Interface Encapsulatable:
+
+String wrap(String innerData); 메소드 (데이터를 받아서 헤더를 붙여 문자열로 리턴)
+
+Classes:
+
+TransportLayer: Encapsulatable 구현. wrap 호출 시 "[TCP_Header] + " + innerData 리턴.
+
+NetworkLayer: Encapsulatable 구현. wrap 호출 시 "[IP_Header] + " + innerData 리턴.
+*/
+interface Encapsulatable {
+
+    String wrap(String innerData);
+    
+}
+class Structure implements Encapsulatable{
+    String steps;
+    @Override
+
+    public String wrap(String innerData);
+
+    
+}
+class TransportLayer extends Structure  {
+    String TCP_Header;
+    
+    @Override
+
+    public String wrap(String innerData){
+        this.steps= (TCP_Header + innerData);
+        return this.steps;
+    
+    } 
+}
+class NetworkLayer extends Structure{
+    String IP_Header;
+
+    @Override
+
+    public String wrap(String innerData){
+        
+        this.steps = (IP_Header + innerData);
+        return this.steps;
+    }
+
+}
+
+/*Main Class:
+
+String myData = "Hello World"; 선언.
+
+순서 엄수: 먼저 4계층(TransportLayer) 객체로 myData를 감싸서 step1 변수에 담으십시오.
+
+그 step1 결과물을 다시 3계층(NetworkLayer) 객체로 감싸서 finalPacket 변수에 담으십시오.
+
+최종 결과를 출력하십시오.
+
+출력 예상: 최종 패킷: [IP_Header] + [TCP_Header] + Hello World*/
+class Main {
+    public static void main(String[] args) {
+        String myData = "Hello world";
+        Structure netLayer = new NetworkLayer();
+        Structure transLayer = new TransportLayer();
+        netLayer.IP_Header = "1010";
+        transLayer.TCP_Header = "2020";
+        // step 1 4계층 부터
+
+        transLayer.wrap("Hello world");
+       
+        // step 2 3계층 
+        netLayer.wrap(transLayer.steps);
+
+        //결과값 
+        System.out.println(netLayer.steps);
+        
+    }
+}
