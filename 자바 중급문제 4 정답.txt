@@ -1,0 +1,57 @@
+// 자바 중급문제 4 정답 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[Mission] 계좌 관리 시스템 (Simple Bank Account)
+자판기 문제보다 구조는 단순하지만, **'데이터 보호'**라는 아주 중요한 개념이 들어갑니다.
+
+[요구사항]
+
+Account 클래스 생성:
+
+필드: private int balance (잔액은 외부에서 직접 수정할 수 없어야 합니다.)
+
+생성자: 초기 잔액을 설정합니다.
+
+메서드 구현:
+
+void deposit(int amount): 입금 기능. (단, 입금액이 0보다 클 때만 잔액을 늘립니다.)
+
+void withdraw(int amount): 출금 기능. (단, 잔액이 부족하면 "잔액이 부족합니다"를 출력하고, 충분하면 잔액을 차감합니다.)
+
+int getBalance(): 현재 잔액을 확인하는 기능.
+
+Main 클래스에서 실행:
+
+계좌 객체를 하나 만들고, 10,000원을 입금한 뒤 5,000원을 출금해 보세요. 마지막에 남은 잔액을 출력하세요.*/
+
+class Account {
+
+    private int balance;
+    Account(int balance){
+        this.balance = balance;
+        }
+    void deposit(int amount){
+        balance += amount;
+        
+    }
+    void withdraw(int amount){
+        balance -= amount;
+    }
+    int getBalance(){
+        return this.balance;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+       Account account = new Account(10000);
+       account.withdraw(2000);
+       account.deposit(3000);
+        
+        
+       System.out.println(account.getBalance());
+        
+    }
+}
