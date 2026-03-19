@@ -1,0 +1,90 @@
+// 자바 중급문제 풀이 3 오답 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[Mission] 객체지향 자판기(Vending Machine) 시스템 구현
+[요구사항]
+
+추상 클래스 Product 생성: 모든 음료의 기본이 되는 클래스입니다.
+
+공통 필드: String name, int price
+
+추상 메서드: void consume() (음료를 마실 때 각기 다른 메시지 출력)
+
+상속을 통한 하위 클래스 구현: Product를 상속받는 최소 3개의 클래스를 만드세요.
+
+예: Coke, Tea, EnergyDrink
+
+각 클래스는 consume()을 오버라이딩하여 고유한 출력문(동적 바인딩 확인용)을 가집니다.
+
+VendingMachine 클래스 구현:
+
+Product[] inventory: 다양한 음료 객체들을 담는 배열 (다형성 활용)
+
+void pushButton(int index): 사용자가 번호를 눌렀을 때 해당 인덱스의 음료를 꺼내고, 그 음료의 consume() 메서드를 호출합니다.*/
+abstract class Product {
+
+    String name;
+    int price;
+
+    abstract void consume();
+
+    }
+
+class Coke extends Product {
+
+    @Override
+
+    void consume(){
+        System.out.println("drinking coke ");
+        
+    }
+}
+class Tea extends Product {
+
+    @Override
+
+    void consume(){
+        System.out.println("Drinking tea");
+        
+    }
+}
+class EnergyDrink extends Product {
+
+    @Override
+
+    void consume(){
+        System.out.println("drinking Energydrink");
+        
+    }
+}
+/*각 클래스는 consume()을 오버라이딩하여 고유한 출력문(동적 바인딩 확인용)을 가집니다.
+
+VendingMachine 클래스 구현:
+
+Product[] inventory: 다양한 음료 객체들을 담는 배열 (다형성 활용)
+
+void pushButton(int index): 사용자가 번호를 눌렀을 때 해당 인덱스의 음료를 꺼내고, 그 음료의 consume() 메서드를 호출합니다.*/
+class Main {
+    public static void main(String[] args) {
+        Product [] inventory = new product[3];
+        Product coke =new Coke();
+        Product tea = new Tea();
+        Product energydrink = new EnergyDrink();
+        coke.name="coca";
+        tea.name ="boba";
+        energydrink.name = "monster";
+        inventory [0]= coke;
+        inventory [1] = tea;
+        inventory [2] = energydrink;
+
+        void pushButton(int index){
+            System.out.println(inventory[index].name+"을 구매하셨습니다 해당 음료가 배출됩니다");
+            inventory[index].consume();
+        }
+        
+        
+    }
+}
