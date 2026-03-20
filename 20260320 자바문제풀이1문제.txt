@@ -1,0 +1,70 @@
+// 20260320 자바문제풀이1문제 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🛒 1번 문제: 쇼핑카트 시스템 (포인트 적립과 계산)
+이 문제는 상속과 오버라이딩을 실전에서 어떻게 쓰는지 익히는 문제입니다.
+
+[요구사항]
+
+Item 클래스 생성:
+
+필드: String name, int price
+
+메서드: int getDiscountPrice() (기본적으로는 할인이 없으므로 price 그대로 반환)
+
+Electronics 클래스 (Item 상속):
+
+가전제품은 기본 가격에서 10% 할인된 가격을 반환하도록 getDiscountPrice()를 오버라이딩하세요.
+
+Food 클래스 (Item 상속):
+
+식품은 유통기한이 임박했다고 가정하고, 무조건 2,000원 할인된 가격을 반환하세요.
+
+Main 클래스 실행:
+
+Item 타입 배열에 TV(가전, 100,000원)와 사과(식품, 5,000원)를 담고, 각각의 최종 결제 금액을 출력하세요.*/
+class Item {
+    String name;
+    int price;
+    double newPrice;
+    double getDiscountPrice(){
+        return this.price;
+    };
+    
+}
+class Electronics extends Item{
+    
+    @Override 
+
+    double getDiscountPrice(){
+         newPrice = (this.price)*0.9;
+         return newPrice;
+    }
+}
+class Food extends Item {
+
+    @Override
+
+    double getDiscountPrice(){
+        newPrice = (this.price)-2000;
+        return newPrice;
+        
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Item electro = new Electronics();
+        Item food = new Electronics();
+        electro.name = "가전";
+        electro.price = 100000;
+        food.name = "식품";
+        food.price = 5000;
+        food.getDiscountPrice();
+        electro.getDiscountPrice();
+        
+        System.out.println((food.name)+(food.price)+(electro.name)+(electro.price));
+        
+    }
+}

@@ -1,0 +1,58 @@
+// 20260320 자바 문제풀이2 정답 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🌡️ 2번 문제: 스마트 온도 조절기 (데이터 검증과 캡슐화)
+이 문제는 **접근 제어자(private)**와 조건문을 활용해 시스템의 안정성을 지키는 능력을 봅니다.
+
+[요구사항]
+
+Thermostat 클래스 생성:
+
+필드: private double currentTemp (현재 온도를 저장하는 변수입니다.
+외부에서 직접 t.currentTemp = 100; 처럼 수정할 수 없게 하세요.)
+
+메서드 구현 (Setter & Getter):
+
+void setTemp(double temp): 온도를 설정하는 메서드입니다.
+
+[핵심 조건] 입력된 temp가 -10도 이상 40도 이하일 때만 currentTemp에 값을 저장하세요.
+
+범위를 벗어나면 **"위험한 온도입니다. 설정을 취소합니다."**라고 출력하고 값은 바꾸지 마세요.
+
+double getTemp(): 현재 저장된 온도를 반환하는 메서드입니다.
+
+Main 클래스 실행:
+
+Thermostat 객체를 하나 만듭니다.
+
+정상 범위인 25.5도를 설정해 보고 getTemp()로 출력하세요.
+
+말도 안 되는 범위인 100도를 설정해 보고, 안내 메시지가 나오는지 확인한 뒤 다시 getTemp()를 찍어서 
+값이 변하지 않았음을 증명하세요.*/
+class Thermostat {
+    private double currentTemp;
+
+    public void setTemp(double temp){
+        if((temp>=-10)&&(temp<=40)){
+            
+        this.currentTemp = temp;
+        }
+        else{
+            System.out.println("위험한 온도입니다. 설정을 취소합니다.");
+        }
+    }
+    public double getTemp(){
+        return this.currentTemp;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Thermostat thermo = new Thermostat();
+        thermo.setTemp(25.5);
+        
+        
+        System.out.println(thermo.getTemp());
+    }
+}
