@@ -1,0 +1,87 @@
+//20260320 자바 문제풀이 3 정답  
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*🎮 [Mission] RPG 게임 캐릭터 시스템 구현
+이 문제는 **추상 클래스, 상속, 그리고 다형성(배열 관리)**을 모두 활용해야 합니다.
+
+[요구사항]
+
+추상 클래스 Character 생성:
+
+필드: String name, int hp
+
+추상 메서드: void attack() (캐릭터마다 공격 방식이 다름을 표현)
+
+일반 메서드: void takeDamage(int damage) (데미지를 입으면 HP가 줄어들고 현재 잔여 HP를 출력)
+
+상속 클래스 구현 (최소 2개):
+
+Warrior (전사): attack() 호출 시 "칼로 강하게 베기!" 출력.
+
+Mage (마법사): attack() 호출 시 "강력한 파이어볼 발사!" 출력.
+
+Main 클래스에서 다형성 실행:
+
+Character 타입의 배열(크기 2)을 만드세요.
+
+0번 칸에는 Warrior 객체를, 1번 칸에는 Mage 객체를 담으세요. (이게 바로 다형성입니다!)
+
+**반복문(for문)**을 사용하여 배열에 담긴 모든 캐릭터의 attack()을 실행하세요.
+
+전사에게 30의 데미지를 입혀보세요 (takeDamage 호출).*/
+abstract class Character {
+    String name;
+    int hp;
+
+    Character (String name, int hp){
+        this.name=name;
+        this.hp =hp;
+    }
+    
+    abstract public void attack();
+
+    public void takeDamage(int damage){
+        this.hp -= damage;
+    }
+}
+class Warrior extends Character {
+   
+    Warrior(String name,int hp){
+        super(name,hp);
+    }
+    
+    @Override
+
+    public void attack(){
+        System.out.println("칼로 강하게 베기!");
+    }
+    
+}
+class Mage extends Character {
+    
+    Mage(String name,int hp){
+        super(name,hp);
+    }
+    @Override
+
+    public void attack(){
+        System.out.println("강력한 파이어볼 발사!");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Character[] champs =new Character [2];
+        champs [0] = new Warrior("홍길동",50);
+        champs [1] = new Mage("홍길순",30);
+        for(Character c : champs){
+            c.attack();
+            
+        }
+        champs [0].takeDamage(30);
+        
+        System.out.println(champs[0].hp);
+    }
+}
