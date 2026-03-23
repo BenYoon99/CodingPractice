@@ -1,0 +1,17 @@
+//  20260323 C lang 초급 문제 
+#include <stdio.h>
+
+int main() {
+   int currentWeight;
+    float targetWeight;
+    
+    printf("현재 몸무게(kg)를 입력하세요: ");
+    scanf ("%d",&currentWeight);
+
+    printf("목표 몸무게(kg)를 입력하세요");
+    scanf ("%f", &targetWeight);
+
+    printf("화이팅!");
+    
+    return 0;
+}
