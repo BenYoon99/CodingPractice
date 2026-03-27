@@ -1,0 +1,217 @@
+// 20260326수업 SQL 데이터베이스 중요한점 및 복습
+
+
+SQL 실행순서는
+
+From
+
+Select
+
+Where
+
+
+김연아의 휴대폰 번호를 출력하라 
+
+SELECT PHONE FROM KIM WHERE ~~~
+
+
+SELECT * 전체 
+
+SELECT 
+
+아래 WHERE로 조건문 실행
+
+
+
+SELECT FROM WHERE 
+
+GROUP BY 속성의 이름 
+
+
+기본형 QUERY의 순서
+
+SELECT
+
+FROM
+
+WHERE
+
+GROUP BY
+
+HAVING
+
+ORDER BY
+
+
+
+SELECT * 
+
+뒤에 table을 받으면 
+
+테이블내의 모든 열에 해당하는 행 호출해 !
+
+뒤에 특정 칼럼 ( 열 )이름 받으면
+
+특정 칼럼의 모든 행을 호출해 
+
+
+
+
+WHERE 조건 - 복합조건
+
+
+~~ 혹은 ~~인 도서 검색시
+
+
+SELECT *
+FROM BOOK
+WHERE publisher = ~~~ or publisher =~~~
+
+
+SQL에는 ==가없다 =만존재함
+
+왜 why?
+
+sql은 애초에 데이터의 비교를 위한 language 이기 때문이다.
+
+그럼 대입은 어떻게하냐 필요시?
+
+SET 함수를 이용해서 
+SET 뒤에 = 로 값을 집어넣는다.
+
+그 외에 대부분은 Where 뒤에 붙는 비교 연산자이거나
+그냥 비교연산자이다. 
+
+
+ORDER BY
+
+영문그대로 정리하는거
+
+EX)
+
+SELECT  *
+
+FROM Book
+
+ORDER BY price DESC, PUBLISHER ASC;
+
+
+여기서 DESC ASC는
+
+영문 DESCEND 하강     ASCEND 상승이다
+
+말그대로 내림차순        오름차순인거다.
+
+
+
+집계 함수
+
+SUM   SUM(속성명)  총판매액 
+
+AVG  AVG(속성명) 평균값
+
+COUNT COUNT(속성명*) 총수량 
+
+MAX MAX(속성명) 최곳값
+
+MIN MIN(속성명) 최젓값 
+
+
+
+2번 김연아 고객의 도서의 총판매액을 구해라 
+
+SELECT SUM(saleprice) AS 총매출
+
+FROM  Orders 
+
+WHERE custid = 2;
+
+
+
+1.
+CREATE DATABASE MyWorld;
+
+USE MyWorld;
+
+CREATE TABLE MyProfile (
+	id INT auto_increment PRIMARY KEY,
+    name VARCHAR(20),
+    opic_grade VARCHAR(5),
+    target_toeic INT,
+    TARGET_GOAL INT
+    );
+    
+
+
+
+연습문제 (q3.1)
+
+1 .도서번호가 1인 도서의 이름 
+
+SELECT BookName
+
+FROM BOOK
+
+WHERE bookNo = 1;
+
+2. 가격이 20000원 이상인 도서의 이름
+
+SELECT BookName
+
+FROM Book
+
+WHERE bookPrice >= 20000;
+
+3. 박지성의 총 구매액
+
+SELECT SUM(saleprice) AS Total
+
+FROM Orders
+
+WHERE custid =1;
+
+4. 박지성이 구매한 도서의 수
+
+SELECT COUNT(*) AS BookNumber
+
+FROM Orders
+
+Where custid = 1;
+
+4-1  다른 방식 
+SELECT COUNT(*) AS BookNumber
+
+FROM Customer, orders 
+
+WHERE customer.custid = orders.custid  //  customer와 orders 테이블 연결
+
+AND Customer.name = '박지성';       //조건문 역할 
+
+
+
+
+
+외래키custid  사용자 번호
+
+1                            1
+
+ 
+
+
+조인 join 
+
+한 테이블의 행을 다른 테이블의 행과 연결해 두 개 이상의 테이블을 결합하는 연산 
+
+SELECT * 
+FROM Customer, Orders 
+WHERE Customer.custid=Orders.custid;
+
+외부 조인 LEFT OUTER JOIN 
+
+형식
+
+SELECT Customer.name , saleprice
+
+FROM Customer LEFT OUTER JOIN Orders ON 
+		Customer. Custid = Orders .custid; 
+
