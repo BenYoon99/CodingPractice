@@ -1,0 +1,368 @@
+// 20260330 자바 학교 수업에 나온  예제문제  풀이 
+
+
+1.
+ -스캐너로 출력값을 받아 역삼각형으로 출력하라 
+
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("별의 숫자를 입력하세요:");
+        
+        int importNo = sc.nextInt();
+        
+        
+            
+        for(int n= importNo;n>=1;n--){
+
+            for(int j=1; j<=1;j++){
+                System.out.println("*");
+            }
+        }
+        
+        System.out.println("");
+        sc.close();
+    }
+    
+}
+
+오답 = 별이 역삼각형으로 안찍힘;; 
+
+
+- 인스턴스메소드로 5번호출
+
+2.
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+// 정적 메소드 말고 인스턴스 메소드로 제작 
+class Method{
+
+    void method(){
+        System.out.println("실행");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Method method1 = new Method();
+        
+        for (int i=0;i<5;i++){
+            method1.method();
+        }
+                
+    }
+}
+
+
+3.
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// 정적 메소드 사용하기 
+class Method01 {
+
+    public static void methodReal(){
+        System.out.println("실행임둥");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+
+        for(int i=0;i<5;i++){
+           Method01.methodReal();
+        }
+        
+       
+    }
+}
+
+4.
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Method03{
+    int a;
+    int b;
+    public static int max(int a,int b){
+        if(a>b){
+           
+            System.out.println("a의 값이 더 큽니다 a를 반환합니다"+a);
+                return a;
+        }
+        if (b>a){
+            
+            System.out.println("b의 값이 더큽니다 b를 반환합니다 값은 :"+b);
+                return b;
+        }
+        else{
+            System.out.println("두 수가 같습니다 다시 시도하십시요");
+                return 0;
+        }
+    }
+        
+}
+class Main {
+    public static void main(String[] args) {
+       Method03 ben = new Method03();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("a의 값을 입력하십시요");
+        ben.a = sc.nextInt();
+
+        System.out.println("b의 값을 입력하십시요");
+        ben.b = sc.nextInt();
+        
+        ben.max(ben.a,ben.b);
+        
+        
+        
+    }
+}
+
+
+5.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// 참조변수 이용해서 객체 생성하기 그리고 필드변수에 값집어넣기 생성자로 직접변수값 넣는것 대체 
+
+ class Person{
+
+    String name;
+    int age;
+
+    Person(String name,int age){
+        this.name=name;
+        this.age=age;
+    }
+    void introduce(){
+        System.out.println("제 이름은 "+name+"이고 나이는 "+age+"살입니다.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Ben",26);
+        Person p2 = new Person("Steve",22);
+        
+        
+        System.out.println((p1.name)+" "+p2.name);
+    }
+}
+
+6.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Tr0105 {
+    static int a = 10;
+    int b = 20;
+
+
+    public void print(){
+        System.out.println("인스턴스 메서드 print() 출력");
+
+    }
+    public static void printB(){
+        System.out.println("정적 메서드 printB() 출력");
+        
+    }
+    public static void printA(){
+        print();
+        System.out.println(b);
+        printB();
+        System.out.println(a); // 정적이니까 그냥 a 쓰는게 맞지않나 
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Tr0105.printA();
+        Tr0105.printB();
+        
+        
+        //해당 내용대로하면 오류가 난다는걸 교슈님이 말해주고싶다하심 
+       
+    }
+}
+
+-- 오류가 나는이유는
+
+print()는 인스턴스 메소드이기에
+해당 인스턴스 메소드 호출을 위해 인스턴스가 필요하다
+스태틱은 하지만 그냥 메소드호출이 가능하다 ( 인스턴스 필요없음 어차피 칠판- 게시판이기에 )
+
+
+
+7.
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main"
+
+class Com01 {
+
+    int add(int x, int y ){
+        int result = x+y;
+
+        return result;
+        
+    }
+    int min(int x, int y){
+        int result = x-y;
+
+        return result;
+    }
+
+    static long mul(long x, long y){
+        long result = x*y;
+
+        return result;
+    }
+    static double div(double x, double y){
+        double result = x/y;
+
+        return result;
+    }
+
+}
+
+class Com01Ex {
+    Com01 f1 = new Com01();
+    int r1= f1.add(5,2);
+    System.out.println("인스턴스 f1 add(5,2)의 결과 : "+ this.r1);
+    Com01 f2 = new Com01();
+    long r2 = f1.mul(300, 200);
+    System.out.println("인스턴스 f2 mul(300,200)의 결과: "+r2);
+    
+}
+class Main {
+    public static void main(String[] args) {
+        
+        // 여기서 궁금한건 항상 자바 문제 풀때마다 메인메소드에서 객체 생성하고 인스턴스메소드 호출해왔는디 이경우에 어쩌지 
+        Com01 c1 = new Com01();
+        int r1 =  c1.add(5,2);
+         System.out.println("인스턴스 f1 add(5,2)의 결과 : "+ r1);
+        Com01 c2 = new Com01();
+        long r2 = c2.mul(300, 200);
+        
+        System.out.println("인스턴스 f2 mul(300,200)의 결과: "+r2);
+    }
+}
+
+
+
+8.
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Method06 {
+
+    public static int sum(int x, int y ){
+        int result = x+y;
+        return result;
+    }
+    public static int sum(int x, int y, int z){
+        int result = x+y+z;
+        return result;
+    }
+    public static double sum(double x, double y){
+        double result = x+y;
+        return result;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Method06.sum(10,20);
+
+        Method06.sum(10,20,30);
+
+        Method06.sum(10.5,20.5);
+        
+        
+    
+
+        
+    }
+}
+
+
+
+9.import java.util.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class LMS04 {
+    int StdNo;
+    int gukScore;
+    int engScore;
+    int mathScore;
+
+    // input 대신 그냥 생성자로 값받기
+    LMS04(int StdNo,int gukScore,int engScore,int mathScore){
+        this.StdNo =StdNo;
+        this.gukScore =gukScore;
+        this.engScore =engScore;
+        this.mathScore =mathScore;
+        
+    }
+    
+    void Grade(int StdNo, int gukScore,int engScore,int mathScore){
+        int avg = (+gukScore+engScore+mathScore)/3;
+            if(avg>=90){
+                System.out.println(StdNo+"의 점수는 "+"A");
+                
+            }
+            else if(avg>=80){
+                System.out.println(StdNo+"의 점수는 "+"B");
+                
+            }
+            else if (avg>=70){
+                System.out.println(StdNo+"의 점수는 "+"C");
+            }
+            else if (avg>=60){
+                System.out.println(StdNo+"의 점수는 "+"D");
+                
+            }
+            else{
+                System.out.println(StdNo+"의 점수는 "+"F");
+            }
+            
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        LMS04 hs = new LMS04(202310865,50,30,40);
+        hs.Grade(hs.StdNo,hs.gukScore,hs.engScore,hs.mathScore);
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+}
+
