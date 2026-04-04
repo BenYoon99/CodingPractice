@@ -1,0 +1,43 @@
+// 20260404 Computer Network
+
+
+1.Switching Strategy : VLAN & Trunking
+
+VLAN ( virtual local area network)
+
+what is it??
+
+it is a techinique that logically segmenting a 
+single physical siwtch into multiple boradcast
+domains.
+
+Trunking 
+
+what is this?
+this is a single physical link that carries traffic for multiple VLANs between switches.
+
+keyword Tagging ( adding a VLAN ID to the frame - so the other switch knows where it belongs)
+
+2. Routing Strategy: Static vs Dynamic
+
+this is two Routing way of Router
+( important)
+
+Static Routing : Manually configured by an admin
+
+Dynamic Routing :Router use protocols
+to talk to each other and find the best path automatically ( optimizing automatically)
+
+3. Essential Services : DHCP & NAT
+
+these two are necessary service for router and switch to function.
+DHCP dynamic host configuration protocol
+
+it role in Automatically assigning IP addresses to devices ( L7 Service , it is really important for L3 connectivity)
+
+NAT network address translation
+
+it role in Translating the private IP addresses(inside your LAN ) to a public IP (For the internet)
+
+why do we need this???
+cuz we need public IP addresses but it is to limited and expensive 
