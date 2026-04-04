@@ -1,0 +1,179 @@
+//20260404 자바 실습문제 1 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*💻 Java 실습 과제: "RPG 게임 캐릭터 시스템 설계"
+이 문제는 인터페이스로 행위를 규정하고, 상속으로 공통 속성을 정의하며, 다형성으로 다양한 캐릭터를 하나의 타입으로 관리하는 연습입니다.
+
+1. 요구사항 (조건)
+인터페이스 생성 (Attackable)
+
+void attack() 메소드를 가집니다.
+
+추상 클래스 생성 (Character)
+
+공통 속성: String name, int level
+
+공통 메서드: void move() (출력: "[이름]이 이동합니다.")
+
+생성자를 통해 이름을 초기화합니다.
+
+자식 클래스 생성 (2개 이상)
+
+예: Warrior (전사), Mage (마법사)
+
+Character를 상속받고 Attackable을 구현(implements)합니다.
+
+attack() 메서드를 각 직업에 맞게 오버라이딩합니다.
+
+다형성 실행 클래스 (Main)
+
+Character 타입의 배열 혹은 List를 만듭니다.
+
+여기에 전사 객체와 마법사 객체를 담습니다.
+
+반복문을 돌리며 모든 캐릭터의 move()와 attack()을 호출하세요. (이때 부모 타입으로 자식 객체를 다루는 다형성이 핵심입니다.)*/
+interface Attackable {
+
+    void attack();
+}
+abstract class Character {
+
+    String name;
+    int level;
+    abstract void move(){
+        System.out.println(name+"이 이동합니다.");
+    }
+     Character(String name){
+        this.name=name;
+    }   
+}
+class Warrior extends Character implements Attackable{
+
+    public  Warrior(String name){
+        this.name=name;
+    }
+    @Override
+     public   void move(){
+        System.out.println(name+"이 전사답게 멋있게 이동합니다");
+    }
+    @Override
+    public void attack(){
+        System.out.println("공격 기모링");
+    }
+}
+class Mage extends Character implements Attackable{
+
+    public  Mage(String name){
+        this.name=name;
+    }
+    @Override
+    public void attack(){
+        System.out.println("마법진을 사용합니다");
+    }
+    @Override
+    public void move(){
+        System.out.println(name+"이 마법사답게 이동합니다.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+    Character mage = new Character("제이나");
+    Character warrior = new Character("바리안");
+        
+    
+    Character arr [] = new arr[2];
+        arr [0] = mage;
+        arr [1] = warrior;
+        
+        for (Character c : arr){
+            c.move();
+            c.attack();
+        }
+                    
+    }
+}
+
+
+
+
+
+
+틀림
+
+
+
+제미나이 수정본
+
+
+interface Attackable {
+    void attack(); // 몸통 없이 선언만 합니다.
+}
+
+abstract class Character {
+    String name;
+    int level;
+
+    // 생성자: 반환 타입(void 등)을 적지 않습니다.
+    Character(String name) {
+        this.name = name;
+    }
+
+    // 모든 자식이 가져야 할 공통 기능
+    void move() {
+        System.out.println(name + "이(가) 이동합니다.");
+    }
+}
+
+class Warrior extends Character implements Attackable {
+    Warrior(String name) {
+        super(name); // 부모 생성자 호출
+    }
+
+    @Override
+    public void move() {
+        System.out.println(name + "이 전사답게 멋있게 이동합니다.");
+    }
+
+    @Override
+    public void attack() {
+        System.out.println("공격 기모링 (칼 휘두르기)");
+    }
+}
+
+class Mage extends Character implements Attackable {
+    Mage(String name) {
+        super(name);
+    }
+
+    @Override
+    public void attack() {
+        System.out.println("마법진을 사용합니다.");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(name + "이 마법사답게 이동합니다.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        // 부모 타입 배열에 자식 객체를 담는 '다형성'
+        Character[] arr = new Character[2];
+        arr[0] = new Mage("제이나");
+        arr[1] = new Warrior("바리안");
+
+        for (Character c : arr) {
+            c.move();
+            
+            // Character에는 attack이 없으므로, Attackable인지 확인 후 형변환 호출
+            if (c instanceof Attackable) {
+                ((Attackable) c).attack();
+            }
+        }
+    }
+}
