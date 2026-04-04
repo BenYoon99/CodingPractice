@@ -1,0 +1,45 @@
+// 20260404 컴네 pre ccna concepts- ARP
+
+
+ARP 
+
+ARP is used when we know what IP address is
+but when we dont know about MAC address
+
+why do we need it necessarily?
+Data is transmitted through LAN cards.
+SO even though we know about the destination IP address , if we dont know about real device MAC address then we cannot convey data in Frame.
+
+ARP Process ( need to memorize)
+
+
+step 1 
+
+ARP Request : whose IP is 192.xxx.x.xx 
+tell me your MAC address 
+like this way we do broadcasting
+
+step 2 
+
+Listening : all the devices in the same network
+listen to ARP broadcasting sound, but if this is not their IP address broadcasting then they just ignore it.
+
+step 3
+
+ARP Reply : select the same IP address dudes and reply them " this is xx, my MAC add is xx : xx : xx " like this in Unicast - this is like 1on1 message
+
+step 4 
+
+ARP table saving -- normally called as Cashing
+
+: device that got reply save this info in ARP Table, so that they dont have to ask again.
+
+
+what are the flaws of using ARP?
+
+Security is major problem.
+
+ARP dont doubt the opponent which means 
+even opponent is lying about something they just believe it.
+
+So the hacker use ARP Spoofing which is a technique to get data in the middle.
