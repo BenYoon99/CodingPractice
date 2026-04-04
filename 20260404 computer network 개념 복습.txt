@@ -1,0 +1,94 @@
+//20260404 computer network 개념 복습  스위치 배운내용 복습
+
+
+osi 7 
+
+
+l7 application / applicating
+
+role in user using app
+http ftp smtp 
+
+data units == Data
+
+
+L6 presentation 
+
+role in form of data
+
+data units == Data
+
+
+L5 Session 
+
+role in communication seesion
+( keeping the connection)
+
+data units == Data
+
+
+L4 Transport 
+
+role in trustworthy transporting
+
+data units == Segment ( important )
+
+
+L3 Network 
+
+role in optimizing route( called Routing -important ) 
+	- also role in IP address
+
+data units == Packet
+
+L2 Data Link 
+
+role in transmition between close devices
+
+	-also role in IP address 
+
+data units == Frame
+
+L1 Physical 
+
+role in electrical signals ( cable , herb bits)
+
+data units == Bits
+
+
+if you are trying to memorize
+
+plz remember this
+
+P D N T S P A
+
+please do not throw sasuage pizza away
+
+physical datalink network transport session presentation application
+
+
+
+Router vs Switch ( important)
+
+Switch is used when the devices are close
+
+used in Layer 2 
+
+key address is MAC address which is distinctive
+LAN number
+
+role in connecting devices in same network( LAN) 
+it sees a MAC address table and transmit data
+to that exact device
+
+
+Router 
+
+used in Layer 3
+
+key address is IP address
+
+role in transmitting data between diffrent devices in diffrent networks.
+it trys to optimize - try to find the shortest route to that destination IP address.
+this technique is called Routing.
+
