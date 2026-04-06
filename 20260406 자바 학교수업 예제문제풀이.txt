@@ -1,0 +1,192 @@
+// 20260406 자바 학교수업 예제문제풀이 
+
+1
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("5개의 문자열을 입력하시오");
+        
+        String [] babo = new String[5];
+        for(int i=0;i<5;i++){
+            System.out.println((i+1)+"번째 문자열을 입력하시오");
+            babo[i]=sc.next();
+        }
+        
+        System.out.println("\n 입력된 결과값은 이것입니다");
+
+        for(String s: babo){
+            System.out.println(s);
+        }
+    }
+}
+
+1-다른방법 while 문사용
+
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("5개의 문자열을 입력하시오");
+        
+        String [] babo = new String[5];
+        for(int i=0;i<5;i++){
+            System.out.println((i+1)+"번째 문자열을 입력하시오");
+            babo[i]=sc.next();
+        }
+        
+        System.out.println("\n 입력된 결과값은 이것입니다");
+        int index =0;
+        while(index<babo.length){
+            System.out.println(babo[index]);
+            index++;
+        }
+        
+             sc.close();
+    
+    }
+    
+}
+
+2.
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Person{
+    String name;
+
+    public void speak(){
+        System.out.println("나의 이름은 "+ name + "입니다");
+    }
+}
+class Singer extends Person{
+
+    int age;
+
+    @Override
+
+    public void speak(){
+        System.out.println("나의 이름은"+ name +"입니다 그리고 "+ age+"살입니다");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Person HelloPerson = new Singer();
+
+        HelloPerson.name = "홍길동";
+        ((Singer)HelloPerson).age = 23; // 참조변수에 리모콘 존재안하니까 다운캐스팅사용함 
+        HelloPerson.speak();
+        
+        
+        
+        System.out.println("Hello world!");
+    }
+}
+
+3.
+public class Main {
+    public static void main(String[] args) {
+        // 1. 2차원 배열 초기화 (4행 2열) 각성적 받고나서 
+        double[][] scores = {
+            {3.3, 3.5}, 
+            {3.6, 3.7}, 
+            {3.9, 4.1},
+            {4.1, 4.3}  
+        };
+
+        double totalSum = 0;
+        int totalCount = 0; 
+
+        System.out.println("=== 학년별 평균 출력 (for문 활용) ===");
+        
+        //for
+        for (int i = 0; i < scores.length; i++) {
+            double yearSum = 0;
+            for (int j = 0; j < scores[i].length; j++) {
+                yearSum += scores[i][j]; // 해당 학년의 학기 점수 합산
+                totalSum += scores[i][j]; // 전체 합계에도 누적
+                totalCount++;
+            }
+            double yearAvg = yearSum / scores[i].length;
+            System.out.println(String.format("%d학년 평균: %.2f", (i + 1), yearAvg)); // %d에 학년이니까 i+1 , %.2에 연평균점수 넣고
+            
+        }
+
+        System.out.println("\n=== 전체 평균 출력 (for-each문 활용) ===");
+        
+        //for each 
+        double sumForEach = 0;
+        for (double[] yearArray : scores) {
+            for (double semesterScore : yearArray) { // 그 안에서 점수를 하나씩 꺼냄
+                sumForEach += semesterScore;
+            }
+        }
+        
+        double totalAvg = sumForEach / totalCount;
+        System.out.println(String.format("전체 4학년 총 평균: %.2f", totalAvg));
+    }
+}
+
+5.
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        String s1 = "Java";
+        String s2 = "Java2";
+        String s3 = new String("Java");
+        String s4 = new String("Java");
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+        System.out.println(s4);
+        (s1 == s2); > true or false
+        (s3 == s4); > true or false
+        
+        
+        
+        
+        
+    }
+}
+6.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main"
+class Student {
+    public int age= 20;
+    private String name="홍길동";
+
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name =name;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+         Student stu = new Student();
+        System.out.println((stu.age)+" "+stu.getName());
+    }
+}
