@@ -1,0 +1,75 @@
+// 20260406 자바 문제풀이1
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+interface Payment{
+    public void pay();
+    public void cancel();
+}
+class BasePayment{
+    String storeName;
+    long amount;
+    BasePayment(String storeName,long amount){
+        this.storeName=storeName;
+        this.amount=amount;
+    }
+    void printReceipt(){
+        System.out.println("영수증 출력: 가게: "+storeName+"금액: "+amount);
+    }
+}
+class KakaoPay extends BasePayment implements Payment{
+    KakaoPay(String storeName,long amount){
+        super(storeName,amount);
+    }
+    
+    @Override
+
+    public void pay(){
+        System.out.println("카카오페이로 "+amount+"만큼 결제완료");
+    }
+    @Override
+
+    public void cancel(){
+        System.out.println("결제취소하겠습니다");
+    }
+}
+class PayPay extends BasePayment implements Payment {
+    
+    
+    double points;
+    
+    PayPay(String storeName,long amount){
+        super(storeName,amount);
+    }
+    PayPay(String storeName,long amount,double points){
+        super(storeName,amount);
+        this.points=points;
+    }
+    @Override
+    public void pay(){
+        System.out.println("페이페이로 "+amount+"만큼 결제완료");
+    }
+    @Override 
+    public void cancel(){
+        System.out.println("결제 취소합니다");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Payment kp = new KakaoPay("삼겹살집",15000);
+        Payment pp = new PayPay("목살집",20000,15);
+
+        Payment [] arr = new Payment[2];
+        arr[0]= kp;
+        arr[1]= pp;
+        for(Payment b : arr){
+           if(b instanceof Payment){
+                b.pay();
+           }
+        }
+        
+        
+    }
+}
