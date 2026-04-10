@@ -1,0 +1,100 @@
+// 20260410 
+
+외부클래스 학습
+
+
+
+인스턴스 내부 클래스 
+
+외부클래스의 객체를 먼저 생성해야지만 사용이가느하다 외부의 모든 자원에 접근이 가능하다 
+접근 이가능하다는 소리는
+프라이베이트로 외부에 한마디로 해닽 부모클래스에 묶어둔 인스턴스변수들에 
+해당 부모클래스 내부의 내부클래스는 접근이 가능하다는 소리다.
+
+
+
+
+정적 내부 클래스
+
+외부 객체 없이도 생성 가능 , 외부의 static
+지원만 사용가능
+
+
+지역 내부 클래스
+
+메서드 내부에서만 잠깐 정의하고 사용하는 
+클래스 
+
+
+익명 내부 클래스 
+
+이름 없이 선언과 동시에 객체 생성, 주로 
+인터페이스 구현 시 사용.
+
+
+예제 문제 1 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[문제: 챔피언의 스킬 시스템 설계]
+1. 외부 클래스: Champion
+
+필드: String name (챔피언 이름)
+
+생성자: 이름을 받아 초기화
+
+메서드: void info() (이름 출력)
+
+2. 내부 클래스 (인스턴스): Skill
+
+필드: String skillName, int damage
+
+생성자: 스킬 이름과 데미지를 받아 초기화
+
+메서드: void use()
+
+출력 예시: "[챔피언이름]이 [스킬이름]을 사용하여 [데미지]의 피해를 입혔습니다!"
+
+핵심: 내부 클래스에서 외부 클래스의 name 필드에 직접 접근해야 함.
+
+3. 실행 클래스 (Main)
+
+'가렌'이라는 이름의 챔피언 객체를 생성하세요.
+
+해당 챔피언 객체를 이용해 '데마시아의 정의'라는 스킬 객체를 생성하세요. (내부 클래스 생성 문법 주의!)
+
+스킬의 use() 메서드를 호출하세요.*/
+class Champion{
+    String name;
+
+    Champion(String name){
+        this.name=name;
+    }
+    void info(){
+        System.out.println(name);
+    }
+    class Skill {
+        String skillName;
+        int damage;
+
+        Skill(String skillName, int damage){
+            this.skillName=skillName;
+            this.damage=damage;
+        }
+        void use(){
+            System.out.println(name+"이 "+skillName+"을 사용하여"+damage+"의 피해를 입혔습니다!");
+            
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Champion garen = new Champion("가렌");
+        Champion.Skill justice = garen.new Skill("데마시아의정의", 500);
+        justice.use();       
+        
+    }
+}
