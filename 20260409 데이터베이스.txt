@@ -1,0 +1,195 @@
+//  20260409 데이터베이스 
+
+
+
+WHERE 사용시의 비교시
+
+	와일드 문자 - % 
+
+
+	조건이 필요한 경우 WHERE 을 붙여 조건	을 설정한다.
+
+	
+	
+	추후 한가지 더 조건을 붙여야하는상황
+	(예를 들어 정렬 조건을 넣어야할시)
+
+	- ORDER BY 까지 추가해주면 된다.
+
+	
+	EX) SELECT *
+		FROM ~~~
+
+		WHERE ~~~
+		
+		ORDER BY ~~~
+
+
+
+
+
+
+집계함수
+
+ SUM
+
+구성
+
+SELECT SUM(변수명)
+
+FROM 성적표;
+
+성적표 테이블에서 해당 변수 컬럼의 모든 숫자를
+더한값을 반환한다.
+
+
+
+
+GROUP BY
+
+
+
+JOIN
+
+풀 조인           <---- > 외부조인
+
+
+부속 질의 
+
+SELECT FROM WHERE 절에 포함되서 
+메인 쿼리 ( MAIN ) 실행전 필요한 데이터 
+전부 뽑아주는 역할의 질문들
+
+
+상관 부속 질의 
+
+
+
+집합 연산 - UNION
+
+테이블 간의 집합연산을 이용 
+합집합 차집합 교집합을 구하기가 가능하다.
+합집합을 UNION 으로 나타낸다 
+
+교수님 예시
+
+) SELECT name
+	FROM customers
+	WHERE address LIKE '대한민국%';
+
+인데 이 경우에 그럼 UNION을 어떻게 이해해 ??
+
+그럼 저렇게 대한민국에 있는 고객님들 
+
+그리고 만약
+
+WHERE custid IN {1,2,3,4};
+ 이러면 대한민국 살면서 외래키인 사용자 아이디가
+1 2 3 4 인 사람들을 교집합이 아닌 합집합이기에
+대한민국 고객명단을 상단에 표시하고 
+하단에 1 2 3 4 인 명단을 붙여서 표시하겠네  
+
+<--- 정답이다
+
+결과값
+
+-- 1번 주머니: 대한민국에 사는 고객
+SELECT name FROM customers WHERE address LIKE '대한민국%'
+
+UNION
+
+-- 2번 주머니: 아이디가 1, 2, 3, 4인 고객
+SELECT name FROM customers WHERE custid IN (1, 2, 3, 4);
+
+ALTER
+
+이미 생성되어있는 테이블의 속성이나 속성에 대한 제약을 변경해서 
+기본키와 외래키를 변경한다.
+
+문법 형식은
+
+ALTER TABLE 테이블 명 
+
+[ADD 속성이름 데이터타입] 
+[DROP COLUMN 속성이름]
+[ALTER COLUMN 속성이름 데이터타입]
+[ALTER COLUMN 속성이름 NULL |NOT NULL]
+<-여기서 궁금한건 그럼 해당 속성값의 널 인지 아닌지를 변경가능한건지 (맞고 MODIFY도 DB 종류에 따라 가능하다)
+
+여기서 MODIFY -- ALTER의 차이점은
+
+ALTER은 테이블 전체구성을 변경하는거고
+
+MODIFY는 테이블 내의 행이나 열의 속성을 변경하는 것이다
+
+고로 
+
+DROP 과
+
+DELETE의 차이와 비슷하다
+
+DROP은 애초에 테이블을 날려버리는거에 반면
+
+DELETE는 테이블내 데이터를 조져버리는것이기에 
+
+ALTER ---- DROP   MODIFY --- DELETE 
+와 비슷스 
+
+[ADD PRIMARY KEY (속성명) ]
+	기본키 추가
+
+[[ADD|DROP] 제약명] 
+
+ADD : 속성 추가 
+DROP : 속성 제거
+MODIFY: 속성 변경
+ADD <제약이름>,DROP<제약이름>: 제약사항 추가 제거시 사용한다 
+
+SQL 내장 함수 
+
+
+
+ABS 함수
+
+절댓값을 구하는 함수이다.
+SELECT ABS(-78), ABS(+78);
+
+
+ROUND 함수
+
+반올림 한 값을 구하는 함수이다.
+
+SELECT ROUND(4.77, 1);
+
+
+	4-3 고객별 평균 금액을 100원 단위로 반올		림한 값을 구해라
+
+SELECT custid 1 , ROUND(SUM(saleprice)/COUNT(*),-2) '평균값'
+
+FROM Orders
+
+GROUP BY custid;
+
+
+REPLACE 함수 
+
+문자열을 치환하는 함수
+
+
+SELECT bookid ,REPLACE (bookname,'야구', '농구' ) bookname, publisher , price 
+FROM Book
+
+
+LEGNTH 
+바이트 수를 가져오는 함수
+
+CHAR_LENGTH
+문자의 수를 가져오는 함수
+
+형태 
+
+SELECT bookname '제목' , CHAR_LENGTH(bookname) ' 문자수',
+FROM Book
+WHERE publisher = '굿스포츠'
+
+IS NULL IS N
