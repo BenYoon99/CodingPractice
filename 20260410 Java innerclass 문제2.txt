@@ -1,0 +1,44 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*[문제 1: 스마트폰과 배터리 (인스턴스 내부 클래스)]
+스마트폰 본체가 있어야 배터리도 의미가 있는 관계를 코드로 구현합니다.
+
+외부 클래스: Smartphone
+
+필드: String model
+
+생성자: 모델명을 받아 초기화
+
+내부 클래스: Battery
+
+필드: int capacity
+
+메서드: void status()
+
+출력 예시: "[모델명]의 배터리 잔량은 [capacity]% 입니다."
+
+실행(Main): "iPhone 15" 객체를 만들고, 그 객체를 통해 잔량 80%인 배터리 객체를 생성하여 상태를 출력하세요.*/
+class Smartphone {
+    String model;
+
+    Smartphone(String model){
+        this.model=model;
+    }
+
+    class Battery {
+        int capacity;
+
+        void status(){
+            System.out.println(model+"의 배터리 잔량은 "+capacity+"% 입니다.");
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Smartphone iphone = new Smartphone("iPhone 15");
+        Smartphone.Battery battery = iphone.new Battery();
+        battery.status();
+    }
+}
