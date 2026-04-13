@@ -1,0 +1,206 @@
+//20260413 자바 예제문제풀이들 
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Student02{
+    String name;
+    int id;
+
+    Student02(String name,int id){
+        this.name=name;
+        this.id = id;
+    }
+    void insertRecord(int id, String name){
+       
+    } 
+    void printInfo(){
+        System.out.println(id+"는이거에요"+name+"은 이거에요");
+    }
+    
+}
+class Main {
+    public static void main(String[] args) {
+        
+        Student02 stu02 = new Student02("홍길순",20221004);
+        stu02.printInfo();
+
+        Student02 stu01 = new Student02("홍길동",20231088);
+        stu02.printInfo();
+        
+        
+    }
+}
+
+
+2.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Cat{
+    String name;
+    int number;
+    
+    Cat(String name, int number){
+        this.name= name;
+        this.number = number;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+       Cat cat1 = new Cat("페르시안 고양스",1);
+       Cat cat2 = new Cat("이집트고양이",2);
+        Cat cat3 = new Cat("고양스",3);
+        Cat cat4 = new Cat("냥냥스",4);
+        Cat cat5 = new Cat("낭만고양이",5);
+        
+        
+        System.out.println(cat1.name);
+         System.out.println(cat2.name);
+
+         System.out.println(cat3.name);
+         System.out.println(cat4.name);
+         System.out.println(cat5.name);
+        
+    }
+}
+
+3.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Student02{
+    int id;
+    String name;
+
+    Student02(){
+        
+    }
+    student02(int id,String name){
+        this.id = id;
+        this.name = name;
+        
+    }
+    void insertRecord(int id,String name){
+        System.out.println("이름은"+name+"id는"+id);
+    }
+    void printInfo(){
+        System.out.println("이름은"+name+"id는"+id);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Student02 stu01 = new Student02();
+        Student02 stu02 = new Student02();
+        
+        
+        stu01.printInfo();
+        // 에러 발생
+
+        stu02.insertRecord(1515,"이름이름");
+    }
+}
+
+4.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+class Add {
+    int ad;
+    double ap;
+    String name;
+    
+    Add(){
+        System.out.println("기본생성자 출력합니당~");
+    }
+
+    Add(int ad,double ap){
+        this.ad= ad;
+        this.ap = ap;
+    }
+    Add(int ad,double ap,String name){
+        this.ad = ad;
+        this.ap = ap;
+        String name= name;
+    }
+}
+class Edd extends Add {
+
+    Edd(int ad, double ap , String name){
+
+        super(ad,ap,name);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Add add1 = new Add();
+        Add add2 = new Add(15,15.5);
+        Add add3 = new Add(15,15.5,"애드3");
+        Edd edd1 = new Edd(15,15.5,"에드1");
+        
+        
+        
+        
+        System.out.println(add1.name); // 값이없기에 에러 
+        System.out.println(add1.ap);
+        System.out.println(edd1.name);
+        
+    }
+}
+
+
+5.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Member{
+    String firstName;
+    String country;
+    int age;
+
+    Member(){
+        this("미정",1,"미정입니다");
+    }
+    
+    Member(String firstName){
+        this("홍길순",20);
+    }
+    Member(String firstName, int age){
+        this("홍길순",20,"한국");
+    }
+    Member(String firstName, int age, String country){
+        this.firstName = firstName;
+        this.age = age;
+        this.country = country;
+        
+    }
+    void printInfo(){
+        System.out.println("나이와 이름과 그리고 국적은: "+firstName+" "+age+" "+country);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Member member = new Member("홍길순");
+        
+        
+        member.printInfo();
+    }
+}
+
+
