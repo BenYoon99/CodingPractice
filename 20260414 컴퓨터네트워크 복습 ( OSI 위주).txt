@@ -1,0 +1,122 @@
+//20260414 컴퓨터네트워크 복습 ( OSI 위주)
+
+
+1. 물리 계층 physical 
+
+비트 데이터를 전기 신호로 바꾸어서 
+선케이블로 쏜다 
+
+
+2. 데이터 링크 data link 
+
+
+물리적 구조를 사용해서 같은 네트워크 안에 데이터를 안전하게 전달한다 
+
+3 네트워크 network
+
+최적의 경로 찾기용도 ( 라우팅)
+ip 주소 사용
+
+라우터 사용
+
+4. 전송 transport 
+
+port 번호를 사용해서 데이터를 어떤 프로그램에 전달할지 정합니다
+
+udp와 tcp 를 사용합니다
+
+5. 세션
+두 기기의 연결을 유지 하고 차단하는등 
+대화 관리용도이다
+
+6. 표현
+데이터 압축과 데이터 암호화
+
+7.응용 
+사용자가 직접 쓰는 앱 웹 이메일등 
+
+그럼 네트워크는 무엇일까 
+
+네트워크란 서로 다른 컴퓨터끼리 자원을 나누기 위해 연결된 상태를 의미함 여기서 가장 중요한건 공유와 표준임 
+
+Encapsulation process 
+
+Data is created at the upper layers
+
+then the transport layer adds a header  -> segment 
+
+
+
+you can memorize Osi 7 layers easily by using
+
+please do not throw sausage pizza away
+
+physical data network transport session presentation application 
+
+
+what actually is network and why are we learning this ? 
+
+network == two or more computers being connected to share resources 
+when we became backend dev we dont run code it vacuum. we run code live in
+server where it would be connected to database
+cache and client.
+so we need to learn in order to optimize our code.
+
+p d n t s p a 
+
+physical 물리계층 1계층
+
+data link 데이터링크계층 2계층
+
+network 네트워크 계층 3계층
+packet - IP routers  they do routing which is
+optimizing the path - best path selector
+transport 전송계층 4계층
+segment - tcp udp  Error recovery flow control 
+
+session 세션계층 5계층
+
+presentation 프레젠테이션 계층 6계층
+
+application 적용계층 7계층 
+where the network actually touches my software 
+
+
+when we do coding codes run reversely from l7 to l1 
+thats encapsulation
+via layers headers would be added.
+it is like packages for a present
+
+encapsulation - letter in a box 
+
+Layer 7~5 message 
+you write the letter and put it in an envelope.
+this is your raw data
+
+Layer 4 the courier service 
+you decide if you want certified mail then - tcp 
+requires an signature and acknowledge ment 
+
+or just a standard mail - udp 
+faster but you dont know if it is arrived.
+
+Layer 3 the address 
+
+you write the IP Address on the envelope 
+this tells the global postal service ( the internet) which city state the letter is going to.
+
+Layer 2 the delivery truck
+
+the letter goes on a  speicific turck. 
+The MAC Address identifies the specific truck or mailbox in your local neighborhood.
+
+Layer 1 the road 
+
+this is the physical pavement(Cables/fiber) the truck drives on.
+
+when you go down it is encapsulation
+when you go up it is decapusulation
+cuz going down -> adding header 
+
+
+오늘 수업 끝나면 도서관 바로 가서 네트워크 복습하고 3:30 4:30 5:00 
