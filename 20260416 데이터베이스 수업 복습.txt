@@ -1,0 +1,133 @@
+//20260416 데이터베이스 수업 복습
+
+
+sql 내장함수 
+상수나 속성 이름을 입력값으로 받아서 단일 값을 결과로 반환하는 함수다.
+
+
+
+ABS 함수는 절댓값을 구하는 함수이다.
+
+
+ROUND 함수는 
+
+반올림하는 함수이다
+
+
+
+부속질의
+
+
+SELECT FROM WHERE 에서 WHERE 옆에 다는 질의를 부속질의
+
+
+SELECT 옆에 다는 질의를 스칼라 부속질의라고 부른다.
+
+
+
+
+스칼라 부속질의
+질의 4-17
+
+마당 서점의 고객별 판매액을 나타내시오 ( 꼬객이름과 고객별 판매액 출력)
+
+SELECT ( SELECT name 
+		FROM Customer cs 
+		WHERE cs.custid=od.custid) 'name', SUM(saleprice) 'total'
+
+FROM  ORDERS od
+
+GROUP BY od.custid;
+
+질의 4-17
+
+마당 서점의 고객별 판매액을 나타내시오 ( 꼬객이름과 고객별 판매액 출력)
+
+SELECT ( SELECT name 
+		FROM Customer cs 
+		WHERE cs.custid=od.custid) 'name', SUM(saleprice) 'total'
+
+FROM  ORDERS od
+
+GROUP BY od.custid;
+
+
+스칼라의 역할 3가지 
+
+1. 치환의 역할 ( 조인 대신 해서 값을 가져온다)
+
+주 테이블에서 없는 정보를 다른 테이블에서 
+딱 하나만 쏙 뽑아와서 출력결과에 붙여줄때 사용한다.
+
+특징 : 조인을 쓰지않고서도 다른 테이블의 컬럼을 결과창에 띄울 수있게 해준다.
+가장 흔한 용도이다.
+
+2. 동적 상수 로의 역할
+
+WHERE 절에서 평균보다 비싼 도서를 찾고 싶다면 평균값은 고정된 숫자가 아니다 
+이 때 서브쿼리가 평균값을 계산해주고 
+그것을 상수로써 전달해준다.
+
+예시 : WHERE price > (SELECT AVG(price) FROM Book)
+
+3. 데이터의 '가공' 과 '확장'
+
+주 쿼리의 각 행에 대해서 계산과 가공이 필요할떄 사용하게된다 , 예시로는 각 고객의 주문횟수<-- 를 고객 목록 바로 옆에 붙이고 싶을때 유용하다.
+
+조인과 매우 비슷하기에 차이점을 알면 좋고 
+한가지 방식을 다양한 영어표현으로 표현하듯
+한상황을 조인과 스칼라 부속질의로 처리를 하는 방식을 알아야함 LIKE HAVING TWO TOOLS TO FIGHT 
+
+
+
+- 인라인 뷰 
+
+FROM Customer (이미만들어진)
+에서 보통 데이터를 가져오는게 보통의 SQL인데
+
+인라인 뷰란 쿼리안에서 즉석으로 만든 가상의 테이블이다 .
+FROM 절안에 SELECT 넣어서 결과를 하나의 테이블로 사용하는 방식이다. 
+
+
+사용의 이유는
+
+데이터 필터링
+전체 테이블에서 필요한 행과 열만 미리 걸러된뒤 그 결과에 대해서만 메인 쿼리를 돌리고 싶을때 사용한다.
+
+복잡한 집계의 단순화
+
+먼저 그룹화를 통해서 ( GROUP BY ) 를 해서 통계를 낸 결과를 테이블처럼 놓고 
+다른 테이블과 조인 하고 싶을떄 필수적이다.
+
+성능 최적화
+엄청 나게 큰 테이블을 통쨰로 조인하는 대신에 서브쿼리에서 필요한 만큼 줄여서 조인하면 훨 빠르다
+
+서브쿼리 == 부속질의
+
+
+1.
+CREATE VIEW highorders AS
+SELECT b.bookid, b.bookname, c.name, b.publisher, o.saleprice
+FROM Book b, Customer c, Orders o
+WHERE b.bookid = o.bookid AND c.custid = o.custid
+AND o.saleprice >= 20000;
+
+
+2.
+SELECT bookname, name
+FROM highorders;
+
+
+3.
+
+-- 뷰 수정 (saleprice 속성 제외하고 다시 생성)
+CREATE OR REPLACE VIEW highorders AS
+SELECT bookid, bookname, name, publisher
+FROM (SELECT b.bookid, b.bookname, c.name, b.publisher, o.saleprice
+      FROM Book b, Customer c, Orders o
+      WHERE b.bookid = o.bookid AND c.custid = o.custid
+      AND o.saleprice >= 20000) sub;
+
+-- 수정 후 2번 SQL 다시 수행 (결과는 동일하게 나옵니다)
+SELECT bookname, name
+FROM highorders;
