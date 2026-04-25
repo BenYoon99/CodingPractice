@@ -1,0 +1,94 @@
+//pre ccna switch router osi 7layer udp revising 260425
+
+
+
+switch = connecting devices such as pc and printer in LAN 
+
+router = connecting diffrent networks 
+such as LAN and WAN
+
+
+Major differences 
+
+
+switch is in l2 
+
+router is in l3
+
+s use mac while router uses ip address
+
+switch connect to same network devices
+
+router connects to the different devices
+
+FRAME to same MAC address -- switch
+
+optimizing the route ( Routing) -- router
+
+broadcast  switch do activate 
+
+disconnect broadcast - router
+
+
+
+
+how do they actually work
+
+switch has mac table
+
+he learn mac address when the frame comes
+and save it
+afterward he delivers data viaport if the Mac address has a table( high efficiency in energy - less waste)
+if he doenst know the address then he distribute the data towards every port that is connected to the device this technique is called flooding
+
+Router 
+
+routing is mainly the purpose
+
+router checks the ip address when the packet comes
+
+and then he is searching for the best route - NEXT HOP for that IP from our own Routing table.
+and then he decides which interface to let the data go out and then delivers data.
+
+so if we think of switch 
+it is a elevator in apartment which let people in the first floor to move to fifth floor.
+
+router == post office
+when we wanna send  packet /data ( mail)
+then we need to get here first.
+
+
+L4 TCP and UDP
+
+TCP is connecting concentrated
+
+UDP is non connected method
+
+tcp is  trustworthy but udp is not( relatively lower)
+
+tcp is slower tthan udp but more safe
+
+
+
+
+
+osi 7 
+
+
+memorize
+ 
+please do not throw sausauge pizza away
+
+physical1
+
+data link 2
+
+network 3
+
+transport 4
+
+session 5
+
+presentation 6
+
+application 7
