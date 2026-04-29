@@ -1,0 +1,21 @@
+subnetting
+
+
+subnetting is a techniuqe to 
+crack a big network in to subnets
+
+ex big pizza we cannot eat it so
+we just crack it into subnet which is small pieces and share
+
+we do this becuz we need to allocate as much as we want to increase efficiency
+
+security and managemnent will be increased i mean the efficiency
+directly related to traffic
+
+and losen the pressure towards network by broadcast domain
+
+subnet mask 
+
+a line that tells you 
+till where is network add     from where is host
+
