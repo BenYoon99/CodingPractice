@@ -1,0 +1,101 @@
+//20260518  JAVA
+
+
+
+
+Try 문안에 
+내가 실행할 문장넣고
+오류가 나올 상황 넣어도됨
+오류 나오면
+그 즉시 break 후 catch 로 이동 
+catch 에서 오류를 대처 
+그뒤
+
+finally는 예외상황이 나오건 안나오건 
+항상 실행시키고싶은거 작성
+
+
+
+
+
+// 제미나이 코드 예시
+
+
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            System.out.println("[try] 1. 계산을 시작합니다.");
+            
+            int ssu = 10;
+            int zero = 0;
+            
+            // 오류가 발생하는 상황 (0으로 나누기)
+            int result = ssu / zero; 
+            
+            // 오류 발생 즉시 탈출하므로, 아래 문장은 절대 실행되지 않습니다.
+            System.out.println("[try] 2. 계산 결과: " + result); 
+            
+        } catch (ArithmeticException e) {
+            // 오류가 발생하면 즉시 이쪽으로 점프합니다.
+            System.out.println("[catch] 3. 오류 발생! 0으로 나눌 수 없습니다.");
+            System.out.println("[catch] 에러 메시지: " + e.getMessage());
+            
+        } finally {
+            // 오류 발생 여부와 상관없이 무조건 실행됩니다.
+            System.out.println("[finally] 4. 프로그램 마무리 작업을 수행합니다.");
+        }
+        
+        System.out.println("5. try-catch-finally 블록을 빠져나와 정상 흐름을 이어갑니다.");
+    }
+}
+
+
+
+내가 설명하자면
+
+숫자를 0으로 나눌수없기에
+
+아래 문장 실행안하고 바로 catch문으로 이동후
+
+캣치문에서 바로 에러 대처 상황나오고 
+finally 실행
+
+파일 입출력  그 이후 놓침 ---< 복습
+
+
+
+
+스윙 클래스의 계층 
+
+
+스윙 클래스의 계층 구조를 완벽히 외울 필요는 없지만 
+대략적 구조 파악 및 이해는 중요하다
+
+주요점
+
+container 
+
+이거 추상클래스임
+
+다른 컴포넌트들을 포함할수있는 기능을 가진 컴포넌트들의 상위 클래스이다.
+
+
+component는 add 명령어 이용해서 container에 부착
+
+
+
+
+
+
+
+
+
+내부의 jcomponent 
+
+
+
+내부의 jpanel
+
+
+
+
