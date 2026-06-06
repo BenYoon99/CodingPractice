@@ -1,0 +1,96 @@
+9강(8강) 202310865 컴퓨터소프트웨어학과 윤호석 
+
+
+1. 라우터의 내부 구성요소
+
+CPU= 라우팅 테이블 계산 , 패킷 스위칭 등 라우터의 모든 연산과 제어 담당
+
+RAM = 현재 동작 중인 설정 파일 , 라우팅 테이블 ARP 캐시등을 저장한다. 전원이 꺼지면 데이터가 사라지는 휘발성 메모리이다.
+
+NVRAM 라우터의 시작 설정 파일 Startup Config를 저장한다.
+전원이 꺼져도 보존된다
+그게 startup 과 running config의 차이다
+
+러닝은 돌아갈때 임시적인 데이터
+
+startup은 저장되는것
+
+like 그냥 돌아가는 프로그램 and DB
+
+Flash Memory 라우터의 운영체제인 IOS 이미지를 저장한다.
+
+ROM 라우터의 부팅을 위한 부트스트랩 프로그램과 POST 진단 프로그램을 저장한다.
+
+2. 라우터의 부팅 순서
+
+1. POST == power on self test  == 하드웨어 이상 진단
+
+2. Bootstrap 실행 == ROM에 저장된 부트스트랩 프로그램이 실행되서 하드웨어를 초기화한다.
+
+3. IOS 로드 Flash 메모리에서 IOS 이미지파일을 찾아서 RAM으로 로드함
+
+4, 설정파일 로드  NVRAM에서 이전 설정 파일을 찾아 RAM으로 로드한다.
+
+5. 완료 정상적으로 부팅완료 --> 관리자 모드 진입
+
+3 시스코 IOS -CLI와 라우터 모드
+
+시스코 라우터는 CLI 통해 설정가능함 단계별 접근권한차이가 있다.
+
+
+1 .  USER EXEC MODE == Router>
+
+방문자모드이다 
+기본적 상태체크만 가능하다 
+여기서 en enable 을 쳐서 
+다음단계로 접근가능하다
+
+2. Privileged Mode == Router#
+
+관리자모드이다
+장비의 설정 저장 재부팅등 전체 권한 가짐 
+
+janitor 생각하면 편합니다.
+관리하는 관리자
+
+
+3. Global Configuration Mode == Router(config)#
+
+글로벌 컨피그 
+priviliged에서 
+conf t 나 
+configure terminal 치면 넘어올수있습니다.
+라우터 전반적인 전체적 영향을 주는 설정등을 변경가능합니다
+( 인터페이스 직접설정 , 호스트네임 변경등)
+
+4.interface Configuration Mode == Router(config-if)#
+interface로 해당 인터페이스 조작하려하면 자동으로 넘어가집니다.
+해당 포트/인터페이스에 IP할당 혹은 상세설정시 사용됩니다.
+
+4. router and external interfaces
+
+LAN 인터페이스들 == 이더넷 패스트이더넷 기가비트이더넷포트등 
+
+WAN 인터페이스들 == Serial 포트 , 고속 광대역 연결 용도
+
+Console port == 관리자가 PC를 라우터에 직접연결하기 위한 포트
+
+AUX port == 모뎀연결/ 원격 라우터관리 용도 포트 
+
+5. 통신프로그램을 통한 라우터 설정 방법
+
+1. 케이블 연결
+
+use pc serial number and connect console port to console cable
+
+2. 터미널 실행 
+
+PC 에서 에뮬 프로그램 실행
+
+3 통신 설정
+
+프로그램에서 해당 포트 선택후 속도 9600bps 설정
+
+4. 접속
+
+연결을 시도하면 라우터의 콘솔화면이 PC 화면에 나타나며 직접 명령어 사용해서 장비 직접설정 가능함.
