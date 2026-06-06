@@ -1,0 +1,91 @@
+9강(9강) 202310865 컴퓨터소프트웨어학과 윤호석 
+
+1.Router에는 크게 4가지 모드가 존재합니다.
+
+1. user Exec mode 
+
+Router>
+으로 방문자모드이고
+
+사용할수있는 커맨드들이 매우 한정적입니다.
+
+이 상태에서 en/ enable을 사용해
+관리자모드인
+privilieged 모드로 넘어갈수있습니다.
+
+2. priviliedged exec mode
+ 
+Router# 
+으로 관리자모드이고
+
+전체적 설정값을 바꾸는 커맨드 이외에 모두 사용가능합니다.
+
+그리고 password나 secret을 사용하여 암호를 만들었다면
+
+user에서 여기 넘어오기위해 en 사용했을때 암호를 타이핑해야합니다
+3회 틀리면 경고를 줍니다.
+
+이 모드에서 conf t / configure terminal 작성시 
+
+글로벌 컨피그 모드로 넘어갑니다
+
+3. global configuration mode 
+
+Router(config)#
+
+글로벌 컨피그모드로 전체적인 라우터의 인터페이스및 내부값들을 바꿀수있는곳입니다
+호스트이름등을 바꾸는곳이기도합니다.
+
+
+
+4.interface Configuration Mode == Router(config-if)#
+
+글 컨피그 모드에서 인터페이스 내부값 바꾸기위해 개별 인터페이스 조회시 넘어갑니다.
+인터페이스의 세부사항을 바꿀수있습니다. 
+
+
+
+2. 
+
+방문자 -> en /enable  - > 관리자 -> conf t configure terminal -> 글로벌 컨피그 모드
+
+3.  RAM vs NVRAM 
+
+RAM은 휘발성 NVRAM은 비휘발성입니다
+
+저장하는 내용의 차이는 실행중인 설정 라우팅 테이블을 RAM이 시작 설정파일 즉 스타트업 컨피그를 NVRAM이 저장합니다.
+
+속도의 차이로는 RAM>> NVRAM
+
+기기의 주목적 ROUTER 동작수행 -> RAM
+		 라우터 재부팅시 설정값 불러오기(저장)->NVRAM
+
+
+4. 5가지 패스워드 설정방식
+
+1. Console password 
+
+= line console 0     == 콘솔 케이블 직접연결 접속시
+
+
+2. VTY password
+
+= line vty 0 4  == telnet or SSH 에서 원격접속시 
+
+
+3. Enable password
+
+= user에서 en해서 관리자갈때 요구하는 일반 텍스트 암호
+show로 바로 비번알수있기에 매우 보안이 취약하다.
+
+4. Enable Secret 
+
+= user에서 en으로 관리자갈때 요구하는것은 같지만
+MD5 암호알고리즘 사용해서 훨씬 안전함
+show 쓰면 무슨 외계어처럼 암호화되서 보이기에 상대방이 show로 알수없음
+
+5. Auxiliary password 
+
+= line aux 0 
+
+모뎀등을 통해서 외부 접속시 사용 
