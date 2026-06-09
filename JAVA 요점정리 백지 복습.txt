@@ -1,0 +1,218 @@
+JAVA 요점정리 백지 복습
+
+
+오늘 복습하며 시작할게
+
+추클은 일메 추메 같이 가질수있다
+추메가 하나라도 있다면 즉 구현부가 비어있는 메소드가 하나라도있다면 그 클래스는 추상클래스이다
+추상클래스는 자기만의 객체를 갖지못한다
+하지만 추클을 상속받은 자식의 객체는 가질수있다
+상속만을 목표로 객체생성은 막고싶을때
+추클에 
+일반메소드를 전부채워만들면된다
+
+저번 문제
+fourwheeler 의 구현부가 비어있는데 문제없는이유는 
+추상클래스이기에 구현부비어있는 추상메소드가져도상관없기에
+그리고
+
+fourwheeler는 abstract빼면 오류나는이유가
+애초에 
+그안에 구현부비어잇는 추상메솓가있기에
+오버라이딩으로 채워넣어 일메로 바꾸지않았기에
+추상클래스는 다중상속불가능
+babo extends c1 extends c2 이게안됨
+
+그대신 인터페이스는 가능
+
+babo implements int1, int2
+
+이런식으로
+
+추상클래스는 변수선언 및 사용가능함 interface는 final만 사용가능
+
+
+
+super은 자식이 부모의 필드변수와 메서드에 접근하려고하는거임
+예를들어
+super.필변명하면 필드변수에
+super.메소드명하면 메소드에
+super()하면 부모의 생성자에 접근하는거다
+
+this는 
+그냥 this. 변수명하면 
+이 객체의 변수를 가리키는것이지만
+만약
+this()하면
+이클래스내부의 다른 클래스를 찾아가라는 말이된다
+그 찾아가는 트래킹은 
+(트래킹이라부르나?)
+그건 인수의 갯수 타입등 형태를 고려해 
+알아서 런타임에서 자바가 찾아간다
+
+이걸로 생성자 체이닝설명가능
+
+맨처음 생성자 터지고
+그아래의 맨첫줄 this()로
+인수맞춰 다른 생성자 타고
+그아래 this로 
+다른생성자 
+실행문 전부돌고
+마지막에서 위로 올라가는구조
+생성자는 리턴타입이없고 abstract final static interface 선언붕ㄹ가능함
+
+이벤트처리 4방식
+
+독내 f 무
+
+독립클래스로 이벤트처리
+내부클래스로 이벤트처리
+frame클래스에 이벤트처리 구현
+무명클래스로 이벤트처리
+
+
+public protected default private
+
+같클 같패 자식이지만 외부패키지 그외 전부
+
+0000 000x 00xx 0xxx
+인터페이스가 다른인터페이스 상속받을땐 extends야?
+인터페이스면 구현이니까 그경우에는 implements아님?
+
+
+이제
+컨테이너와 컴포넌트
+
+
+컨테이너는 집 컴포넌트는 가구
+
+
+component - container ---- jcomponent (우리가말하는컴포넌트)
+
+
+컨테이너의 주 클래스는 JF JD 
+
+둘다 가능 클래스 JP
+
+그외 전부 컴퍼넌트 클래스
+
+컨테이너는 거시적인 UI 구성과 
+컴퍼넌트 배치  
+
+컴포넌트는 미시적인 UI 요소들 (단일기능)
+과 사용자 정의 그래픽 담당
+
+
+주메소드는
+
+컨ㅌ테이너
+
+add(Component c) 
+
+component 
+
+paintComponent(Graphics g)
+이다
+
+둘다 클래스는 추상클래스이지만
+container는 
+import javax.swing.Jcomponent
+java.awt.container 해줘야함
+컴포는
+java.awt.Component 해줘야함
+set류는 전부 메소드답게 소문자시작 그뒤 카멜케이스 
+
+
+고양이 사진만들기 
+
+import javax.swing.*;
+해주고
+
+메인에서
+JFrame frame = new JFrame
+frame.setTitle
+frame.setSize
+
+프레임 즉 그림판 크기와 이름 정해주고
+
+그뒤 크샤트리아인 재니터
+
+JPanel panel = new JPanel();
+panel.setBackground(new color(240, 240, 240));
+frame.add(panel);
+JButton obj1 = new JButton("고양이");
+JButton obj2 = new JButton(new ImageIcon("cat.jpg"));
+JButton obj3 = new JButton ("고양이" , new ImageIcon("cat.jpg));
+panel.add(obj1);
+panel.add(obj2);
+panel.add(obj3);
+frame.setVisible(true);
+
+최종
+
+frame setVisible(true);
+
+맨위 임포트
+import javax.swing.*;
+
+
+
+import java.awt.event 
+.*;
+import javax.swing.*;
+
+class ExEventHandling03 extends JFrame implements ActionListener
+
+그뒤 버튼만들고
+
+panel.add로 버튼넣어주고
+
+button.addActionListener(this)
+
+
+button.addActionListener(this); 이게뭔듯이지
+그뒤
+왜 객체하나도없이그냥
+setVisible(true);
+야
+
+그러고
+actionPerformed 메소드파주고 거기에 매개변수로
+(ActionEvent e){
+JButton button = (JButton)e.getSource();
+
+이거설명점
+
+
+1번이해하자면 청므엔 add 프레임이해줫지만
+중간관리자인 panel을 add해주고나선
+중간관리자가 나머지 obj들 넣어주는모습이네
+변환자제하니까
+그리고 마지막엔 
+frame.setVisible(true);
+로 보여주고
+맞지?
+그럼 여기서 궁금한건
+두번째 코드에서 ActionListener는 인터페이스야?
+그것도 swing안에 들어잇는거야? 그래서 exevent03이 
+임포트한 외부라이브러리의 
+JFrame클래스를 상속 ActionListener
+을 구현받은거지
+
+yes
+but in java.awt.event.*;
+
+import java.awt.event.*;
+
+
+actionPerformed는 자체제작한 이름인거임 아니면 원래잇는 템플릿임? 
+
+그리고 button.addActionListener(this);
+이게뭐라고?
+
+
+
+
+
+
+
