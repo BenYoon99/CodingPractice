@@ -1,0 +1,77 @@
+10강 202310865 컴퓨터소프트웨어학과 윤호석 퀴즈
+
+
+
+1. 
+
+user exec mode
+
+방문자모드이다
+
+기본적인 명령어 이외 다른 명령어들은 입력이 불가하다
+
+여기서 en / enable 타이핑으로
+
+관리자모드로 넘어갈수있다.
+
+
+priviliged exec mode
+
+관리자모드이다
+
+show로 상태체크 및 
+인터페이스 설정등 전반적 설정값바꾸는것 외에 
+명령어들을 입력가능하다
+
+여기서 conf t 치면
+
+글로벌 컨피그모드로 이동한다
+
+global config mode
+
+인터페이스와 호스트이름등 전반적 설정을 바꾸는곳이다.
+
+
+2. 
+
+1번에서 설명한듯이
+
+방문자 -> en -> 관리자 -> conf t -> 글컨피그 -> interface -> 인터페이스 설정모드 
+or router rip -> 라우터 설정모드 
+
+
+3. 
+RAM 은 휘발성메모리이지만 NV는 비휘발성메모리이다
+
+RAM 은 Running config , 라우터 의 역할을 갖지만
+
+NV 는 시작설정파일 즉 Startup config를 저장한다.
+
+RAM은 NV에 비해 매우빠르다 ( NV는 상대적으로느림
+)
+
+4.패스워드 설정방법 5가지
+
+
+1. 콘솔패스워드
+
+console 0 -> password
+
+
+2. 보조 포트 패스워드
+
+line aux 0 -> password -> login
+
+3. 텔넷 패스워드
+
+line vty 0 4 -> password -> login
+
+4. 관리자 모드 패스워드 
+
+Router(config)# enable password [비밀번호]
+
+5. 관리자 모드 비밀번호 암호화
+
+Router(Config)# enable secret [비밀번호]
+
+password보다 더 암호화되어있다 ( MD5 알고리즘의 혜택)

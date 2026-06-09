@@ -1,0 +1,38 @@
+13강 202310865 컴퓨터소프트웨어학과 윤호석
+
+1.
+
+! Lab_A 예시 (다른 라우터도 동일 방식 적용)
+Router> enable
+Router# configure terminal
+Router(config)# interface ethernet 0
+Router(config-if)# ip address 192.5.5.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+Router(config)# interface serial 0
+Router(config-if)# ip address 201.100.11.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# end
+
+
+2.
+! Router0 예시
+Router> enable
+Router# configure terminal
+! LAN 인터페이스 설정
+Router(config)# interface fastEthernet 0/0
+Router(config-if)# ip address 192.168.1.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+! 인접 라우터로 향하는 Serial 인터페이스 설정
+Router(config)# interface serial 0/0/0
+Router(config-if)# ip address 10.1.1.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+! 동적 라우팅 (RIP) 설정 예시
+Router(config)# router rip
+Router(config-router)# network 192.168.1.0
+Router(config-router)# network 10.0.0.0
+Router(config-router)# end
+
+
