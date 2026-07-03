@@ -1,0 +1,85 @@
+의존성 학습 
+
+dependency in java
+
+
+
+
+
+class Car 안에
+koreaTire 규격따르는 new korea Tire가있으면
+
+이거 실행부에서
+Car의 규격을따르면 어떤식으로
+객체생성이해를해야하는거야? 예시들어서설명점?
+
+
+
+class Car {
+    // Car가 '한국타이어'라는 특정 구체 클래스에 고정(결합)됨
+    private KoreaTire tire = new KoreaTire(); 
+    
+    public void drive() { tire.roll(); }
+}
+
+
+class Car {
+    // Car가 '한국타이어'라는 특정 구체 클래스에 고정(결합)됨
+    private KoreaTire tire = new KoreaTire(); 
+    
+    public void drive() { tire.roll(); }
+}
+이상황에서 실행부에서
+
+Car car1 = new Car();
+하면 한국타이어가 생성되는거임? 뭐야
+
+
+ㅇㅇ 맞음
+
+
+그럼 저 경우에
+koreaTire가 외부에 존재하고
+저렇게 의존성이 깊기에 
+저거는 생성할때 생성자 안파뒀기에
+그냥 기본 koreaTire만쓸수잇는거고
+만약내가
+앞에 처럼 
+private KoreaTire KoreaTire11;
+
+public Car(koreaTire KoreaTire11)
+{this.koreaTire = KoreaTire11; 이면 
+}
+이경우에는 내가 동적으로
+실행부에서 생성시 그냥 그냥 파라미터값 넣어주서ㅓ
+한국타이어지만 다른 값을 넣어줄수있는거네 ?
+
+ㅇㅇ
+
+
+그럼 위 그냥 클래스 ---> 클래스 내부의 외부클래스의 규격을따르는 생성자없는 인스턴스는 의존성이 매우높은거고
+값받을 공간과 생성자를 파뒀다면 의존성이 덜한거네
+
+근데 궁금한건
+내가 저렇게 생성자 공간을 카에서 파두고
+만약 한국타이어쪽에는 그 값을 받을놈들이 없다면 어떻게되?
+
+필요없다
+
+생각해보면
+
+a->>> B 이용하면
+
+A가 B사정알필요가없어지잖아
+
+애초에
+
+내가 받아서 쓰는거지
+
+이렇게 
+
+
+그럼 결론은 
+
+한마디로 그럼 결합도가 낮으면 낮을수록 의존성이 낮으면 낮을수록좋은거네
+low coupling is better low dependency is better 
