@@ -1,0 +1,55 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// 인터페이스 페이방법 만듬/ 리턴값없으니 반환타입 void에 이미 추상메소드인게 확정이기에 인터페이스라 (인터페이스는 추상메소드만 위치가능 )생략하고 파라미터 int amount
+interface PaymentStrategy {
+    void pay(int amount);
+}
+
+// 2. 객체 카드페이먼트,카카오페이는 인터페이스 페이방법구현하고 각각 추상메소드들 전부 오버라이딩  
+class CardPayment implements PaymentStrategy {
+    @Override
+    public void pay(int amount) {
+        System.out.println("카드 결제 완료: " + amount + "원");
+    }
+}
+
+class KakaoPay implements PaymentStrategy {
+    @Override
+    public void pay(int amount) {
+        System.out.println("카카오페이 결제 완료: " + amount + "원");
+    }
+}
+
+/* 3. 결제 처리기 의존성 부여한다 인터페이스 필드인스턴스 공간 제작해서 생성자 통해서 해당 인스턴스값 받아주고 )
+        값지불 메소드 생성해주고 , 내가 직접 세터를 통해 전략 바꿀수있게끔 메소드 파주고 
+*/
+class PaymentService {
+    private PaymentStrategy strategy;
+
+    public PaymentService(PaymentStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void processPayment(int amount) {
+        strategy.pay(amount);
+    }
+    
+    
+    public void setStrategy(PaymentStrategy strategy) {
+        this.strategy = strategy;
+    }
+}
+
+// 4. 실행부.
+public class Main {
+    public static void main(String[] args) {
+        PaymentService service = new PaymentService(new CardPayment());
+        service.processPayment(10000);
+
+       
+        service.setStrategy(new KakaoPay());
+        service.processPayment(20000);
+    }
+}
