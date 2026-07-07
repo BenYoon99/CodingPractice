@@ -1,0 +1,182 @@
+20260707 자바 2차원배열 이용 체스판 , 기물 구현 
+
+
+
+2차원 배열로
+
+
+String [][] chessBoard = new String[8][8];
+
+
+
+
+
+
+먼저 2차원배열만들고 판 짜기
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+
+
+class Main {
+    public static void main(String[] args) {
+        String chessBoard [][] = new chessBoard [8][8];
+
+        for(i==0;i>7;i++){
+            for(j==0;i>7;i++){
+                chessBoard[i][j]=".";
+            }
+        }
+        
+    }
+}
+
+에러 --> 변수선언 , 2차원배열형태 
+
+
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Main {
+    public static void main(String[] args) {
+        //체스보드 제작 및 최초 null 오류 예방 . 64칸 모두 찍어놓기 
+        String [][] chessBoard  = new String [8][8];
+    
+        for(i=0;i<8;i++){
+            for(j=0;i<8;i++){
+                chessBoard[i][j]=".";
+            }
+        }
+
+        // 체스보드확인
+
+        for(i=0;i<8;i++){
+            for(j=0;j<8;j++){
+                System.out.println( chessBoard[i][j]+ "");
+            }
+        }
+        
+        
+    }
+}
+에러 수정하고 체스보드 확인까지 제작 
+but error 
+수정완료
+
+
+
+이후 기물 배치 
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Main {
+    public static void main(String[] args) {
+        //체스보드 제작 및 최초 null 오류 예방 . 64칸 모두 찍어놓기 
+        String [][] chessBoard  = new String [8][8];
+
+        
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                chessBoard[i][j]=".";
+            }
+        }
+
+        // 체스보드확인
+        /*
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                System.out.print( chessBoard[i][j]+ "");
+            }
+        }
+        */
+
+        //기물들 배치
+
+        chessBoard[0][0] = "Rook";
+        chessBoard[0][1] = "Knight";
+        chessBoard[0][2] = "Bishop";
+        chessBoard[0][3] = "Queen";
+        chessBoard[0][4] = "King";
+        chessBoard[0][5] = "Right Bishop";
+        chessBoard[0][6] = "Right Knight";
+        chessBoard[0][7] = "Right Rook";
+        chessBoard[7][0] = "rook";
+        chessBoard[7][1] = "knight";
+        chessBoard[7][2] = "bishop";
+        chessBoard[7][3] = "queen";
+        chessBoard[7][4] = "king";
+        chessBoard[7][5] = "Right bishop";
+        chessBoard[7][6] = "Right knight";    
+        chessBoard[7][7] = "Right rook";         
+
+
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                System.out.print( chessBoard[i][j]+ "");
+            }
+        }
+        
+    }
+}
+
+칸수맞추기 위해 글자 생략후 재출력
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Main {
+    public static void main(String[] args) {
+        //체스보드 제작 및 최초 null 오류 예방 . 64칸 모두 찍어놓기 
+        String [][] chessBoard  = new String [8][8];
+
+        
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                chessBoard[i][j]=".";
+            }
+        }
+        
+        chessBoard[0][0] = "R";
+        chessBoard[0][1] = "K";
+        chessBoard[0][2] = "B";
+        chessBoard[0][3] = "Q";
+        chessBoard[0][4] = "K";
+        chessBoard[0][5] = "RB";
+        chessBoard[0][6] = "RK";
+        chessBoard[0][7] = "RR";
+        chessBoard[7][0] = "r";
+        chessBoard[7][1] = "k";
+        chessBoard[7][2] = "b";
+        chessBoard[7][3] = "q";
+        chessBoard[7][4] = "k";
+        chessBoard[7][5] = "Rb";
+        chessBoard[7][6] = "Rk";    
+        chessBoard[7][7] = "Rr";    
+         
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                System.out.print( chessBoard[i][j]+ "");
+    }
+}
+    }
+}
+
+이건 지금 기능구현이 안됨 
+
+why? 애초에 그냥 자체 스트링형으로 2차원배열을 팟기에
+하지만 interface를 구현받는 놈으로 만약 만든다면 
+우리는 각 기물들에 기능을 구현시켜줄수있음 
