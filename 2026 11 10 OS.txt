@@ -1,0 +1,51 @@
+2026 11 10 OS 
+
+kill == killing the process 
+
+
+but you have to type the pid number afterwards to kill
+the process
+
+
+
+pkill ( process kill ) == killing the process too 
+
+
+but you can just directly write the process name afterwards to kill the process 
+
+
+
+
+
+* Giving priority 
+
+using nice command to give more priority and less priority score ( NI ) 
+
+the lesser the NI no is the higher the priority will be 
+
+
+
+* Checking my process status
+
+
+Using top command to check cureent process status 
+
+
+
+* load average
+
+
+load average : no , no , no 
+
+1st no is average per 1minute
+
+
+2nd no is average per 5minutes
+
+
+3rd no is average per 15minutes
+
+
+
+
+
